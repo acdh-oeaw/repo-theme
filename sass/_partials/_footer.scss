@@ -1,0 +1,29 @@
+/* _footer.scss */
+
+.main-footer {
+    background-color: $primary;
+    border-top: 8px solid $white;
+    display: inline-block;
+    width: 100%;
+    
+    .footer-wrapper {
+	    padding: 25px 0px 15px 0px;
+	    display: inline-block;
+	    width: 100%;
+	    
+	    .footer-social {
+		    text-align: right;
+		    
+		    a {
+			    font-size: 24px;
+			    color: #fff;
+			    margin-left: 15px;
+			}
+		    
+		}
+
+
+	}
+	
+	
+}

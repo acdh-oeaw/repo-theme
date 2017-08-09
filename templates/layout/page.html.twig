@@ -1,0 +1,44 @@
+{% include directory ~ '/templates/layout/header.html.twig' %}
+
+<div class="container">
+  <main role="main">
+    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+    <div class="layout-content col-block col-lg-12">
+      <div class="col-block-wrapper">
+
+	      <!--- Start Breadcrumbs -->
+	      {% if page.breadcrumbs %}
+
+	            {{ page.breadcrumbs }}
+
+	      {% endif %}
+	      <!---End Breadcrumbs -->	  	  
+      
+	      <!--- Start Left Sidebar -->
+	      {% if page.sidebar_first %}
+	        <div class="left-sidebar col-block col-lg-3 col-md-4 col-sm-12" >
+			  <div class="left-sidebar-info">
+			    Refine your search using filters:
+			  </div>
+	          <div class = {{sidebarfirst}} >
+	            {{ page.sidebar_first }}
+	          </div>
+	        </div>
+	      {% endif %}
+	      <!---End Left Sidebar -->
+	      
+	      <div class="vert-divider"></div>
+	      
+	      <div id="block-mainpagecontent" class="col-block col-lg-9 col-md-8 col-sm-12">        
+	        {{ page.content }}
+	      </div>  
+	        
+        </div>
+    </div>{# /.layout-content #}
+
+
+  </main>
+</div>{# /.layout-container #}
+
+{% include directory ~ '/templates/layout/footer.html.twig' %}

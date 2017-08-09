@@ -1,0 +1,45 @@
+/* _header.scss */
+
+.main-header {
+    background-color: $white;
+    border-bottom: 1px solid $gray;
+    display: inline-block;
+    width: 100%;
+    position: fixed;
+    z-index: 99;
+    
+    > .container {
+    padding-left: 30px;
+    padding-right: 30px;
+	}
+    
+    #block-acdh-repo-branding {
+    	float: left;
+    	padding-top: 12px;
+	}
+	
+    .main-navigation {
+    	float: right;
+    	
+    	ul.navbar-nav {
+		    display: inline-block;
+		    
+		    li.nav-item {
+			    display: inline-block;
+
+				&:nth-child(1) > a.nav-link {
+					border-left: 1px solid $gray;
+				}
+			    
+			    a.nav-link {
+				    text-transform: uppercase;  
+				    border-right: 1px solid $gray;
+				    padding: 25px 20px;
+				    font-size: 0.9rem;				    
+				}
+   
+			}
+		}    	
+	}	
+		
+}

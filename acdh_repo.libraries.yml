@@ -1,0 +1,30 @@
+global-styling:
+  css:
+    theme:
+      css/style.css: {}
+  js:
+    js/results.js: {}    
+  dependencies:
+    - acdh_repo/bootstrap
+
+tether:
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js: { type: external, minified: true }
+
+bootstrap:
+  css:
+    base:
+      https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css: { type: external, minified: true }
+      https://v4-alpha.getbootstrap.com/assets/css/docs.min.css: { type: external, minified: true }
+      https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css: { type: external, minified: true }
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js: { type: external, minified: true }
+  dependencies:
+    - core/jquery
+    - acdh_repo/tether
+        
+fonts:
+  css:
+    theme:
+      //fonts.googleapis.com/css?family=Cabin:400,400i,700,700i: { type: external }
+      //fonts.googleapis.com/css?family=Lato:300,300i,700,700i: { type: external }

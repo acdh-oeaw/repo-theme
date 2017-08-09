@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Theme override for a breadcrumb trail.
+ *
+ * Available variables:
+ * - breadcrumb: Breadcrumb trail items.
+ */
+#}
+{% if breadcrumb %}
+    <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+        <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
+        <div class="breadcrumb">
+            {% for item in breadcrumb %}
+                <span>
+                    <a href="{{ item.url }}">{{ item.text }}</a>
+                </span>
+                <span>/</span>
+            {% endfor %}
+            <div class="repo-actions-nav">
+            	<span><a href="/discover">List All Resources</a></span>
+            	<span><a href="/add-new-resource">Add New Resource</a></span>
+            	<span><a href="/deposition-agreement">Deposition Agreement</a></span>
+            </div>	
+        </div>
+    </nav>
+{% endif %}
