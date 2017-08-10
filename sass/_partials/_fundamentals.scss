@@ -2,7 +2,7 @@
 
 /* Variables */
 $primary: #88DBDF;
-$accent: #56ABB0;
+$accent: #3B89AD;
 $black: #333333;
 $white: #FFFFFF;
 $lightgray: #F1F1F1;
@@ -10,6 +10,11 @@ $gray: #DDDDDD;
 
 $headingfont: 'Cabin', -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 $bodyfont: 'Lato', -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+
+/* Default transition, usage: @include bg-trans(); */
+@mixin bg-trans() {
+    transition: background-color ease .2s;
+}
 
 @font-face {
   font-family: 'Material Icons';
