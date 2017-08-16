@@ -198,7 +198,8 @@ nav.breadcrumb {
     background-color: #88DBDF;
     margin: -28px -20px 0px -20px;
     border-radius: 0;
-    padding: 6px 20px; }
+    padding: 6px 20px;
+    font-size: 14px; }
     nav.breadcrumb > .breadcrumb > span:nth-last-of-type(1) {
       display: none; }
 
@@ -286,7 +287,6 @@ nav.breadcrumb {
   border-bottom: 1px solid #3B89AD;
   padding-bottom: 2px;
   color: #3B89AD;
-  font-size: 14px;
   transition: border-color ease .1s, color ease .1s; }
 
 .repo-actions-nav > span a:hover {
@@ -310,7 +310,8 @@ nav.breadcrumb {
   border: 2px solid #88DBDF;
   border-radius: 8px;
   font: inherit;
-  padding: 5px 12px; }
+  padding: 5px 12px;
+  height: 38px; }
 
 .node .repo-actions-nav {
   display: none; }
@@ -402,7 +403,8 @@ nav.breadcrumb {
       border: 0;
       border-bottom-right-radius: 5px;
       border-top-right-radius: 5px;
-      padding: 7px 9px;
+      height: 38px;
+      padding: 6px 9px;
       font-family: 'Material Icons';
       font-size: 24px;
       color: #FFFFFF;
@@ -606,6 +608,13 @@ table.dataTable td.res-download-button i {
 
 table.dataTable td.res-download-button i:hover {
   color: #88DBDF; }
+
+.info-menu-wrap.fixed-sidebar {
+  position: fixed;
+  margin-top: -60px; }
+
+#block-informationpagenavigation {
+  padding-left: 0; }
 
 /* _footer.scss */
 .main-footer {

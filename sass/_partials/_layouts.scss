@@ -66,6 +66,7 @@ nav.breadcrumb {
 	    margin: -28px -20px 0px -20px;
 	    border-radius: 0;
 	    padding: 6px 20px;
+	    font-size: 14px;
 	    
 	    > span:nth-last-of-type(1) {
 		    display: none;
@@ -183,7 +184,6 @@ nav.breadcrumb {
     border-bottom: 1px solid $accent;
     padding-bottom: 2px;
     color: $accent;
-    font-size: 14px;
     transition: border-color ease .1s, color ease .1s;
 }
 
@@ -210,6 +210,7 @@ nav.breadcrumb {
     border-radius: 8px;
     font: inherit;
     padding: 5px 12px;
+    height: 38px;
 }
 
 .node .repo-actions-nav {
@@ -327,7 +328,8 @@ nav.breadcrumb {
 		    border: 0;
 		    border-bottom-right-radius: 5px;
 		    border-top-right-radius: 5px;
-		    padding: 7px 9px;
+		    height: 38px;
+		    padding: 6px 9px;
 		    font-family: 'Material Icons';
 		    font-size: 24px;
 		    color: $white;
@@ -580,4 +582,13 @@ table.dataTable td.res-download-button i {
 
 table.dataTable td.res-download-button i:hover {
     color: $primary;
+}
+
+.info-menu-wrap.fixed-sidebar {
+    position: fixed;
+    margin-top: -60px;
+}
+
+#block-informationpagenavigation {
+    padding-left: 0;
 }

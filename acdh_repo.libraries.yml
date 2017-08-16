@@ -3,7 +3,8 @@ global-styling:
     theme:
       css/style.css: {}
   js:
-    js/results.js: {}    
+    js/results.js: {}   
+    js/main.js: {}  
   dependencies:
     - acdh_repo/bootstrap
 

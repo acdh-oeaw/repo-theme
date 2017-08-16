@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Theme override to display a block.
+ * Theme override to display a block for oeaw module blocks
  *
  * Available variables:
  * - plugin_id: The ID of the block implementation.
@@ -28,7 +28,7 @@
 <div{{ attributes }}>
   {{ title_prefix }}
   {% if label %}
-    <h2{{ title_attributes }}>{{ label }}</h2>
+    <h3{{ title_attributes }}>{{ label }}</h3>
   {% endif %}
   {{ title_suffix }}
   {% block content %}
