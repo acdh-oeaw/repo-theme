@@ -18,6 +18,12 @@ jQuery(function($) {
         } else {
             $('.info-menu-wrap').removeClass('fixed-sidebar');
         }
+        // Check if Drupal admin bar exists
+		if ($("body").hasClass("toolbar-horizontal")) {
+		    var offsetDiv = 160;
+		} else {
+			var offsetDiv = 90;
+		}         
         // Add smooth scrolling to inside-page links
         $("a").on('click', function(event) {
             // Make sure this.hash has a value before overriding default behavior
@@ -25,7 +31,7 @@ jQuery(function($) {
                 // Store hash
                 var hash = this.hash;
                 $('html, body').animate({
-                    scrollTop: $(hash).offset().top - 160
+                    scrollTop: $(hash).offset().top - offsetDiv
                 }, 800, function() {
                     // Add hash (#) to URL when done scrolling (default click behavior)
                     //window.location.hash = hash;
