@@ -1,0 +1,38 @@
+@media (max-width: 767px) {
+
+
+}
+
+@media (max-width: 1199px) {
+	
+	.vert-divider {
+	    margin-left: 215px;
+	}
+
+}
+
+@media (max-width: 991px) {
+
+	.vert-divider {
+	    display: none;
+	}
+
+	.main-header .main-navigation .navbar ul.navbar-nav li.nav-item {
+	    float: left;
+	    width: 100%;
+	}
+	
+	.main-header .main-navigation .navbar ul.navbar-nav li.nav-item a.nav-link {
+	    border-top: 1px solid #ddd;
+	    border-left: none !important;
+	    border-right: none;
+	}
+
+	body.toolbar-tray-open.toolbar-vertical {
+
+		.main-header {
+		    width: calc(100% - 240px);
+		}		
+	}
+	
+}

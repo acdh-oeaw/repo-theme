@@ -32,17 +32,19 @@
  */
 #}
 {% set heading_id = attributes.id ~ '-menu'|clean_id %}
-<nav role="navigation" aria-labelledby="{{ heading_id }}"{{ attributes|without('role', 'aria-labelledby') }}>
-  {# Label. If not displayed, we still provide it for screen readers. #}
-  {% if not configuration.label_display %}
-    {% set title_attributes = title_attributes.addClass('visually-hidden') %}
-  {% endif %}
-  {{ title_prefix }}
-  <h2{{ title_attributes }}>{{ configuration.label }}</h2>
-  {{ title_suffix }}
+<nav class="navbar navbar-toggleable-md">
+  
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon">
+    	<i class="material-icons">&#xE5D2;</i>
+    </span>
+  </button>
 
-  {# Menu. #}
-  {% block content %}
-    {{ content }}
-  {% endblock %}
+  <div class="collapse navbar-collapse" id="navbarToggler">
+	  {# Menu. #}
+	  {% block content %}
+	    {{ content }}
+	  {% endblock %}
+  </div>
+
 </nav>

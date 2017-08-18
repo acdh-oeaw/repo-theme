@@ -137,17 +137,36 @@ animation: fadein 0.5s;
     padding-top: 12px; }
   .main-header .main-navigation {
     float: right; }
-    .main-header .main-navigation ul.navbar-nav {
-      display: inline-block; }
-      .main-header .main-navigation ul.navbar-nav li.nav-item {
+    .main-header .main-navigation .navbar {
+      padding: 0;
+      position: inherit; }
+      .main-header .main-navigation .navbar ul.navbar-nav {
         display: inline-block; }
-        .main-header .main-navigation ul.navbar-nav li.nav-item:nth-child(1) > a.nav-link {
-          border-left: 1px solid #DDDDDD; }
-        .main-header .main-navigation ul.navbar-nav li.nav-item a.nav-link {
-          text-transform: uppercase;
-          border-right: 1px solid #DDDDDD;
-          padding: 25px 20px;
-          font-size: 0.9rem; }
+        .main-header .main-navigation .navbar ul.navbar-nav li.nav-item {
+          display: inline-block; }
+          .main-header .main-navigation .navbar ul.navbar-nav li.nav-item:nth-child(1) > a.nav-link {
+            border-left: 1px solid #DDDDDD; }
+          .main-header .main-navigation .navbar ul.navbar-nav li.nav-item a.nav-link {
+            text-transform: uppercase;
+            border-right: 1px solid #DDDDDD;
+            padding: 25px 20px;
+            font-size: 0.9rem; }
+
+.navbar-toggler-icon i {
+  font-size: 28px;
+  color: #88dbdf;
+  border: 2px solid #88dbdf;
+  border-radius: 5px;
+  padding: 0px 3px; }
+
+.navbar-toggler-right {
+  position: absolute;
+  top: 15px;
+  right: 24px;
+  cursor: pointer; }
+
+.navbar-toggler-right:focus {
+  outline: none; }
 
 /* _layouts.scss */
 main {
@@ -632,3 +651,22 @@ table.dataTable td.res-download-button i:hover {
         font-size: 24px;
         color: #fff;
         margin-left: 15px; }
+
+@media (max-width: 1199px) {
+  .vert-divider {
+    margin-left: 215px; } }
+@media (max-width: 991px) {
+  .vert-divider {
+    display: none; }
+
+  .main-header .main-navigation .navbar ul.navbar-nav li.nav-item {
+    float: left;
+    width: 100%; }
+
+  .main-header .main-navigation .navbar ul.navbar-nav li.nav-item a.nav-link {
+    border-top: 1px solid #ddd;
+    border-left: none !important;
+    border-right: none; }
+
+  body.toolbar-tray-open.toolbar-vertical .main-header {
+    width: calc(100% - 240px); } }

@@ -21,25 +21,51 @@
     .main-navigation {
     	float: right;
     	
-    	ul.navbar-nav {
-		    display: inline-block;
-		    
-		    li.nav-item {
+    	.navbar {
+			padding: 0;
+			position: inherit;
+    	
+	    	ul.navbar-nav {
 			    display: inline-block;
-
-				&:nth-child(1) > a.nav-link {
-					border-left: 1px solid $gray;
-				}
 			    
-			    a.nav-link {
-				    text-transform: uppercase;  
-				    border-right: 1px solid $gray;
-				    padding: 25px 20px;
-				    font-size: 0.9rem;				    
+			    li.nav-item {
+				    display: inline-block;
+	
+					&:nth-child(1) > a.nav-link {
+						border-left: 1px solid $gray;
+					}
+				    
+				    a.nav-link {
+					    text-transform: uppercase;  
+					    border-right: 1px solid $gray;
+					    padding: 25px 20px;
+					    font-size: 0.9rem;				    
+					}
+	   
 				}
-   
 			}
-		}    	
+		}
 	}	
 		
+}
+
+
+
+.navbar-toggler-icon i {
+    font-size: 28px;
+    color: #88dbdf;
+    border: 2px solid #88dbdf;
+    border-radius: 5px;
+    padding: 0px 3px;
+}
+
+.navbar-toggler-right {
+    position: absolute;
+    top: 15px;
+    right: 24px;
+    cursor: pointer;
+}
+
+.navbar-toggler-right:focus {
+    outline: none;
 }
