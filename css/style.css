@@ -635,6 +635,16 @@ table.dataTable td.res-download-button i:hover {
 #block-informationpagenavigation {
   padding-left: 0; }
 
+.info-menu-wrap > ul > li:nth-child(4):after {
+  content: "About Our Service";
+  display: block;
+  font-family: "Cabin", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 400;
+  margin-top: 25px;
+  margin-bottom: 8px; }
+
 /* _footer.scss */
 .main-footer {
   background-color: #88DBDF;
