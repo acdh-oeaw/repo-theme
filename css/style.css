@@ -661,6 +661,9 @@ table.dataTable td.res-download-button i:hover {
         font-size: 24px;
         color: #fff;
         margin-left: 15px; }
+    .main-footer .footer-wrapper .navbar {
+      float: right;
+      padding-right: 0; }
 
 @media (max-width: 1199px) {
   .vert-divider {
