@@ -13,3 +13,4 @@ regions:
   content: 'Main Content'
   sidebar_first: 'Left Sidebar' 
   footer: 'Footer'
+  start_page_content: 'Start Page Content'
