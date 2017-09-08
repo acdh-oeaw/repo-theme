@@ -196,7 +196,7 @@ main {
   padding: 30px 30px 20px 30px; }
 
 .start_left_block .col-block-wrapper, .start_right_block .col-block-wrapper {
-  min-height: 500px; }
+  min-height: 721px; }
   .start_left_block .col-block-wrapper h3 > img, .start_right_block .col-block-wrapper h3 > img {
     width: 230px; }
     .start_left_block .col-block-wrapper h3 > img.align-left, .start_right_block .col-block-wrapper h3 > img.align-left {
