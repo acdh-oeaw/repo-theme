@@ -24,14 +24,14 @@ main {
     width: 100%;
 }
 
-.field_intro_block .col-block-wrapper {
+.start_intro_block .col-block-wrapper {
     background-color: $black;
     background-size: cover;
     text-align: center;
     padding: 30px 30px 20px 30px;
 }
 
-.field_left_block .col-block-wrapper, .field_right_block .col-block-wrapper {
+.start_left_block .col-block-wrapper, .start_right_block .col-block-wrapper {
     min-height: 500px;
 
 	h3 > img {
@@ -379,14 +379,14 @@ nav.breadcrumb {
     margin-bottom: 25px;
 }
 
-.field_left_block figure.align-left {
+.start_left_block figure.align-left {
     width: 45%;
     margin-right: 20px;
     font-weight: 600;
     font-size: 14px;
 }
 
-.field_left_block figure.align-left > img {
+.start_left_block figure.align-left > img {
     width: 100%;
     padding-bottom: 5px;
 }
