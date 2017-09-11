@@ -10,16 +10,16 @@ global-styling:
 
 tether:
   js:
-    https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js: { type: external, minified: true }
+    lib/tether/tether.min.js: {}
 
 bootstrap:
   css:
     base:
-      https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css: { type: external, minified: true }
-      https://v4-alpha.getbootstrap.com/assets/css/docs.min.css: { type: external, minified: true }
-      https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css: { type: external, minified: true }
+      lib/bootstrap/bootstrap.min.css: {}
+      lib/bootstrap/docs.min.css: {}
+      lib/font-awesome/font-awesome.min.css: {}
   js:
-    https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js: { type: external, minified: true }
+    lib/bootstrap/bootstrap.min.js: {}
   dependencies:
     - core/jquery
     - acdh_repo/tether
