@@ -301,7 +301,7 @@ nav.breadcrumb {
     padding-bottom: 20px;
 }
 
-.sks-form h3:before, .stor-form h3:before {
+.sks-form h3:before, .stor-form h3:before, .fieldset-legend:before {
     content: 'remove';
     font-family: 'Material Icons';
     border: 2px solid $accent;
@@ -312,6 +312,13 @@ nav.breadcrumb {
     cursor: pointer;
     font-size: 15px;
     margin-right: 6px;
+}
+
+.fieldset-legend {
+	font-size: 20px;
+    line-height: 26px;
+    font-family: $headingfont;
+    font-weight: 400;
 }
 
 
@@ -393,18 +400,28 @@ nav.breadcrumb {
 
 /* Checkboxes */
 
-.form-checkbox-custom {
+.form-composite {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #DDDDDD;
+}
+
+.fieldset-wrapper {
     margin-left: 10px;
 }
 
-.checkbox-custom, .radio-custom {
+legend {
+    float: left;
+}
+
+input.checkbox-custom, .radio-custom {
     opacity: 0;
     position: absolute;
     margin: 7px 0 0 4px;
     z-index: 99;
 }
 
-.checkbox-custom, .option, .radio-custom {
+input.checkbox-custom, .option, .radio-custom {
     display: inline-block;
     vertical-align: middle;
     cursor: pointer;
@@ -414,7 +431,7 @@ nav.breadcrumb {
     position: relative;
 }
 
-.checkbox-custom + .option:before, .radio-custom + .option:before {
+input.checkbox-custom + .option:before, .radio-custom + .option:before {
     content: '';
     background: $white;
     border: 2px solid $primary;
@@ -428,7 +445,7 @@ nav.breadcrumb {
     text-align: center;
 }
 
-.checkbox-custom:checked + .option:before {
+input.checkbox-custom:checked + .option:before {
     background: $accent;
     box-shadow: inset 0px 0px 0px 2px $white;
     border-color: $accent;
@@ -444,7 +461,7 @@ nav.breadcrumb {
 }
 
 
-.checkbox-custom:focus + .option, .radio-custom:focus + .option {
+input.checkbox-custom:focus + .option, .radio-custom:focus + .option {
   outline: 1px solid $gray; /* focus style */
 }
 

@@ -399,7 +399,7 @@ nav.breadcrumb {
   border-bottom: 1px solid #DDDDDD;
   padding-bottom: 20px; }
 
-.sks-form h3:before, .stor-form h3:before {
+.sks-form h3:before, .stor-form h3:before, .fieldset-legend:before {
   content: 'remove';
   font-family: 'Material Icons';
   border: 2px solid #3B89AD;
@@ -410,6 +410,12 @@ nav.breadcrumb {
   cursor: pointer;
   font-size: 15px;
   margin-right: 6px; }
+
+.fieldset-legend {
+  font-size: 20px;
+  line-height: 26px;
+  font-family: "Cabin", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400; }
 
 #sks-form {
   position: relative; }
@@ -471,16 +477,24 @@ nav.breadcrumb {
   padding-bottom: 5px; }
 
 /* Checkboxes */
-.form-checkbox-custom {
+.form-composite {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #DDDDDD; }
+
+.fieldset-wrapper {
   margin-left: 10px; }
 
-.checkbox-custom, .radio-custom {
+legend {
+  float: left; }
+
+input.checkbox-custom, .radio-custom {
   opacity: 0;
   position: absolute;
   margin: 7px 0 0 4px;
   z-index: 99; }
 
-.checkbox-custom, .option, .radio-custom {
+input.checkbox-custom, .option, .radio-custom {
   display: inline-block;
   vertical-align: middle;
   cursor: pointer; }
@@ -488,7 +502,7 @@ nav.breadcrumb {
 .option {
   position: relative; }
 
-.checkbox-custom + .option:before, .radio-custom + .option:before {
+input.checkbox-custom + .option:before, .radio-custom + .option:before {
   content: '';
   background: #FFFFFF;
   border: 2px solid #88DBDF;
@@ -501,7 +515,7 @@ nav.breadcrumb {
   margin-right: 10px;
   text-align: center; }
 
-.checkbox-custom:checked + .option:before {
+input.checkbox-custom:checked + .option:before {
   background: #3B89AD;
   box-shadow: inset 0px 0px 0px 2px #FFFFFF;
   border-color: #3B89AD; }
@@ -513,7 +527,7 @@ nav.breadcrumb {
   background: #ccc;
   box-shadow: inset 0px 0px 0px 4px #FFFFFF; }
 
-.checkbox-custom:focus + .option, .radio-custom:focus + .option {
+input.checkbox-custom:focus + .option, .radio-custom:focus + .option {
   outline: 1px solid #DDDDDD;
   /* focus style */ }
 
