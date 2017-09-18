@@ -121,6 +121,22 @@ animation: fadein 0.5s;
     }
 }
 */
+.form-text::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #bababa; }
+
+.form-text::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #bababa; }
+
+.form-text:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #bababa; }
+
+.form-text:-moz-placeholder {
+  /* Firefox 18- */
+  color: #bababa; }
+
 /* _header.scss */
 .main-header {
   background-color: #FFFFFF;
@@ -658,6 +674,25 @@ table.dataTable td.res-download-button i:hover {
   font-weight: 400;
   margin-top: 25px;
   margin-bottom: 8px; }
+
+h3.latest-additions {
+  margin-bottom: 10px; }
+
+.res-act-button.global-button {
+  margin: 0 auto;
+  float: none;
+  display: table;
+  background-color: transparent;
+  color: #88DBDF;
+  border: 1px solid #88DBDF;
+  font-size: 15px;
+  padding: 3px 10px; }
+
+.res-act-button.global-button:hover {
+  color: #fff;
+  background-color: #88DBDF;
+  border-color: #88DBDF;
+  transition: background-color ease .2s; }
 
 /* _footer.scss */
 .main-footer {

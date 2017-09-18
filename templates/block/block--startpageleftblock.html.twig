@@ -2,14 +2,18 @@
 	<div class="col-block-wrapper">
 	  <h2>Discover resources</h2>
 	  <form accept-charset="UTF-8" action="/discover" class="index-keyword-search" data-drupal-form-fields="edit-metavalue,edit-submit" id="sks-form" method="post">
-		  <div class="js-form-item form-item js-form-type-textfield form-item-metavalue js-form-item-metavalue form-no-label"><input aria-required="true" class="form-control form-text required" data-drupal-selector="edit-metavalue" id="edit-metavalue" maxlength="128" name="metavalue" required="required" size="60" type="text" value="" /></div>
-		  <input data-drupal-selector="form-hf9hr8c00qynvzx9k6dyqvd1rz4cmm2fpo9ugztb8iy" name="form_build_id" type="hidden" value="form-HF9HR8c00qyNVzX9k6DyqVD1RZ4cMm2Fpo9UGzTb8iY" /> <input data-drupal-selector="edit-sks-form-form-token" name="form_token" type="hidden" value="q8DuSy0EDkeBoQcqYOgW4_0y5_b6BnrIgWFRWNAQbGk" /> <input data-drupal-selector="edit-sks-form" name="form_id" type="hidden" value="sks_form" />
+		  <div class="js-form-item form-item js-form-type-textfield form-item-metavalue js-form-item-metavalue form-no-label"><input aria-required="true" class="form-control form-text required" data-drupal-selector="edit-metavalue" id="edit-metavalue" maxlength="128" name="metavalue" required="required" size="60" type="text" placeholder="Search for titles, authors, institutes or resource types." value="" /></div>
+		  <input data-drupal-selector="form-hf9hr8c00qynvzx9k6dyqvd1rz4cmm2fpo9ugztb8iy" name="form_build_id" type="hidden" value="form-HF9HR8c00qyNVzX9k6DyqVD1RZ4cMm2Fpo9UGzTb8iY" /> <input data-drupal-selector="edit-sks-form-form-token" name="form_token" type="hidden" value="q8DuSy0EDkeBoQcqYOgW4_0y5_b6BnrIgWFRWNAQbGk"/> <input data-drupal-selector="edit-sks-form" name="form_id" type="hidden" value="sks_form" />
 		  <div class="form-actions js-form-wrapper form-wrapper" data-drupal-selector="edit-actions" id="edit-actions"><input class="keywordsearch-btn button button--primary js-form-submit form-submit" data-drupal-selector="edit-submit" id="edit-submit" name="op" type="submit" value="search" /></div>
 	  </form>
-	  <h3>Latest Additions</h3>
+	  <h3 class="latest-additions">Latest Additions</h3>
 	  {% block content %}
 	    {{ content }}
 	  {% endblock %}
+	<div class="res-act-button global-button">
+		<a href="/browser/discover">
+			<span>See All Resources</span>
+	</div>
 	  <!--
 		<h3>Featured Projects</h3>
 		<figure role="group" class="align-left"><img alt="TUNICO – Linguistic dynamics in the Greater Tunis Area" data-entity-type="file" data-entity-uuid="765d7ecc-7ca0-4dd1-bc2c-90cd199e17ec" src="/browser/sites/default/files/inline-images/tunbg.png"><figcaption>TUNICO – Linguistic dynamics in the Greater Tunis Area</figcaption></figure>

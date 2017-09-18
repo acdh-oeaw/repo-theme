@@ -620,3 +620,25 @@ table.dataTable td.res-download-button i:hover {
     margin-top: 25px;
     margin-bottom: 8px;
 }
+
+h3.latest-additions {
+    margin-bottom: 10px;
+}
+
+.res-act-button.global-button {
+    margin: 0 auto;
+    float: none;
+    display: table;
+    background-color: transparent;
+    color: $primary;
+    border: 1px solid $primary;
+    font-size: 15px;
+    padding: 3px 10px;
+}
+
+.res-act-button.global-button:hover {
+    color: #fff;
+    background-color: $primary;
+    border-color: $primary;
+    @include bg-trans();
+}

@@ -151,3 +151,17 @@ animation: fadein 0.5s;
     }
 }
 */
+
+
+.form-text::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #bababa;
+}
+.form-text::-moz-placeholder { /* Firefox 19+ */
+  color: #bababa;
+}
+.form-text:-ms-input-placeholder { /* IE 10+ */
+  color: #bababa;
+}
+.form-text:-moz-placeholder { /* Firefox 18- */
+  color: #bababa;
+}
