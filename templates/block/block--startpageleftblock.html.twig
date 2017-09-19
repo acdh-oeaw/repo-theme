@@ -1,11 +1,22 @@
 <div class="start_left_block col-block col-lg-6 col-md-12"/>
 	<div class="col-block-wrapper">
 	  <h2>Discover resources</h2>
-	  <form accept-charset="UTF-8" action="/discover" class="index-keyword-search" data-drupal-form-fields="edit-metavalue,edit-submit" id="sks-form" method="post">
-		  <div class="js-form-item form-item js-form-type-textfield form-item-metavalue js-form-item-metavalue form-no-label"><input aria-required="true" class="form-control form-text required" data-drupal-selector="edit-metavalue" id="edit-metavalue" maxlength="128" name="metavalue" required="required" size="60" type="text" placeholder="Search for titles, authors, institutes or resource types." value="" /></div>
-		  <input data-drupal-selector="form-hf9hr8c00qynvzx9k6dyqvd1rz4cmm2fpo9ugztb8iy" name="form_build_id" type="hidden" value="form-HF9HR8c00qyNVzX9k6DyqVD1RZ4cMm2Fpo9UGzTb8iY" /> <input data-drupal-selector="edit-sks-form-form-token" name="form_token" type="hidden" value="q8DuSy0EDkeBoQcqYOgW4_0y5_b6BnrIgWFRWNAQbGk"/> <input data-drupal-selector="edit-sks-form" name="form_id" type="hidden" value="sks_form" />
-		  <div class="form-actions js-form-wrapper form-wrapper" data-drupal-selector="edit-actions" id="edit-actions"><input class="keywordsearch-btn button button--primary js-form-submit form-submit" data-drupal-selector="edit-submit" id="edit-submit" name="op" type="submit" value="search" /></div>
-	  </form>
+
+	<form action="/browser/discover" method="post" id="sks-form" class="index-keyword-search" accept-charset="UTF-8" data-drupal-form-fields="edit-metavalue,edit-searchbox-types-collection,edit-searchbox-types-person,edit-searchbox-types-disseminationservice,edit-date-start-date,edit-date-end-date,edit-submit">
+	
+		<div class="js-form-item form-item js-form-type-textfield form-item-metavalue js-form-item-metavalue form-no-label">
+			<input class="form-control form-text" data-drupal-selector="edit-metavalue" type="text" id="edit-metavalue" name="metavalue" value="" size="60" maxlength="128" placeholder="Search for titles, authors, institutes or resource types.">
+		</div>
+	
+		<input data-drupal-selector="form-hny7kpoorygfqh-smaijl-ekgo8fdzan5dggzv6tafu" type="hidden" name="form_build_id" value="form-hnY7kpoORyGfqh-sMaijL_EkgO8FDzaN5DGgzv6TafU">
+		<input data-drupal-selector="edit-sks-form-form-token" type="hidden" name="form_token" value="ZuxK6WORYVgltWJifB8KDiLKWShKgzkNqhL7L8Gdw84">
+		<input data-drupal-selector="edit-sks-form" type="hidden" name="form_id" value="sks_form">
+		<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions">
+			<input class="keywordsearch-btn button button--primary js-form-submit form-submit" data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="op" value="search">
+		</div>
+	
+	</form>
+
 	  <h3 class="latest-additions">Latest Additions</h3>
 	  {% block content %}
 	    {{ content }}
