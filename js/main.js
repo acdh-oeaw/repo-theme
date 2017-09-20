@@ -49,7 +49,21 @@ jQuery(function($) {
         } // End if
 
         //Cite-this widget
-        $('[data-toggle="cite-tooltip-mla"]').tooltip(); 
+        $('#cite-tooltip-mla').tooltip(); 
+
+        $('#cite-tooltip-mla').on('click', function(event) {
+	        if (!$(this).hasClass('tooltip-active')) {
+				$(this).addClass('tooltip-active');
+			} else {
+				$(this).removeClass('tooltip-active');
+				$(this).tooltip('hide');
+			}
+		});
+
+		$('#cite-tooltip-mla').on('hidden.bs.tooltip', function () {
+			$(this).removeClass('tooltip-active');
+		});
+
 
     });
 

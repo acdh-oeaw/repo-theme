@@ -571,8 +571,22 @@ figure.highlight {
   vertical-align: sub;
   margin-left: 5px; }
 
-.cite-style > a:hover, .cite-style > a:focus {
+.cite-style > a:hover {
   color: #88dbdf; }
+
+.cite-style > a:focus {
+  color: #FFFFFF; }
+
+.tooltip.show {
+  opacity: 0.95; }
+
+.tooltip-inner {
+  padding: 5px 8px;
+  color: #FFFFFF;
+  background-color: #88DBDF; }
+
+.tooltip.bs-tether-element-attached-left .tooltip-inner::before, .tooltip.tooltip-right .tooltip-inner::before {
+  border-right-color: #88DBDF; }
 
 .highlight pre code {
   color: #3B89AD; }
