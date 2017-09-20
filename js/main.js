@@ -46,7 +46,10 @@ jQuery(function($) {
             $('html, body').animate({
                 scrollTop: $(hash).offset().top - 90
             }, 800, function() {});
-        } // End if  
+        } // End if
+
+        //Cite-this widget
+        $('[data-toggle="cite-tooltip-mla"]').tooltip(); 
 
     });
 

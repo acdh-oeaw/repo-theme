@@ -559,11 +559,20 @@ input.checkbox-custom:focus + .option, .radio-custom:focus + .option {
   vertical-align: text-bottom; }
 
 figure.highlight {
-  padding-top: 5px;
-  padding-bottom: 0px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 14px;
   background-color: #F1F1F1;
   border-top: 1px solid #88DBDF;
   border-bottom: 1px solid #88DBDF; }
+
+.cite-style > a > i {
+  font-size: 17px;
+  vertical-align: sub;
+  margin-left: 5px; }
+
+.cite-style > a:hover, .cite-style > a:focus {
+  color: #88dbdf; }
 
 .highlight pre code {
   color: #3B89AD; }

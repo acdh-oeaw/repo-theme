@@ -480,11 +480,22 @@ input.checkbox-custom:focus + .option, .radio-custom:focus + .option {
 }
 
 figure.highlight {
-    padding-top: 5px;
-    padding-bottom: 0px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 14px;
     background-color: $lightgray;
     border-top: 1px solid $primary;
     border-bottom: 1px solid $primary;
+}
+
+.cite-style > a > i {
+    font-size: 17px;
+    vertical-align: sub;
+    margin-left: 5px;
+}
+
+.cite-style > a:hover, .cite-style > a:focus {
+    color: #88dbdf;
 }
 
 .highlight pre code {
