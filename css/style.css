@@ -319,15 +319,19 @@ nav.breadcrumb {
   padding: 1px 10px; }
 
 .repo-actions-nav > span a {
-  border-bottom: 1px solid #3B89AD;
-  padding-bottom: 2px;
-  color: #3B89AD;
+  border: 1px solid #FFFFFF;
+  padding: 1px 8px 2px 8px;
+  border-radius: 4px;
+  color: #FFFFFF;
   transition: border-color ease .1s, color ease .1s; }
 
 .repo-actions-nav > span a:hover {
   text-decoration: none;
-  color: #FFFFFF;
-  border-bottom-color: #FFFFFF; }
+  color: #3B89AD;
+  border-color: #3B89AD; }
+
+.repo-actions-nav > span a:active, .repo-actions-nav > span a:focus {
+  text-decoration: none; }
 
 .form-text {
   display: block;
@@ -564,7 +568,8 @@ figure.highlight {
   padding-left: 14px;
   background-color: #F1F1F1;
   border-top: 1px solid #88DBDF;
-  border-bottom: 1px solid #88DBDF; }
+  border-bottom: 1px solid #88DBDF;
+  font-size: 14px; }
 
 .cite-style > a > i {
   font-size: 17px;

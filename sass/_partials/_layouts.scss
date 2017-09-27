@@ -181,16 +181,21 @@ nav.breadcrumb {
 }
 
 .repo-actions-nav > span a {
-    border-bottom: 1px solid $accent;
-    padding-bottom: 2px;
-    color: $accent;
-    transition: border-color ease .1s, color ease .1s;
+    border: 1px solid $white;
+    padding: 1px 8px 2px 8px;
+    border-radius: 4px;
+    color: $white;
+    transition: border-color ease .1s, color ease .1s;    
 }
 
 .repo-actions-nav > span a:hover {
     text-decoration: none;
-    color: $white;
-    border-bottom-color: $white;
+    color: $accent;
+    border-color: $accent;
+}
+
+.repo-actions-nav > span a:active, .repo-actions-nav > span a:focus {
+    text-decoration: none;
 }
 
 .form-text {
@@ -486,6 +491,7 @@ figure.highlight {
     background-color: $lightgray;
     border-top: 1px solid $primary;
     border-bottom: 1px solid $primary;
+    font-size: 14px;
 }
 
 .cite-style > a > i {
