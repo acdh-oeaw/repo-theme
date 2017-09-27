@@ -1,5 +1,5 @@
 # acdh_repo
-Description: A custom theme for ACDH-Repo for Drupal 8.
+A custom theme for ARCHE for Drupal 8.
 
 ## Installation
 * Clone the content of this repository into a folder called "acdh_repo" and put it inside the "drupal/themes" directory.
