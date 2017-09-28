@@ -326,6 +326,11 @@ nav.breadcrumb {
     font-weight: 400;
 }
 
+h3.extra-filter-heading {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #DDDDDD;
+}
 
 #sks-form {
     position: relative;
@@ -676,4 +681,38 @@ h3.latest-additions {
     background-color: $primary;
     border-color: $primary;
     @include bg-trans();
+}
+
+.date-filter {
+    max-width: 90px;
+    display: inline-block;
+    height: 32px;
+    padding: 0 2px;
+    border: 0;
+    border-bottom: 2px solid #88DBDF;
+    border-radius: 0px;
+}
+
+.form-item-date-start-date label, .form-item-date-end-date label {
+    margin-left: 10px;
+    width: 50px;
+}
+
+.date-filter-btn {
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid #88dbdf;
+    padding: 2px 4px;
+    margin-left: 0px;
+    cursor: pointer;
+}
+
+.date-filter-btn > i {
+    vertical-align: sub;
+    font-size: 18px;
+    color: #3b89ad;
+}
+
+.date-filter:focus, .date-filter-btn:focus {
+    outline: none;
 }
