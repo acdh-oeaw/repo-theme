@@ -651,12 +651,13 @@ figure.highlight {
   padding: 0; }
 
 .single-res-thumb {
-  border: 10px solid #F1F1F1;
-  border-radius: 5px;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
   padding: 20px;
   max-height: 200px;
   position: relative;
-  margin-top: 5px; }
+  margin-top: 5px;
+  float: right; }
 
 .res-thumb-info {
   font-size: 13px;
