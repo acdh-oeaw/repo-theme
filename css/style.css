@@ -661,7 +661,9 @@ figure.highlight {
 
 .res-thumb-info {
   font-size: 13px;
-  float: right; }
+  display: inline-block;
+  width: 100%;
+  text-align: right; }
 
 .single-res-overview-expert {
   display: none; }
