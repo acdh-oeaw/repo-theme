@@ -453,6 +453,9 @@ h3.extra-filter-heading {
   padding-top: 20px;
   border-top: 1px solid #DDDDDD; }
 
+#block-search {
+  display: none; }
+
 #sks-form {
   position: relative; }
   #sks-form .form-actions {

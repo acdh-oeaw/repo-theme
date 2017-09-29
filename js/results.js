@@ -36,16 +36,65 @@ $('.res-act-button-expertview').click(function() {
 	}
 });
 
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+var searchFilterVisibility = getCookie("searchFilterVisibility");
+var torFilterVisibility = getCookie("torFilterVisibility");
+var dopFilterVisibility = getCookie("dopFilterVisibility");
+
+if (searchFilterVisibility == 'hidden') {
+	$('#block-search > h3').addClass('closed');
+	$('#sks-form > .form-item-metavalue').hide();
+	$('#edit-actions').hide();
+}
+
+if (torFilterVisibility == 'hidden') {
+  	$('.fieldset-legend').addClass('closed');
+  	$('.fieldset-legend').parent().next('.fieldset-wrapper').hide();
+}
+
+if (dopFilterVisibility == 'hidden') {
+  	$('.extra-filter-heading').addClass('closed');
+  	$('.extra-filter-heading').next().hide();
+  	$('.extra-filter-heading').next().next().hide();
+}
+
+//Show the search block after comforming the user cookies
+$('#block-search').fadeIn(100);
+
 //Toggle Search filter
 $('#block-search > h3').click(function() {
 	if ($(this).hasClass('closed')) {
 	  	$(this).removeClass('closed');
 	  	$('#sks-form > .form-item-metavalue').fadeIn(200);
 	  	$('#edit-actions').fadeIn(200);
+	  	setCookie("searchFilterVisibility", 'visible', 1);
 	} else {
 	  	$(this).addClass('closed');
 	  	$('#sks-form > .form-item-metavalue').fadeOut(200);
 	  	$('#edit-actions').fadeOut(200);
+	  	setCookie("searchFilterVisibility", 'hidden', 1);
 	}
 });
 
@@ -54,9 +103,11 @@ $('.fieldset-legend').click(function() {
 	if ($(this).hasClass('closed')) {
 	  	$(this).removeClass('closed');
 	  	$(this).parent().next('.fieldset-wrapper').fadeIn(200);
+	  	setCookie("torFilterVisibility", 'visible', 1);
 	} else {
 	  	$(this).addClass('closed');
-	  	$(this).parent().next('.fieldset-wrapper').fadeOut(200);	
+	  	$(this).parent().next('.fieldset-wrapper').fadeOut(200);
+	  	setCookie("torFilterVisibility", 'hidden', 1);
 	}
 });
 
@@ -66,10 +117,12 @@ $('.extra-filter-heading').click(function() {
 	  	$(this).removeClass('closed');
 	  	$(this).next().fadeIn(200);
 	  	$(this).next().next().fadeIn(200);
+	  	setCookie("dopFilterVisibility", 'visible', 1);
 	} else {
 	  	$(this).addClass('closed');
 	  	$(this).next().fadeOut(200);
 	  	$(this).next().next().fadeOut(200);
+	  	setCookie("dopFilterVisibility", 'hidden', 1);
 	}
 });
 
