@@ -417,7 +417,10 @@ nav.breadcrumb {
 .sks-form, .stor-form {
   margin-bottom: 20px;
   border-bottom: 1px solid #DDDDDD;
-  padding-bottom: 20px; }
+  padding-bottom: 15px; }
+
+.form-item-metavalue {
+  margin: 15px 10px 0 10px; }
 
 .sks-form h3:before, .stor-form h3:before, .fieldset-legend:before {
   content: 'remove';
@@ -429,17 +432,25 @@ nav.breadcrumb {
   line-height: 1;
   cursor: pointer;
   font-size: 15px;
-  margin-right: 6px; }
+  margin-right: 6px;
+  padding-left: 1px; }
+
+.sks-form h3 {
+  cursor: pointer; }
+
+.closed.fieldset-legend:before, .sks-form h3.closed:before {
+  content: 'add'; }
 
 .fieldset-legend {
   font-size: 20px;
   line-height: 26px;
   font-family: "Cabin", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-weight: 400; }
+  font-weight: 400;
+  cursor: pointer; }
 
 h3.extra-filter-heading {
-  margin-top: 20px;
-  padding-top: 15px;
+  margin-top: 10px;
+  padding-top: 20px;
   border-top: 1px solid #DDDDDD; }
 
 #sks-form {
@@ -447,7 +458,7 @@ h3.extra-filter-heading {
   #sks-form .form-actions {
     position: absolute;
     top: 0;
-    right: 0; }
+    right: 10px; }
     #sks-form .form-actions .keywordsearch-btn {
       margin: 0;
       border: 0;
@@ -503,12 +514,13 @@ h3.extra-filter-heading {
 
 /* Checkboxes */
 .form-composite {
-  margin-top: 25px;
+  margin-top: 20px;
   padding-top: 15px;
   border-top: 1px solid #DDDDDD; }
 
 .fieldset-wrapper {
-  margin-left: 10px; }
+  margin-left: 10px;
+  margin-bottom: 5px; }
 
 legend {
   float: left; }
@@ -755,6 +767,9 @@ h3.latest-additions {
 
 .date-filter:focus, .date-filter-btn:focus {
   outline: none; }
+
+.form-item-date-end-date {
+  margin-bottom: 5px; }
 
 /* _footer.scss */
 .main-footer {

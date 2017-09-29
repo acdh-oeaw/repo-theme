@@ -303,7 +303,11 @@ nav.breadcrumb {
 .sks-form, .stor-form  {
     margin-bottom: 20px;
     border-bottom: 1px solid $gray;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+.form-item-metavalue {
+    margin: 15px 10px 0 10px;
 }
 
 .sks-form h3:before, .stor-form h3:before, .fieldset-legend:before {
@@ -317,6 +321,15 @@ nav.breadcrumb {
     cursor: pointer;
     font-size: 15px;
     margin-right: 6px;
+    padding-left: 1px;
+}
+
+.sks-form h3 {
+	cursor: pointer;
+}
+
+.closed.fieldset-legend:before, .sks-form h3.closed:before {
+    content: 'add';
 }
 
 .fieldset-legend {
@@ -324,11 +337,12 @@ nav.breadcrumb {
     line-height: 26px;
     font-family: $headingfont;
     font-weight: 400;
+    cursor: pointer;
 }
 
 h3.extra-filter-heading {
-    margin-top: 20px;
-    padding-top: 15px;
+    margin-top: 10px;
+    padding-top: 20px;
     border-top: 1px solid #DDDDDD;
 }
 
@@ -338,7 +352,7 @@ h3.extra-filter-heading {
     .form-actions {
 	    position: absolute;
 	    top: 0;
-	    right: 0;
+	    right: 10px;
         
 		.keywordsearch-btn {
 		    margin: 0;
@@ -411,13 +425,14 @@ h3.extra-filter-heading {
 /* Checkboxes */
 
 .form-composite {
-    margin-top: 25px;
+    margin-top: 20px;
     padding-top: 15px;
     border-top: 1px solid #DDDDDD;
 }
 
 .fieldset-wrapper {
     margin-left: 10px;
+    margin-bottom: 5px;
 }
 
 legend {
@@ -715,4 +730,8 @@ h3.latest-additions {
 
 .date-filter:focus, .date-filter-btn:focus {
     outline: none;
+}
+
+.form-item-date-end-date {
+    margin-bottom: 5px;
 }

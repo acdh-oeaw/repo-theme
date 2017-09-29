@@ -34,7 +34,44 @@ $('.res-act-button-expertview').click(function() {
 	  	$(this).addClass('basic');
 	  	$(this).children('span').text('Switch to Expert-View');		
 	}
-}); 
+});
+
+//Toggle Search filter
+$('#block-search > h3').click(function() {
+	if ($(this).hasClass('closed')) {
+	  	$(this).removeClass('closed');
+	  	$('#sks-form > .form-item-metavalue').fadeIn(200);
+	  	$('#edit-actions').fadeIn(200);
+	} else {
+	  	$(this).addClass('closed');
+	  	$('#sks-form > .form-item-metavalue').fadeOut(200);
+	  	$('#edit-actions').fadeOut(200);
+	}
+});
+
+//Toggle ToR filter
+$('.fieldset-legend').click(function() {
+	if ($(this).hasClass('closed')) {
+	  	$(this).removeClass('closed');
+	  	$(this).parent().next('.fieldset-wrapper').fadeIn(200);
+	} else {
+	  	$(this).addClass('closed');
+	  	$(this).parent().next('.fieldset-wrapper').fadeOut(200);	
+	}
+});
+
+//Toggle DoP filter
+$('.extra-filter-heading').click(function() {
+	if ($(this).hasClass('closed')) {
+	  	$(this).removeClass('closed');
+	  	$(this).next().fadeIn(200);
+	  	$(this).next().next().fadeIn(200);
+	} else {
+	  	$(this).addClass('closed');
+	  	$(this).next().fadeOut(200);
+	  	$(this).next().next().fadeOut(200);
+	}
+});
 
 $("#edit-date-start-date")
   .datepicker({
