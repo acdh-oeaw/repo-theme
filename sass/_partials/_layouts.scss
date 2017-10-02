@@ -742,3 +742,87 @@ h3.latest-additions {
 .form-item-date-end-date {
     margin-bottom: 5px;
 }
+
+.results-info-bar {
+    display: inline-block;
+    border-right: 1px solid $gray;
+    padding-right: 15px;
+    margin-right: 10px;
+}
+
+.results-info-bar:nth-last-child(1) {
+    border-right: none;
+    padding-right: 0;
+    margin-right: 0;
+}
+
+.pagination-dropdown {
+    display: inline-block;
+}
+
+.pagination-dropdown > .btn {
+    border: 1px solid #88dbdf;
+    padding: 4px 30px 3px 8px;
+    font-size: 14px;
+    color: #88dbdf;
+    position: relative;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    transition: border-color ease .1s, color ease .1s;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.show > .btn.dropdown-toggle {
+    background-color: initial;
+    border-color: $primary;
+    color: $accent;
+}
+
+.btn.dropdown-toggle.focus, .btn.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.pagination-dropdown > .btn:hover {
+    background-color: initial;
+}
+
+.pagination-dropdown:hover > .dropdown-toggle {
+    border-color: $accent;
+    color: $accent;
+}
+
+.pagination-dropdown:hover > .dropdown-toggle::after {
+    background-color: $accent;
+}
+
+.dropdown-toggle::after {
+    background-color: #88dbdf;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 10px;
+    border: 0;
+    font-family: 'Material Icons';
+    content: "arrow_drop_down";
+    font-size: 24px;
+    line-height: 24px;
+    margin: 0;
+    padding: 0 23px 0 0;
+    transition: background-color ease .1s; 
+}
+
+.pagination-dropdown .dropdown-menu {
+    min-width: 0px;
+    padding: 0px;
+    font-size: 14px;
+    left: 2px;
+    border-color: $primary;
+}
+
+.pagination-dropdown .dropdown-menu > .dropdown-item {
+    padding: 5px 8px;
+}
