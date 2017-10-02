@@ -762,11 +762,11 @@ h3.latest-additions {
 
 .pagination-dropdown > .btn {
     border: 1px solid #88dbdf;
-    padding: 4px 30px 3px 8px;
+    padding: 3px 30px 3px 7px;
     font-size: 14px;
     color: #88dbdf;
     position: relative;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
     margin-left: 2px;
     transition: border-color ease .1s, color ease .1s;
     cursor: pointer;
@@ -825,4 +825,20 @@ h3.latest-additions {
 
 .pagination-dropdown .dropdown-menu > .dropdown-item {
     padding: 5px 8px;
+}
+
+.pagination-item {
+    display: inline-block;
+    padding: 0 4px;
+    color: $accent;
+}
+
+.pagination-item.active {
+    color: initial;
+}
+
+.pagination-item i {
+    font-size: 16px;
+    vertical-align: text-bottom;
+    color: $accent;
 }

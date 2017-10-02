@@ -176,5 +176,16 @@ $("input[type=text].date-filter").keyup(function (e) {
     }
 });
 
+//Results info-bar pagination selectors
+$('#resPerPageButton > a').on('click', function(){    
+    $('#resPerPageButton').html($(this).html());    
+})
+
+$('#sortByDropdown > a').on('click', function(){    
+    $('#sortByButton').html($(this).html());    
+})
+
+
+
 /* You can safely use $ in this code block to reference jQuery */
 });
