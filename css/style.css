@@ -777,16 +777,24 @@ h3.latest-additions {
 .form-item-date-end-date {
   margin-bottom: 5px; }
 
+.result-basic-info {
+  text-align: right; }
+
 .results-info-bar {
   display: inline-block;
-  border-right: 1px solid #DDDDDD;
-  padding-right: 15px;
-  margin-right: 10px; }
+  border-left: 1px solid #DDDDDD;
+  padding-left: 10px;
+  margin-left: 10px; }
 
-.results-info-bar:nth-last-child(1) {
-  border-right: none;
-  padding-right: 0;
-  margin-right: 0; }
+.results-info-bar.pagination-span {
+  padding-left: 6px;
+  margin-right: -4px; }
+
+.results-info-bar:nth-child(1) {
+  float: left;
+  border-left: none;
+  padding-left: 0;
+  margin-left: 0; }
 
 .pagination-dropdown {
   display: inline-block; }
