@@ -89,12 +89,12 @@ $('#block-search > h3').click(function() {
 	  	$(this).removeClass('closed');
 	  	$('#sks-form > .form-item-metavalue').fadeIn(200);
 	  	$('#edit-actions').fadeIn(200);
-	  	setCookie("searchFilterVisibility", 'visible', 1);
+	  	setCookie("searchFilterVisibility", 'visible', 7);
 	} else {
 	  	$(this).addClass('closed');
 	  	$('#sks-form > .form-item-metavalue').fadeOut(200);
 	  	$('#edit-actions').fadeOut(200);
-	  	setCookie("searchFilterVisibility", 'hidden', 1);
+	  	setCookie("searchFilterVisibility", 'hidden', 7);
 	}
 });
 
@@ -103,11 +103,11 @@ $('.fieldset-legend').click(function() {
 	if ($(this).hasClass('closed')) {
 	  	$(this).removeClass('closed');
 	  	$(this).parent().next('.fieldset-wrapper').fadeIn(200);
-	  	setCookie("torFilterVisibility", 'visible', 1);
+	  	setCookie("torFilterVisibility", 'visible', 7);
 	} else {
 	  	$(this).addClass('closed');
 	  	$(this).parent().next('.fieldset-wrapper').fadeOut(200);
-	  	setCookie("torFilterVisibility", 'hidden', 1);
+	  	setCookie("torFilterVisibility", 'hidden', 7);
 	}
 });
 
@@ -117,12 +117,12 @@ $('.extra-filter-heading').click(function() {
 	  	$(this).removeClass('closed');
 	  	$(this).next().fadeIn(200);
 	  	$(this).next().next().fadeIn(200);
-	  	setCookie("dopFilterVisibility", 'visible', 1);
+	  	setCookie("dopFilterVisibility", 'visible', 7);
 	} else {
 	  	$(this).addClass('closed');
 	  	$(this).next().fadeOut(200);
 	  	$(this).next().next().fadeOut(200);
-	  	setCookie("dopFilterVisibility", 'hidden', 1);
+	  	setCookie("dopFilterVisibility", 'hidden', 7);
 	}
 });
 
@@ -195,14 +195,133 @@ $("#edit-metavalue").keyup(function (e) {
     $('#edit-actions').fadeIn(300); 
 });
 
-//Results info-bar pagination selectors
-$('#resPerPageButton > a').on('click', function(){    
-    $('#resPerPageButton').html($(this).html());    
+//Function for pagination selector
+function removeUrlLastArgument(url)
+{
+    var args = url.split('/');
+    args.pop();
+    return( args.join('/') );
+}
+
+//Results info-bar pagination selectors on click
+$('#resPerPageButton > a').on('click', function(event){
+	event.preventDefault();
+	var currentSetting = $('#resPerPageButton').html();
+	var selectedSetting = $(this).html();
+	if (currentSetting == selectedSetting) {
+		//do nothing
+	} else {
+		$('#resPerPageButton').html(selectedSetting);
+		setCookie("resultsPerPage", selectedSetting, 7);
+		var currentURL = window.location.toString();
+		var newUrl = removeUrlLastArgument(currentURL);
+		newUrl = removeUrlLastArgument(newUrl);
+		newUrl = newUrl + '/'+selectedSetting + '/1';
+		window.location.href = newUrl;
+	}
+});
+
+$('#sortByDropdown > a').on('click', function(event){
+	event.preventDefault();
+	var currentSetting = $('#sortByButton').html();
+	var selectedSetting = $(this).html();
+	if (currentSetting == selectedSetting) {
+		//do nothing
+	} else {
+		$('#sortByButton').html(selectedSetting);
+		selectedSetting = $(this).data("value");
+		setCookie("resultsOrder", selectedSetting, 7);
+	    var currentURL = window.location.toString();
+	    var args = currentURL.split('/');
+	    args[args.length-3] = selectedSetting;
+		args = args.join();
+		args = args.replace(/,/g, '/');
+		window.location.href = args;
+	}
 })
 
-$('#sortByDropdown > a').on('click', function(){    
-    $('#sortByButton').html($(this).html());    
-})
+//Update the pagination selector depending on the url
+$( document ).ready(function() {
+    var currentURL = window.location.toString();
+    var args = currentURL.split('/');
+    var lastArg = args[args.length-1];
+    //Results per page setting comparison from cookies
+    var resultsPerPageSetting = getCookie("resultsPerPage");
+    if (!resultsPerPageSetting) {
+	    resultsPerPageSetting = 10;
+    }
+    $('#resPerPageButton').html((resultsPerPageSetting));
+    //Order setting comparison from cookies
+    var resultsOrderSetting = getCookie("resultsOrder");
+    if (!resultsOrderSetting) {
+	    resultsOrderSetting = 'titleasc';
+    }
+	var resultsOrderText = $("#sortByDropdown").find("[data-value='" + resultsOrderSetting + "']").html();
+	$('#sortByButton').html((resultsOrderText));
+    //If it's the special url "url" let's add the sorting and paging arguments
+    if (lastArg == 'root') {
+	    window.history.pushState( {} , "", currentURL+"/"+resultsOrderSetting+"/"+resultsPerPageSetting+"/1" );
+    }
+	//Prepare pagination urls
+	$('.pagination-item').each(function() {
+	    var pageUrl = $(this).children('a').data("pagination");
+	    $(this).children('a').attr('href', pageUrl);
+	});
+
+});
+
+
+
+//Complex search-form behaviour
+$("form#sks-form").submit(function(event){
+    event.preventDefault();
+    var resultsPerPageSetting = getCookie("resultsPerPage");
+    if (!resultsPerPageSetting) {
+	    resultsPerPageSetting = 10;
+    }
+    var resultsOrderSetting = getCookie("resultsOrder");
+    if (!resultsOrderSetting) {
+	    resultsOrderSetting = 'titleasc';
+    }
+    var urlParams = "";
+	//Metavalue field
+    var metaValueField = $("input[name='metavalue']").val();
+	if (metaValueField) {
+		metaValueField = metaValueField.replace(/\s/g, '+');
+		if (metaValueField.includes('type=') || metaValueField.includes('words=') || metaValueField.includes('mindate=') || metaValueField.includes('maxdate=')) {
+			urlParams += metaValueField;
+			window.location.href = '/browser/discover/' + urlParams + '/' + resultsPerPageSetting + '/1';
+		} else {
+			urlParams += 'words=' + metaValueField;
+		}
+	}
+	//ToR field
+	var selectedTypes = [];
+	$('.checkbox-custom input:checked').each(function() {
+	    selectedTypes.push($(this).attr('value'));
+	});
+	if (selectedTypes.length > 0) {
+		if (urlParams) { urlParams += '&'; }
+		urlParams += 'type=' + selectedTypes.join('+and+');
+	}
+	//Date of Publication field
+	var minDate = $("input[name='date_start_date']").val();
+	var maxDate = $("input[name='date_end_date']").val();
+	if (minDate) {
+		var dateParts = minDate.split('/');
+		var minDate = dateParts[2] + dateParts[1] + dateParts[0];
+		if (urlParams) { urlParams += '&'; }
+		urlParams += 'mindate=' + minDate;
+	}
+	if (maxDate) {
+		var dateParts = maxDate.split('/');
+		var maxDate = dateParts[2] + dateParts[1] + dateParts[0];
+		if (urlParams) { urlParams += '&'; }
+		urlParams += 'maxdate=' + maxDate;
+	}
+		
+	window.location.href = '/browser/discover/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
+});
 
 
 /* You can safely use $ in this code block to reference jQuery */
