@@ -131,7 +131,10 @@ $("#edit-date-start-date")
     dateFormat: "dd/mm/yy",
     changeYear: true,
     showOn: "button",
-    constrainInput: true
+    constrainInput: true,
+	onSelect: function() {
+	   $('#edit-actions').fadeIn(300);
+	}
   })
   .next("button").button()
   .addClass("date-filter-btn")
@@ -142,13 +145,18 @@ $("#edit-date-end-date")
     dateFormat: "dd/mm/yy",
     changeYear: true,
     showOn: "button",
-    constrainInput: true
+    constrainInput: true,
+	onSelect: function() {
+	   $('#edit-actions').fadeIn(300);
+	}
   })
   .next("button").button()
   .addClass("date-filter-btn")
   .html('<i class="material-icons">&#xE878;</i>')
 
 $("input[type=text].date-filter").keyup(function (e) {
+    //Show apply-search button on date keyup
+    $('#edit-actions').fadeIn(300); 
     var textSoFar = $(this).val();
     if (e.keyCode != 191) {
         if (e.keyCode != 8) {
@@ -174,6 +182,17 @@ $("input[type=text].date-filter").keyup(function (e) {
         //remove slashes to avoid 12//01/2014
         $(this).val(textSoFar.substring(0, textSoFar.length - 1));
     }
+    
+});
+
+//Show apply-search button on ToR select
+$('#edit-searchbox-types > .form-item').on('click', function(){    
+    $('#edit-actions').fadeIn(300); 
+});
+
+//Show apply-search button on search text keyup
+$("#edit-metavalue").keyup(function (e) {
+    $('#edit-actions').fadeIn(300); 
 });
 
 //Results info-bar pagination selectors
@@ -184,7 +203,6 @@ $('#resPerPageButton > a').on('click', function(){
 $('#sortByDropdown > a').on('click', function(){    
     $('#sortByButton').html($(this).html());    
 })
-
 
 
 /* You can safely use $ in this code block to reference jQuery */

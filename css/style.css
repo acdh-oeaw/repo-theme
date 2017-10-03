@@ -523,7 +523,8 @@ h3.extra-filter-heading {
 
 .fieldset-wrapper {
   margin-left: 10px;
-  margin-bottom: 5px; }
+  margin-bottom: 5px;
+  float: left; }
 
 legend {
   float: left; }
@@ -869,6 +870,34 @@ h3.latest-additions {
   font-size: 16px;
   vertical-align: text-bottom;
   color: #3B89AD; }
+
+#block-search #sks-form .form-actions {
+  width: 100%;
+  left: 0px;
+  bottom: -65px;
+  border-bottom: 1px solid #DDDDDD;
+  padding-bottom: 15px;
+  top: unset;
+  display: none; }
+  #block-search #sks-form .form-actions .complexsearch-btn {
+    width: 100%;
+    margin: 0;
+    border: 0;
+    border-radius: 5px;
+    padding: 8px;
+    color: #FFFFFF;
+    background-color: #3B89AD;
+    font-weight: normal;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color ease .2s; }
+    #block-search #sks-form .form-actions .complexsearch-btn:hover {
+      background-color: #88DBDF; }
+    #block-search #sks-form .form-actions .complexsearch-btn:focus {
+      outline: none; }
+
+#block-search #sks-form {
+  position: unset; }
 
 /* _footer.scss */
 .main-footer {

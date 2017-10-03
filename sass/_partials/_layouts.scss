@@ -437,6 +437,7 @@ h3.extra-filter-heading {
 .fieldset-wrapper {
     margin-left: 10px;
     margin-bottom: 5px;
+    float: left;
 }
 
 legend {
@@ -852,3 +853,41 @@ h3.latest-additions {
     vertical-align: text-bottom;
     color: $accent;
 }
+
+#block-search #sks-form .form-actions {
+	width: 100%;
+    left: 0px;
+    bottom: -65px;
+    border-bottom: 1px solid $gray;
+    padding-bottom: 15px;
+    top: unset;
+    display: none;
+
+	.complexsearch-btn {
+		width: 100%;
+	    margin: 0;
+	    border: 0;
+	    border-radius: 5px;
+	    padding: 8px;
+	    color: $white;
+	    background-color: $accent;
+	    font-weight: normal;
+	    line-height: 1;
+	    cursor: pointer;
+	    @include bg-trans();
+		
+	    &:hover {
+		    background-color: $primary;
+	    }
+
+	    &:focus {
+		    outline: none;
+	    }
+	}
+
+}
+
+#block-search #sks-form {
+    position: unset;
+}
+
