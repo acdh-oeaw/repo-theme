@@ -268,7 +268,22 @@ $( document ).ready(function() {
 
 });
 
-
+//Get today's date in the preferred format
+function todaysDate() {
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	
+	var yyyy = today.getFullYear();
+	if(dd<10){
+	    dd='0'+dd;
+	} 
+	if(mm<10){
+	    mm='0'+mm;
+	} 
+	var today = yyyy+''+''+mm+''+dd;
+	return today;
+}
 
 //Complex search-form behaviour
 $("form#sks-form").submit(function(event){
@@ -305,19 +320,19 @@ $("form#sks-form").submit(function(event){
 	//Date of Publication field
 	var minDate = $("input[name='date_start_date']").val();
 	var maxDate = $("input[name='date_end_date']").val();
-	if (minDate) {
-		var dateParts = minDate.split('/');
-		var minDate = dateParts[2] + dateParts[1] + dateParts[0];
+	if (minDate || maxDate) {
 		if (urlParams) { urlParams += '&'; }
-		urlParams += 'mindate=' + minDate;
+		if (minDate) {
+			var dateParts = minDate.split('/');
+			var minDate = dateParts[2] + dateParts[1] + dateParts[0];
+		} else { var minDate = '1900-01-01'; }
+		if (maxDate) {
+			var dateParts = maxDate.split('/');
+			var maxDate = dateParts[2] + dateParts[1] + dateParts[0];
+		} else { var maxDate = todaysDate(); }
+		urlParams += 'mindate=' + minDate + '&maxdate=' + maxDate;
 	}
-	if (maxDate) {
-		var dateParts = maxDate.split('/');
-		var maxDate = dateParts[2] + dateParts[1] + dateParts[0];
-		if (urlParams) { urlParams += '&'; }
-		urlParams += 'maxdate=' + maxDate;
-	}
-		
+
 	window.location.href = '/browser/discover/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
 });
 
