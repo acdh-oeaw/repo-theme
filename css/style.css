@@ -240,7 +240,7 @@ nav.breadcrumb {
 
 #block-mainpagecontent {
   border-left: 1px solid #DDDDDD;
-  padding: 0 30px;
+  padding: 0px 10px 0 22px;
   min-height: 650px; }
   #block-mainpagecontent img {
     max-width: 100%; }
@@ -380,6 +380,11 @@ nav.breadcrumb {
 .res-contributor {
   font-style: italic; }
 
+.single-res-overview {
+  float: left;
+  width: 100%;
+  margin-bottom: 20px; }
+
 .res-act-button {
   display: inline-block;
   background-color: #88DBDF;
@@ -407,7 +412,8 @@ nav.breadcrumb {
   padding-bottom: 5px; }
 
 .left-sidebar {
-  padding-left: 0; }
+  padding-left: 0;
+  padding-right: 20px; }
 
 .left-sidebar-info {
   border-bottom: 1px solid #DDDDDD;
@@ -615,6 +621,16 @@ figure.highlight {
 .tooltip.bs-tether-element-attached-left .tooltip-inner::before, .tooltip.tooltip-right .tooltip-inner::before {
   border-right-color: #88DBDF; }
 
+.tooltip.bs-tether-element-attached-top .tooltip-inner::before, .tooltip.tooltip-bottom .tooltip-inner::before {
+  border-bottom-color: #88DBDF; }
+
+.bs-tether-element-attached-top {
+  font-size: 14px;
+  font-family: "Cabin", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+
+.bs-tether-element-attached-top .tooltip-inner {
+  background-color: #88DBDF; }
+
 .highlight pre code {
   color: #3B89AD; }
 
@@ -674,7 +690,14 @@ figure.highlight {
   color: #3B89AD;
   background: transparent;
   float: right;
-  margin: 0; }
+  margin: 0px 0px 0px 10px;
+  transition: color ease .2s; }
+  .single-res-heading .res-act-button:hover {
+    color: #88DBDF; }
+
+.res-seeAlso a, .res-locationUrl a, .res-pid a {
+  font-style: italic;
+  font-size: 15px; }
 
 .dataTables_wrapper {
   padding: 0;

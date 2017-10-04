@@ -79,7 +79,7 @@ nav.breadcrumb {
 
 #block-mainpagecontent {
     border-left: 1px solid $gray;
-    padding: 0 30px;
+	padding: 0px 10px 0 22px;
     min-height: 650px;
     
     img {
@@ -254,6 +254,12 @@ nav.breadcrumb {
     font-style: italic;
 }
 
+.single-res-overview {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
 .res-act-button {
     display: inline-block;
     background-color: $primary;
@@ -292,6 +298,7 @@ nav.breadcrumb {
 
 .left-sidebar {
     padding-left: 0;
+    padding-right: 20px;
 }
 
 .left-sidebar-info {
@@ -548,6 +555,19 @@ figure.highlight {
     border-right-color: $primary;
 }
 
+.tooltip.bs-tether-element-attached-top .tooltip-inner::before, .tooltip.tooltip-bottom .tooltip-inner::before {
+    border-bottom-color: $primary;
+}
+
+.bs-tether-element-attached-top {
+    font-size: 14px;
+    font-family: $headingfont;
+}
+
+.bs-tether-element-attached-top .tooltip-inner {
+    background-color: $primary;
+}
+
 .highlight pre code {
     color: $accent;
 }
@@ -618,7 +638,18 @@ figure.highlight {
     color: $accent;
     background: transparent;
     float: right;
-    margin: 0;
+    margin: 0px 0px 0px 10px;
+    transition: color ease .2s;
+    
+    &:hover {
+	    color: $primary;
+    }
+    
+}
+
+.res-seeAlso a, .res-locationUrl a, .res-pid a {
+    font-style: italic;
+    font-size: 15px;
 }
 
 .dataTables_wrapper {
@@ -891,4 +922,3 @@ h3.latest-additions {
 #block-search #sks-form {
     position: unset;
 }
-

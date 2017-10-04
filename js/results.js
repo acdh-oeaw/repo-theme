@@ -88,12 +88,10 @@ $('#block-search > h3').click(function() {
 	if ($(this).hasClass('closed')) {
 	  	$(this).removeClass('closed');
 	  	$('#sks-form > .form-item-metavalue').fadeIn(200);
-	  	$('#edit-actions').fadeIn(200);
 	  	setCookie("searchFilterVisibility", 'visible', 7);
 	} else {
 	  	$(this).addClass('closed');
 	  	$('#sks-form > .form-item-metavalue').fadeOut(200);
-	  	$('#edit-actions').fadeOut(200);
 	  	setCookie("searchFilterVisibility", 'hidden', 7);
 	}
 });
@@ -323,6 +321,43 @@ $("form#sks-form").submit(function(event){
 	window.location.href = '/browser/discover/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
 });
 
+
+// Copies a string to the clipboard. Must be called from within an event handler such as click.
+// May return false if it failed, but this is not always
+// possible. Browser support for Chrome 43+, Firefox 42+, Edge and IE 10+, Safari 10+.
+// IE: The clipboard feature may be disabled by an adminstrator. By default a prompt is
+// shown the first time the clipboard is used (per session).
+function copyToClipboard(text) {
+    if (window.clipboardData && window.clipboardData.setData) {
+        // IE specific code path to prevent textarea being shown while dialog is visible.
+        return clipboardData.setData("Text", text); 
+
+    } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+        var textarea = document.createElement("textarea");
+        textarea.textContent = text;
+        textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+        } catch (ex) {
+            console.warn("Copy to clipboard failed.", ex);
+            return false;
+        } finally {
+            document.body.removeChild(textarea);
+        }
+    }
+}
+
+$("#copy-url-tooltip").tooltip(); 
+
+$("#res-act-button-copy-url").on('click', function(){
+    var result = copyToClipboard(window.location.toString());
+    if (result) {
+	    $("#copy-url-tooltip").tooltip("show");
+	    setTimeout(function() { $("#copy-url-tooltip").tooltip("hide"); }, 1000);
+    }
+});
 
 /* You can safely use $ in this code block to reference jQuery */
 });
