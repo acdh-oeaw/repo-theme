@@ -151,6 +151,8 @@ animation: fadein 0.5s;
   .main-header #block-acdh-repo-branding {
     float: left;
     padding-top: 12px; }
+  .main-header .logo img {
+    max-height: 40px; }
   .main-header .main-navigation {
     float: right; }
     .main-header .main-navigation .navbar {
