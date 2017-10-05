@@ -285,7 +285,13 @@ $( document ).ready(function() {
 	//Check if we can append selected query to filters
 	//ToR field
 	var selectedTypes = getParameterByName('type').toLowerCase();
-	if (selectedTypes) {
+	if (selectedTypes.includes(" and ")) {
+		selectedTypes = selectedTypes.split(" and ");
+		selectedTypes.forEach(function(type) {
+			var checkboxID = '#edit-searchbox-types-' + type;
+		    $(checkboxID).prop('checked', true);
+		});
+	} else if (selectedTypes) {
 		var checkboxID = '#edit-searchbox-types-' + selectedTypes;
 	    $(checkboxID).prop('checked', true);
 	}
