@@ -238,6 +238,17 @@ $('#sortByDropdown > a').on('click', function(event){
 	}
 })
 
+//Getting the params from url
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[/&]" + name + "(=([^/&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
 //Update the pagination selector depending on the url
 $( document ).ready(function() {
     var currentURL = window.location.toString();
@@ -265,6 +276,20 @@ $( document ).ready(function() {
 	    var pageUrl = $(this).children('a').data("pagination");
 	    $(this).children('a').attr('href', pageUrl);
 	});
+
+	//Check if we can append selected query to filters
+	//ToR field
+	var selectedTypes = getParameterByName('type').toLowerCase();
+	if (selectedTypes) {
+		var checkboxID = '#edit-searchbox-types-' + selectedTypes;
+	    $(checkboxID).prop('checked', true);
+	}
+
+	//Metavalue field
+    var metaValueField = getParameterByName('words');
+	if (metaValueField) {
+		$("input[name='metavalue']").val(metaValueField);
+	}
 
 });
 
