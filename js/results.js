@@ -249,6 +249,11 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+//Reformating date from url to datepicker value
+String.prototype.insertAt=function(index, string) { 
+  return this.substr(0, index) + string + this.substr(index);
+}
+
 //Update the pagination selector depending on the url
 $( document ).ready(function() {
     var currentURL = window.location.toString();
@@ -289,6 +294,18 @@ $( document ).ready(function() {
     var metaValueField = getParameterByName('words');
 	if (metaValueField) {
 		$("input[name='metavalue']").val(metaValueField);
+	}
+
+	//Date of Publication field
+	var minDate = getParameterByName('mindate');
+	var maxDate = getParameterByName('maxdate');
+	if (minDate || maxDate) {
+		if (minDate != '19000101') {
+			var minDate = minDate.insertAt(4, ",").insertAt(7, ",");
+			$('#edit-date-start-date').datepicker('setDate', new Date(minDate));
+		}
+		var maxDate = maxDate.insertAt(4, ",").insertAt(7, ",");
+		$('#edit-date-end-date').datepicker('setDate', new Date(maxDate));
 	}
 
 });
@@ -350,7 +367,7 @@ $("form#sks-form").submit(function(event){
 		if (minDate) {
 			var dateParts = minDate.split('/');
 			var minDate = dateParts[2] + dateParts[1] + dateParts[0];
-		} else { var minDate = '1900-01-01'; }
+		} else { var minDate = '19000101'; }
 		if (maxDate) {
 			var dateParts = maxDate.split('/');
 			var maxDate = dateParts[2] + dateParts[1] + dateParts[0];

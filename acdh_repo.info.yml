@@ -2,6 +2,7 @@ name: acdh_repo
 description: A custom theme for ACDH-Repo
 type: theme
 core: 8.x
+version: 8.x-0.7
 
 libraries:
   - acdh_repo/global-styling
