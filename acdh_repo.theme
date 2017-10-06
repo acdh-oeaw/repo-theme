@@ -124,10 +124,10 @@ function acdh_repo_preprocess_breadcrumb(&$variables){
 					
 					if ($piece == "oeaw_keywordsearch" or $piece == "discover" or $piece == "oeaw_classes_result") {
 						$piece = "Discover Resources";
-						$url = "/discover";
+						$url = "/browser/discover/root";
 					} else if ($piece == "oeaw_detail") {
 						$piece = "Discover Resources";
-						$url = "/discover";
+						$url = "/browser/discover/root";
 						$prev = "oeaw_detail";
 					} else {	
 						if($prev == "oeaw_detail") {
