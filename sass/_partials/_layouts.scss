@@ -621,6 +621,12 @@ figure.highlight {
     position: relative;
     margin-top: 5px;
     float: right;
+    max-width: 100%;
+}
+
+.single-res-thumb img {
+    max-width: 100%;
+    position: relative;
 }
 
 .res-thumb-info {

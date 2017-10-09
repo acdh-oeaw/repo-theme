@@ -117,7 +117,10 @@ function acdh_repo_preprocess_breadcrumb(&$variables){
 		$current_uri = $_SERVER['REQUEST_URI'];
 		if ($current_uri) {
 			$pieces = explode("/", $current_uri);
-		
+			//Only use the first (Home) link
+			$breadcrumbArray = $variables['breadcrumb'];
+			$breadcrumbArray = array_slice($breadcrumbArray, 0, 1);
+			$variables['breadcrumb'] = $breadcrumbArray;
 			$prev = "";		
 			foreach ($pieces as $piece) {
 				if ($piece) {		  
@@ -132,8 +135,8 @@ function acdh_repo_preprocess_breadcrumb(&$variables){
 					} else {	
 						if($prev == "oeaw_detail") {
 						   $url = $piece;
-						   $piece = "Resource";
-						   $prev = "Resource";
+						   $piece = "Detailed View";
+						   $prev = "Detailed View";
 						} else {
 						   $piece = "";
 						}							 
