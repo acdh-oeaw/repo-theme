@@ -287,8 +287,8 @@ $( document ).ready(function() {
 	var selectedTypes = getParameterByName('type');
 	if (selectedTypes) {
 		selectedTypes = selectedTypes.toLowerCase();
-		if (selectedTypes.includes(" and ")) {
-			selectedTypes = selectedTypes.split(" and ");
+		if (selectedTypes.includes(" or ")) {
+			selectedTypes = selectedTypes.split(" or ");
 			selectedTypes.forEach(function(type) {
 				var checkboxID = '#edit-searchbox-types-' + type;
 			    $(checkboxID).prop('checked', true);
@@ -366,7 +366,7 @@ $("form#sks-form").submit(function(event){
 	});
 	if (selectedTypes.length > 0) {
 		if (urlParams) { urlParams += '&'; }
-		urlParams += 'type=' + selectedTypes.join('+and+');
+		urlParams += 'type=' + selectedTypes.join('+or+');
 	}
 	//Date of Publication field
 	var minDate = $("input[name='date_start_date']").val();
