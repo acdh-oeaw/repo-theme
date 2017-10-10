@@ -62,7 +62,16 @@ h2:after {
 
 a {
   color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid #88DBDF;
+  transition: color ease .2s; }
+
+a:focus, a:hover {
+  color: #3B89AD;
   text-decoration: none; }
+
+.res-title a, a.nav-link, .logo a, .cite-selector a, .start_right_block a, .res-act-button a, .pagination-item a {
+  border-bottom: none; }
 
 .inverse {
   color: #FFFFFF; }
@@ -412,6 +421,12 @@ nav.breadcrumb {
 
 .res-el.res-info {
   padding-bottom: 5px; }
+
+.res-child-info {
+  margin-top: 30px; }
+
+.res-child-info h3 {
+  margin-bottom: 0; }
 
 .left-sidebar {
   padding-left: 0;

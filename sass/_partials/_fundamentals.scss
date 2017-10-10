@@ -89,6 +89,18 @@ h2:after {
 a {
     color: inherit;
     text-decoration: none;
+    border-bottom: 1px solid $primary;
+    transition: color ease .2s;
+}
+
+a:focus, a:hover {
+    color: $accent;
+    text-decoration: none;
+}
+
+//Exceptions from link border-bottom style
+.res-title a, a.nav-link, .logo a, .cite-selector a, .start_right_block a, .res-act-button a, .pagination-item a {
+    border-bottom: none;
 }
 
 .inverse {
