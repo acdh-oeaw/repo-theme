@@ -625,21 +625,30 @@ figure.highlight {
   margin-left: 5px; }
 
 .cite-style > a:hover {
-  color: #88dbdf; }
+  color: #3B89AD; }
 
 .cite-style > a:focus {
   color: #FFFFFF; }
 
+.cite-style.selected > a:hover {
+  color: #88DBDF; }
+
+.cite-style.selected > a:focus {
+  color: #FFFFFF; }
+
 .tooltip.show {
-  opacity: 0.95; }
+  opacity: 0.97; }
 
 .tooltip-inner {
   padding: 5px 8px;
-  color: #FFFFFF;
-  background-color: #88DBDF; }
+  color: #333333;
+  background-color: #F1F1F1;
+  box-shadow: 0px 0px 0px 1px #88DBDF;
+  font-size: 14px;
+  font-family: "Lato", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
 
 .tooltip.bs-tether-element-attached-left .tooltip-inner::before, .tooltip.tooltip-right .tooltip-inner::before {
-  border-right-color: #88DBDF; }
+  border-right-color: #F1F1F1; }
 
 .tooltip.bs-tether-element-attached-top .tooltip-inner::before, .tooltip.tooltip-bottom .tooltip-inner::before {
   border-bottom-color: #88DBDF; }
@@ -661,8 +670,9 @@ figure.highlight {
 .cite-style {
   display: inline-block;
   border-right: 1px solid #88DBDF;
-  border-top: 1px solid #88DBDF;
-  color: #88DBDF;
+  border-top: 1px solid #FFFFFF;
+  color: #FFFFFF;
+  background-color: #88DBDF;
   padding: 6px 14px;
   margin-right: -3px;
   cursor: pointer;
@@ -670,7 +680,7 @@ figure.highlight {
 
 .cite-style.selected {
   background-color: #3B89AD;
-  border-color: #3B89AD;
+  border-color: #FFFFFF;
   color: #FFFFFF; }
 
 .res-file {

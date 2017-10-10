@@ -546,25 +546,36 @@ figure.highlight {
 }
 
 .cite-style > a:hover {
-    color: #88dbdf;
+    color: $accent;
 }
 
 .cite-style > a:focus {
     color: $white;
 }
 
+.cite-style.selected > a:hover {
+    color: $primary;
+}
+
+.cite-style.selected > a:focus {
+    color: $white;
+}
+
 .tooltip.show {
-    opacity: 0.95;
+    opacity: 0.97;
 }
 
 .tooltip-inner {
     padding: 5px 8px;
-    color: $white;
-    background-color: $primary;
+    color: $black;
+    background-color: $lightgray;
+    box-shadow: 0px 0px 0px 1px $primary;
+    font-size: 14px;
+    font-family: $bodyfont;
 }
 
 .tooltip.bs-tether-element-attached-left .tooltip-inner::before, .tooltip.tooltip-right .tooltip-inner::before {
-    border-right-color: $primary;
+    border-right-color: $lightgray;
 }
 
 .tooltip.bs-tether-element-attached-top .tooltip-inner::before, .tooltip.tooltip-bottom .tooltip-inner::before {
@@ -592,8 +603,9 @@ figure.highlight {
 .cite-style {
     display: inline-block;
     border-right: 1px solid $primary;
-    border-top: 1px solid $primary;
-    color: $primary;
+    border-top: 1px solid $white;
+    color: $white;
+    background-color: $primary;
     padding: 6px 14px;
     margin-right: -3px;
     cursor: pointer;
@@ -602,7 +614,7 @@ figure.highlight {
 
 .cite-style.selected {
     background-color: $accent;
-    border-color: $accent;
+    border-color: $white;
     color: $white;
 }
 
