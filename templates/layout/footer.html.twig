@@ -13,7 +13,8 @@
 	        	<a class="mail" href="mailto:#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
                         <!--_{currentPageDomain}/Shibboleth.sso/Login?target={UrlEncodedCurrentPageUrl}_ -->
                         {% set myUrl = url('<front>')|raw %}
-                        <a class="shibboleth" href="{{ url('<front>')|split('/browser/') }}/Shibboleth.sso/Login?target={{ myUrl["#markup"]|url_encode }}"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                        {% set myBaseUrl = url('<front>')|replace({"/browser/": ""}) %}
+                        <a class="shibboleth" href="{{ myBaseUrl }}/Shibboleth.sso/Login?target={{ myUrl["#markup"]|url_encode }}"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
 	        </div>
 	        {{ page.footer }}
 	    </div>    
