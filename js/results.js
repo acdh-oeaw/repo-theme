@@ -424,7 +424,7 @@ $("#copyLinkInputBtn").on('click', function(){
     var result = copyToClipboard(URLtoCopy);
     if (result) {
 	    $('#copyLinkTextfield').val("URL is copied to clipboard!");
-	    setTimeout(function() { $('#copyLinkTextfield').val(URLtoCopy); }, 3000);
+	    setTimeout(function() { $('#copyLinkTextfield').val(URLtoCopy); }, 2000);
     }
 });
 

@@ -990,7 +990,8 @@ main > .layout-content > .col-block-wrapper {
   min-height: 400px; }
 
 #res-act-button-copy-url {
-  position: relative; }
+  position: relative;
+  z-index: 9; }
 
 #copyLinkTextfield-wrapper {
   position: absolute;
