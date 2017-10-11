@@ -999,7 +999,7 @@ main > .layout-content > .col-block-wrapper {
   border-top: 25px solid #F1F1F1;
   margin-top: -26px; }
   .main-footer .footer-wrapper {
-    padding: 25px 0px 50px 0px;
+    padding: 25px 20px 50px 20px;
     display: inline-block;
     width: 100%; }
     .main-footer .footer-wrapper .footer-social {
