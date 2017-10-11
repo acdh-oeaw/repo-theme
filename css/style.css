@@ -70,7 +70,7 @@ a:focus, a:hover {
   color: #3B89AD;
   text-decoration: none; }
 
-.res-title a, a.nav-link, .logo a, .cite-selector a, .start_right_block a, .res-act-button a, .pagination-item a, .acdh-brand a, .single-res-thumb a {
+.res-title a, a.nav-link, .logo a, .cite-selector a, .start_right_block a, .res-act-button a, .pagination-item a, .acdh-brand a, .single-res-thumb a, nav a {
   border-bottom: none; }
 
 .inverse {
@@ -793,15 +793,18 @@ table.dataTable td.res-download-button i {
 table.dataTable td.res-download-button i:hover {
   color: #88DBDF; }
 
+.info-menu-wrap {
+  padding-left: 10px; }
+
 .info-menu-wrap.fixed-sidebar {
   position: fixed;
-  margin-top: -60px; }
+  margin-top: -220px; }
 
 #block-informationpagenavigation {
   padding-left: 0; }
 
-.info-menu-wrap > ul > li:nth-child(4):after {
-  content: "About Our Service";
+.info-menu-wrap > ul > li:nth-child(5):after {
+  content: "Policies";
   display: block;
   font-family: "Cabin", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 20px;

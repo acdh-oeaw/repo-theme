@@ -4,7 +4,7 @@ jQuery(function($) {
 
     // Info menu scroll behaviour
     $(document).scroll(function() {
-        if ($(document).scrollTop() >= 53) {
+        if ($(document).scrollTop() >= 220) {
             $('.info-menu-wrap').addClass('fixed-sidebar');
         } else {
             $('.info-menu-wrap').removeClass('fixed-sidebar');
@@ -13,7 +13,7 @@ jQuery(function($) {
 
     $(document).ready(function() {
 		// Info menu new page load behaviour
-        if ($(document).scrollTop() >= 53) {
+        if ($(document).scrollTop() >= 220) {
             $('.info-menu-wrap').addClass('fixed-sidebar');
         } else {
             $('.info-menu-wrap').removeClass('fixed-sidebar');
