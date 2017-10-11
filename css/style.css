@@ -989,6 +989,51 @@ h3.latest-additions {
 main > .layout-content > .col-block-wrapper {
   min-height: 400px; }
 
+#res-act-button-copy-url {
+  position: relative; }
+
+#copyLinkTextfield-wrapper {
+  position: absolute;
+  width: 240px;
+  left: -45px;
+  top: 28px;
+  display: none; }
+
+#copyLinkTextfield-wrapper:before {
+  position: absolute;
+  border-color: transparent;
+  border-style: solid;
+  top: -5px;
+  left: 50%;
+  margin-left: -5px;
+  content: "";
+  border-width: 0 5px 5px;
+  border-bottom-color: #88DBDF;
+  z-index: 99; }
+
+#copyLinkTextfield {
+  position: relative;
+  width: 100%;
+  background-color: #f1f1f1;
+  padding: 2px 5px 2px 28px;
+  border: 2px solid #88dbdf;
+  border-radius: 5px;
+  color: #3c88ae;
+  font-family: inherit;
+  font-style: italic;
+  font-size: 13px;
+  text-align: left; }
+
+#copyLinkTextfield:focus {
+  outline: none; }
+
+#copyLinkInputBtn {
+  position: absolute;
+  z-index: 99;
+  left: 10px;
+  top: 3px;
+  color: #3B89AD; }
+
 /* _footer.scss */
 .main-footer {
   background-color: #FFFFFF;
@@ -1016,7 +1061,7 @@ main > .layout-content > .col-block-wrapper {
   border-bottom: 1px solid #333333;
   padding-bottom: 15px;
   padding-top: 5px;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
   font-weight: 600;
   font-size: 14px; }
 
@@ -1051,7 +1096,7 @@ footer .bodytext {
   font-size: 15px; }
 
 .csc-textpic-text {
-  padding-left: 10px; }
+  padding-left: 20px; }
 
 footer h3 {
   font-size: 17px; }

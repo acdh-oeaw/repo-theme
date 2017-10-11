@@ -415,15 +415,28 @@ function copyToClipboard(text) {
     }
 }
 
-$("#copy-url-tooltip").tooltip(); 
+//$("#copy-url-tooltip").tooltip(); 
 
-$("#res-act-button-copy-url").on('click', function(){
-    var result = copyToClipboard(window.location.toString());
+
+$("#copyLinkInputBtn").on('click', function(){
+    //var result = copyToClipboard(window.location.toString());
+    var URLtoCopy = $(this).data("copyuri");
+    var result = copyToClipboard(URLtoCopy);
     if (result) {
-	    $("#copy-url-tooltip").tooltip("show");
-	    setTimeout(function() { $("#copy-url-tooltip").tooltip("hide"); }, 1000);
+	    $('#copyLinkTextfield').val("URL is copied to clipboard!");
+	    setTimeout(function() { $('#copyLinkTextfield').val(URLtoCopy); }, 3000);
     }
 });
+
+
+$('#res-act-button-copy-url').hover(
+  function () {
+    $('#copyLinkTextfield-wrapper').fadeIn(200);
+  }, 
+  function () {
+    $('#copyLinkTextfield-wrapper').fadeOut(200);
+  }
+);
 
 /* You can safely use $ in this code block to reference jQuery */
 });
