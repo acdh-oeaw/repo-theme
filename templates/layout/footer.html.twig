@@ -11,10 +11,10 @@
 	        <div class="footer-social el-block col-md-6">
 	        	<a class="twitter" href="https://twitter.com/acdh_oeaw"><i class="fa fa-twitter" aria-hidden="true"></i></a>
 	        	<a class="mail" href="mailto:#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                        <!--_{currentPageDomain}/Shibboleth.sso/Login?target={UrlEncodedCurrentPageUrl}_ -->
+                        <a class="shibboleth" href="{{ url('<front>')|split('/browser/') }}/Shibboleth.sso/Login?target={{ url('<front>')|url_encode() }}"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
 	        </div>
-	        
 	        {{ page.footer }}
-	        
 	    </div>    
     </div>
 </footer>
