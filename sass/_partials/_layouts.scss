@@ -728,6 +728,7 @@ table.dataTable td.res-download-button i:hover {
 
 .info-menu-wrap {
     padding-left: 10px;
+    z-index: 1;
 }
 
 .info-menu-wrap.fixed-sidebar {
@@ -955,4 +956,8 @@ h3.latest-additions {
 
 #block-search #sks-form {
     position: unset;
+}
+
+main > .layout-content > .col-block-wrapper {
+    min-height: 400px;
 }

@@ -70,7 +70,7 @@ a:focus, a:hover {
   color: #3B89AD;
   text-decoration: none; }
 
-.res-title a, a.nav-link, .logo a, .cite-selector a, .start_right_block a, .res-act-button a, .pagination-item a, .acdh-brand a, .single-res-thumb a, nav a {
+.res-title a, a.nav-link, .logo a, .cite-selector a, .start_right_block a, .res-act-button a, .pagination-item a, .acdh-brand a, .single-res-thumb a, nav a, .footer-login-button a {
   border-bottom: none; }
 
 .inverse {
@@ -794,7 +794,8 @@ table.dataTable td.res-download-button i:hover {
   color: #88DBDF; }
 
 .info-menu-wrap {
-  padding-left: 10px; }
+  padding-left: 10px;
+  z-index: 1; }
 
 .info-menu-wrap.fixed-sidebar {
   position: fixed;
@@ -985,25 +986,94 @@ h3.latest-additions {
 #block-search #sks-form {
   position: unset; }
 
+main > .layout-content > .col-block-wrapper {
+  min-height: 400px; }
+
 /* _footer.scss */
 .main-footer {
-  background-color: #88DBDF;
-  border-top: 8px solid #FFFFFF;
+  background-color: #FFFFFF;
   display: inline-block;
-  width: 100%; }
+  width: 100%;
+  z-index: 3;
+  position: relative;
+  border-top: 25px solid #F1F1F1;
+  margin-top: -26px; }
   .main-footer .footer-wrapper {
-    padding: 25px 0px 15px 0px;
+    padding: 25px 0px 50px 0px;
     display: inline-block;
     width: 100%; }
     .main-footer .footer-wrapper .footer-social {
       text-align: right; }
       .main-footer .footer-wrapper .footer-social a {
         font-size: 24px;
-        color: #fff;
+        color: #333333;
         margin-left: 15px; }
     .main-footer .footer-wrapper .navbar {
       float: right;
       padding-right: 0; }
+
+.footer-sep {
+  border-bottom: 1px solid #333333;
+  padding-bottom: 15px;
+  padding-top: 5px;
+  margin-bottom: 40px;
+  font-weight: 600;
+  font-size: 14px; }
+
+.footer-sep i {
+  font-size: 20px;
+  padding-right: 5px; }
+
+footer .el-block.first {
+  padding-left: 0; }
+
+footer .el-block.last {
+  padding-right: 0;
+  float: right; }
+
+.helpdesk-button {
+  display: block;
+  background-color: #FFFFFF;
+  border: 1px solid #88DBDF;
+  border-radius: 20px;
+  padding: 5px 20px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #88DBDF;
+  transition: background-color ease .2s, color ease .2s; }
+
+.helpdesk-button:hover, .helpdesk-button:focus {
+  background-color: #88DBDF;
+  color: #FFFFFF;
+  transition: background-color ease .2s, color ease .2s; }
+
+footer .bodytext {
+  font-size: 15px; }
+
+.csc-textpic-text {
+  padding-left: 10px; }
+
+footer h3 {
+  font-size: 17px; }
+
+.footer-login-button {
+  float: right;
+  margin-left: 8px; }
+
+.footer-login-button i {
+  color: #88DBDF;
+  font-size: 22px;
+  margin-top: 6px;
+  transition: color ease .2s; }
+
+.footer-login-button i:hover, .footer-login-button i:focus {
+  color: #3B89AD; }
+
+.footer-imprint-bar {
+  text-align: center;
+  background-color: #F1F1F1;
+  padding: 8px;
+  font-size: 14px; }
 
 @media (max-width: 1199px) {
   .vert-divider {
