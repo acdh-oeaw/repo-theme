@@ -70,7 +70,7 @@ a:focus, a:hover {
   color: #3B89AD;
   text-decoration: none; }
 
-.res-title a, a.nav-link, .logo a, .cite-selector a, .start_right_block a, .res-act-button a, .pagination-item a {
+.res-title a, a.nav-link, .logo a, .cite-selector a, .start_right_block a, .res-act-button a, .pagination-item a, .acdh-brand a, .single-res-thumb a {
   border-bottom: none; }
 
 .inverse {
@@ -152,32 +152,38 @@ animation: fadein 0.5s;
   border-bottom: 1px solid #DDDDDD;
   display: inline-block;
   width: 100%;
-  position: fixed;
-  z-index: 99; }
+  z-index: 99;
+  padding: 30px 0 10px 0;
+  position: relative; }
   .main-header > .container {
     padding-left: 30px;
     padding-right: 30px; }
   .main-header #block-acdh-repo-branding {
-    float: left;
-    padding-top: 12px; }
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center; }
   .main-header .logo img {
-    max-height: 40px; }
-  .main-header .main-navigation {
-    float: right; }
-    .main-header .main-navigation .navbar {
-      padding: 0;
-      position: inherit; }
-      .main-header .main-navigation .navbar ul.navbar-nav {
+    max-height: 50px; }
+  .main-header .main-navigation .navbar {
+    padding: 0;
+    position: inherit;
+    justify-content: flex-end; }
+    .main-header .main-navigation .navbar .navbar-collapse {
+      justify-content: flex-end;
+      margin: 0px -10px 0 0; }
+    .main-header .main-navigation .navbar ul.navbar-nav {
+      display: inline-block; }
+      .main-header .main-navigation .navbar ul.navbar-nav li.nav-item {
         display: inline-block; }
-        .main-header .main-navigation .navbar ul.navbar-nav li.nav-item {
-          display: inline-block; }
-          .main-header .main-navigation .navbar ul.navbar-nav li.nav-item:nth-child(1) > a.nav-link {
-            border-left: 1px solid #DDDDDD; }
-          .main-header .main-navigation .navbar ul.navbar-nav li.nav-item a.nav-link {
-            text-transform: uppercase;
-            border-right: 1px solid #DDDDDD;
-            padding: 25px 20px;
-            font-size: 0.9rem; }
+        .main-header .main-navigation .navbar ul.navbar-nav li.nav-item:nth-child(1) > a.nav-link {
+          border-left: 1px solid #DDDDDD; }
+        .main-header .main-navigation .navbar ul.navbar-nav li.nav-item a.nav-link {
+          text-transform: uppercase;
+          border-left: 1px solid #DDDDDD;
+          padding: 0 20px 20px 20px;
+          font-size: 13px;
+          font-weight: 600; }
 
 .navbar-toggler-icon i {
   font-size: 28px;
@@ -195,9 +201,27 @@ animation: fadein 0.5s;
 .navbar-toggler-right:focus {
   outline: none; }
 
+.institut-left-color {
+  background-color: #88DBDF; }
+
+.institut-bar {
+  margin: 0 10px 6px 25px;
+  height: 30px;
+  flex: 1; }
+
+.institut-bar > div {
+  text-align: right;
+  padding: 5px 16px;
+  font-size: 14px;
+  color: #FFFFFF; }
+
+.acdh-brand img {
+  max-width: 82px;
+  margin-bottom: 10px; }
+
 /* _layouts.scss */
 main {
-  margin-top: 92px;
+  margin-top: 20px;
   display: inline-block;
   width: 100%; }
 
