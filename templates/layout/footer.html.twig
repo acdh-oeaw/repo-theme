@@ -7,23 +7,18 @@
                     {% if logged_in %}
                         
                         <span class="footer-login-button logout">
-                            Logout&nbsp;
                             <a href="{{ url('<front>') }}user/logout">
                                 <i class="fa fa-sign-out" aria-hidden="true"></i>
                             </a>
                         </span>
                         <span class="footer-login-button account">
-                            Account page&nbsp;
+                            {{ user.username }}&nbsp;&nbsp;
                             <a href="{{ url('<front>') }}user">
                                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                             </a>
                         </span>
-                        <span class="footer-login-button account">
-                            Welcome {{ user.username }}!                              
-                        </span>
                     {% else %}
                         <span class="footer-login-button">
-                            Login&nbsp;
                             <a href="{{ url('<front>') }}user/login">
                                 <i class="fa fa-sign-in" aria-hidden="true"></i>
                             </a>
