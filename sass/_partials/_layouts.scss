@@ -1013,3 +1013,50 @@ main > .layout-content > .col-block-wrapper {
     top: 3px;
     color: $accent;
 }
+
+#cookie-overlay {
+    background-color: rgba(51, 51, 51, 0.9);
+    position: fixed;
+    bottom: 0;
+    z-index: 99;
+    width: 100%;
+    color: $white;
+    padding: 15px 10px;
+    text-align: center;
+    display: none;
+}
+
+.cookie-message {
+    display: inline-block;
+}
+
+.cookie-message a:hover {
+    color: $primary;
+}
+
+.cookie-accept-btn {
+    display: inline-block;
+    background-color: #ffd534;
+    color: #333;
+    padding: 5px 30px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0 0 0 20px;
+}
+
+.cookie-accept-btn {
+    display: inline-block;
+    background-color: #ffd534;
+    color: #333;
+    padding: 5px 30px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0 0 0 20px;
+    @include bg-trans();
+}
+
+.cookie-accept-btn:hover {
+    background-color: #d2b33d;
+}

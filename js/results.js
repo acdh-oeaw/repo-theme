@@ -279,15 +279,19 @@ $( document ).ready(function() {
     }
     //If it's the detail page, add child pagination args
     if (preLastArg == 'oeaw_detail') {
-        
 	    window.history.pushState( {} , "", currentURL+"/10/1" );
     }
-
 	//Prepare pagination urls
 	$('.pagination-item').each(function() {
 	    var pageUrl = $(this).children('a').data("pagination");
 	    $(this).children('a').attr('href', pageUrl);
 	});
+
+    //Cookies warning first page
+    var cookiesAccepted = getCookie("cookiesAccepted");
+    if (!cookiesAccepted) {
+        $("#cookie-overlay").fadeIn(100);
+    }
 
 	//Check if we can append selected query to filters
 	//ToR field
@@ -422,9 +426,13 @@ function copyToClipboard(text) {
     }
 }
 
+//Accept cookies
+$(".cookie-accept-btn").on('click', function(){
+    setCookie("cookiesAccepted", true, 7);
+    $("#cookie-overlay").fadeOut(100);
+});
+
 //$("#copy-url-tooltip").tooltip(); 
-
-
 $("#copyLinkInputBtn").on('click', function(){
     //var result = copyToClipboard(window.location.toString());
     var URLtoCopy = $(this).data("copyuri");
