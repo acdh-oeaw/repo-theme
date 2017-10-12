@@ -88,11 +88,11 @@ $('#block-search > h3').click(function() {
 	if ($(this).hasClass('closed')) {
 	  	$(this).removeClass('closed');
 	  	$('#sks-form > .form-item-metavalue').fadeIn(200);
-	  	setCookie("searchFilterVisibility", 'visible', 7);
+	  	setCookie("searchFilterVisibility", 'visible', 180);
 	} else {
 	  	$(this).addClass('closed');
 	  	$('#sks-form > .form-item-metavalue').fadeOut(200);
-	  	setCookie("searchFilterVisibility", 'hidden', 7);
+	  	setCookie("searchFilterVisibility", 'hidden', 180);
 	}
 });
 
@@ -101,11 +101,11 @@ $('.fieldset-legend').click(function() {
 	if ($(this).hasClass('closed')) {
 	  	$(this).removeClass('closed');
 	  	$(this).parent().next('.fieldset-wrapper').fadeIn(200);
-	  	setCookie("torFilterVisibility", 'visible', 7);
+	  	setCookie("torFilterVisibility", 'visible', 180);
 	} else {
 	  	$(this).addClass('closed');
 	  	$(this).parent().next('.fieldset-wrapper').fadeOut(200);
-	  	setCookie("torFilterVisibility", 'hidden', 7);
+	  	setCookie("torFilterVisibility", 'hidden', 180);
 	}
 });
 
@@ -115,12 +115,12 @@ $('.extra-filter-heading').click(function() {
 	  	$(this).removeClass('closed');
 	  	$(this).next().fadeIn(200);
 	  	$(this).next().next().fadeIn(200);
-	  	setCookie("dopFilterVisibility", 'visible', 7);
+	  	setCookie("dopFilterVisibility", 'visible', 180);
 	} else {
 	  	$(this).addClass('closed');
 	  	$(this).next().fadeOut(200);
 	  	$(this).next().next().fadeOut(200);
-	  	setCookie("dopFilterVisibility", 'hidden', 7);
+	  	setCookie("dopFilterVisibility", 'hidden', 180);
 	}
 });
 
@@ -210,7 +210,7 @@ $('#resPerPageButton > a').on('click', function(event){
 		//do nothing
 	} else {
 		$('#resPerPageButton').html(selectedSetting);
-		setCookie("resultsPerPage", selectedSetting, 7);
+		setCookie("resultsPerPage", selectedSetting, 180);
 		var currentURL = window.location.toString();
 		var newUrl = removeUrlLastArgument(currentURL);
 		newUrl = removeUrlLastArgument(newUrl);
@@ -228,7 +228,7 @@ $('#sortByDropdown > a').on('click', function(event){
 	} else {
 		$('#sortByButton').html(selectedSetting);
 		selectedSetting = $(this).data("value");
-		setCookie("resultsOrder", selectedSetting, 7);
+		setCookie("resultsOrder", selectedSetting, 180);
 	    var currentURL = window.location.toString();
 	    var args = currentURL.split('/');
 	    args[args.length-3] = selectedSetting;
@@ -428,7 +428,7 @@ function copyToClipboard(text) {
 
 //Accept cookies
 $(".cookie-accept-btn").on('click', function(){
-    setCookie("cookiesAccepted", true, 7);
+    setCookie("cookiesAccepted", true, 180);
     $("#cookie-overlay").fadeOut(100);
 });
 

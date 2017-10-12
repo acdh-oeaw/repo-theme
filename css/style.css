@@ -998,8 +998,8 @@ main > .layout-content > .col-block-wrapper {
 
 #copyLinkTextfield-wrapper {
   position: absolute;
-  width: 240px;
-  left: -45px;
+  width: 230px;
+  left: -30px;
   top: 28px;
   display: none; }
 
@@ -1019,8 +1019,8 @@ main > .layout-content > .col-block-wrapper {
   position: relative;
   width: 100%;
   background-color: #f1f1f1;
-  padding: 2px 5px 2px 28px;
-  border: 2px solid #88dbdf;
+  padding: 2px 5px 2px 30px;
+  border: 1px solid #88dbdf;
   border-radius: 5px;
   color: #3c88ae;
   font-family: inherit;
@@ -1078,6 +1078,24 @@ main > .layout-content > .col-block-wrapper {
 
 .cookie-accept-btn:hover {
   background-color: #d2b33d; }
+
+.table-row-acdhBlue td {
+  background: #88dbdf;
+  font-weight: 600;
+  padding: 2px 37px;
+  font-size: 13px; }
+
+.format-table td, .metadata-table td {
+  padding: 1px 10px; }
+
+.format-table tr:nth-of-type(even), .metadata-table tr:nth-of-type(even) {
+  background-color: #f7f7f7; }
+
+.format-table th, .metadata-table th {
+  padding: 2px 10px; }
+
+.metadata-table thead {
+  border-bottom: 2px solid #88dbdf; }
 
 /* _footer.scss */
 .main-footer {
