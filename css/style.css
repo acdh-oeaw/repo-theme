@@ -410,7 +410,7 @@ nav.breadcrumb {
 .res-property i {
   vertical-align: text-bottom;
   font-size: 17px;
-  padding-right: 2px; }
+  padding-right: 3px; }
 
 .res-title {
   font-weight: 600; }
@@ -422,6 +422,15 @@ nav.breadcrumb {
   float: left;
   width: 100%;
   margin-bottom: 20px; }
+
+.single-res-overview-basic .res-property {
+  display: flex;
+  flex-direction: row;
+  align-items: end; }
+  .single-res-overview-basic .res-property .res-prop-label {
+    min-width: 130px; }
+  .single-res-overview-basic .res-property i {
+    padding-top: 4px; }
 
 .res-act-button {
   display: inline-block;
