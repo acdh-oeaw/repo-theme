@@ -103,6 +103,10 @@ a:focus, a:hover {
     border-bottom: none;
 }
 
+b, strong {
+    font-weight: 600;
+}
+
 .inverse {
     color: $white;
 }

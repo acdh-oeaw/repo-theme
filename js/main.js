@@ -20,9 +20,9 @@ jQuery(function($) {
         }
         // Check if Drupal admin bar exists
 		if ($("body").hasClass("toolbar-horizontal")) {
-		    var offsetDiv = 160;
+		    var offsetDiv = 90;
 		} else {
-			var offsetDiv = 90;
+			var offsetDiv = 15;
 		}         
         // Add smooth scrolling to inside-page links
         $("a").on('click', function(event) {
@@ -44,7 +44,7 @@ jQuery(function($) {
             // Store hash
             var hash = window.location.hash;
             $('html, body').animate({
-                scrollTop: $(hash).offset().top - 90
+                scrollTop: $(hash).offset().top - 15
             }, 800, function() {});
         } // End if
 

@@ -73,6 +73,9 @@ a:focus, a:hover {
 .res-title a, a.nav-link, .logo a, .cite-selector a, .start_right_block a, .res-act-button a, .pagination-item a, .acdh-brand a, .single-res-thumb a, nav a, .footer-login-button a {
   border-bottom: none; }
 
+b, strong {
+  font-weight: 600; }
+
 .inverse {
   color: #FFFFFF; }
 
