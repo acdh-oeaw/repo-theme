@@ -259,6 +259,7 @@ $( document ).ready(function() {
     var currentURL = window.location.toString();
     var args = currentURL.split('/');
     var lastArg = args[args.length-1];
+    var preLastArg = args[args.length-2];
     //Results per page setting comparison from cookies
     var resultsPerPageSetting = getCookie("resultsPerPage");
     if (!resultsPerPageSetting) {
@@ -276,6 +277,12 @@ $( document ).ready(function() {
     if (lastArg == 'root') {
 	    window.history.pushState( {} , "", currentURL+"/"+resultsOrderSetting+"/"+resultsPerPageSetting+"/1" );
     }
+    //If it's the detail page, add child pagination args
+    if (preLastArg == 'oeaw_detail') {
+        
+	    window.history.pushState( {} , "", currentURL+"/10/1" );
+    }
+
 	//Prepare pagination urls
 	$('.pagination-item').each(function() {
 	    var pageUrl = $(this).children('a').data("pagination");
