@@ -260,6 +260,7 @@ $( document ).ready(function() {
     var args = currentURL.split('/');
     var lastArg = args[args.length-1];
     var preLastArg = args[args.length-2];
+    var breadcrumbSearchInfo = "";
 
     //Results per page setting comparison from cookies
     var resultsPerPageSetting = getCookie("resultsPerPage");
@@ -274,17 +275,19 @@ $( document ).ready(function() {
     }
 	var resultsOrderText = $("#sortByDropdown").find("[data-value='" + resultsOrderSetting + "']").html();
 	$('#sortByButton').html((resultsOrderText));
+    
 	//If it's only discover add root arg
     if (lastArg == "discover") {
-        window.history.pushState( {} , "", currentURL+"/root/"+resultsOrderSetting+"/"+resultsPerPageSetting+"/1" );
+        window.history.replaceState( {} , "", currentURL+"/root/"+resultsOrderSetting+"/"+resultsPerPageSetting+"/1" );
     }
     //If it's the special url "url" let's add the sorting and paging arguments
     if (lastArg == 'root') {
-	    window.history.pushState( {} , "", currentURL+"/"+resultsOrderSetting+"/"+resultsPerPageSetting+"/1" );
+	    window.history.replaceState( {} , "", currentURL+"/"+resultsOrderSetting+"/"+resultsPerPageSetting+"/1" );
     }
     //If it's the detail page, add child pagination args
     if (preLastArg == 'oeaw_detail') {
-	    window.history.pushState( {} , "", currentURL+"/10/1" );
+	    window.history.replaceState( {} , "", currentURL+"/10/1" );
+	    $('body').addClass('detailPage');
     }
 	//Prepare pagination urls
 	$('.pagination-item').each(function() {
@@ -309,9 +312,12 @@ $( document ).ready(function() {
 				var checkboxID = '#edit-searchbox-types-' + type;
 			    $(checkboxID).prop('checked', true);
 			});
+			var typesString = selectedTypes.join(" or ");
+			breadcrumbSearchInfo += ' types: "' + typesString + '"';
 		} else {
 			var checkboxID = '#edit-searchbox-types-' + selectedTypes;
 		    $(checkboxID).prop('checked', true);
+		    breadcrumbSearchInfo += ' type: "' + selectedTypes + '"';
 		}
 	}
 
@@ -319,6 +325,7 @@ $( document ).ready(function() {
     var metaValueField = getParameterByName('words');
 	if (metaValueField) {
 		$("input[name='metavalue']").val(metaValueField);
+		breadcrumbSearchInfo += ' containing: "' + metaValueField + '"';
 	}
 
 	//Date of Publication field
@@ -328,10 +335,19 @@ $( document ).ready(function() {
 		if (minDate != '19000101') {
 			var minDate = minDate.insertAt(4, ",").insertAt(7, ",");
 			$('#edit-date-start-date').datepicker('setDate', new Date(minDate));
+			minDate = minDate.replace(/,/g , "/");
+			breadcrumbSearchInfo += ' from ' + minDate;
 		}
 		var maxDate = maxDate.insertAt(4, ",").insertAt(7, ",");
 		$('#edit-date-end-date').datepicker('setDate', new Date(maxDate));
+		maxDate = maxDate.replace(/,/g , "/");
+		breadcrumbSearchInfo += ' until ' + maxDate;
 	}
+	
+    if (breadcrumbSearchInfo) {
+    	breadcrumbSearchInfo = '<a href="'+currentURL+'">Searched for' + breadcrumbSearchInfo + '</a>';
+    	$('#searchInfo').html('/ '+breadcrumbSearchInfo);
+    }
 
 });
 

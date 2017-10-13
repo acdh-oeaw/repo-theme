@@ -1,13 +1,17 @@
-@media (max-width: 767px) {
-
-
-}
-
 @media (max-width: 1199px) {
 	
 	.vert-divider {
 	    margin-left: 215px;
 	}
+
+    .start_right_block .col-block-wrapper h3 img {
+        width: 145px;
+    }
+
+    footer .el-block.col-md-3.first {
+        flex: 0 0 30%;
+        max-width: 30%;
+    }
 
 }
 
@@ -16,6 +20,23 @@
 	.vert-divider {
 	    display: none;
 	}
+
+    .institut-bar {
+        display: none;
+    }
+
+    .acdh-brand {
+        display: none;
+    }
+
+    .main-header {
+        padding: 20px 0 10px 0;
+    }
+
+    .navbar-toggler-right {
+        top: 8px;
+        right: 30px;
+    }
 
 	.main-header .main-navigation .navbar ul.navbar-nav li.nav-item {
 	    float: left;
@@ -26,7 +47,12 @@
 	    border-top: 1px solid #ddd;
 	    border-left: none !important;
 	    border-right: none;
+	    padding: 10px 0;
 	}
+
+    .start_left_block .col-block-wrapper, .start_right_block .col-block-wrapper {
+        min-height: auto;
+    }
 
 	body.toolbar-tray-open.toolbar-vertical {
 
@@ -35,6 +61,52 @@
 		}		
 	}
 	
+    footer .el-block.col-md-3.first {
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
+
+    .breadcrumb {
+        display: none;
+    }
+
+    .results-info-bar-items, .results-info-bar-sort {
+        display: none;
+    }
+
+    .res-act-button-expertview > span {
+        display: none;
+    }
+
+
+}
+
+
+@media (max-width: 767px) {
+
+    .csc-textpic-text {
+        padding-left: 0px;
+    }
+
+    .footer-wrapper .el-block {
+        padding-left: 0;
+        padding-top: 10px;
+    }
+
+    .info-menu-wrap.fixed-sidebar {
+        position: static;
+        margin-top: 0;
+    }
+
+    #block-mainpagecontent {
+        border-left: none;
+        padding: 0px 10px;
+        min-height: auto;
+    }
+
+    .detailPage .left-sidebar {
+        display: none;
+    }
 }
 
 

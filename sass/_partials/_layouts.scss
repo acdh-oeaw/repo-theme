@@ -257,7 +257,6 @@ nav.breadcrumb {
 .single-res-overview {
     float: left;
     width: 100%;
-    margin-bottom: 20px;
 }
 
 .single-res-overview-basic {
@@ -1128,4 +1127,20 @@ main > .layout-content > .col-block-wrapper {
     color: #3c88ae;
     font-size: 13px;
     text-align: center;
+}
+
+#searchInfo {
+    display: inline-block;
+}
+
+.res-prop-delimiter {
+    margin-left: -2px;
+}
+
+.res-prop-delimiter:nth-last-child(1) {
+    display: none;
+}
+
+.res-diss-btn.gui-btn {
+    display: none;
 }
