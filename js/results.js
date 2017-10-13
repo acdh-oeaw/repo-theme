@@ -260,6 +260,7 @@ $( document ).ready(function() {
     var args = currentURL.split('/');
     var lastArg = args[args.length-1];
     var preLastArg = args[args.length-2];
+
     //Results per page setting comparison from cookies
     var resultsPerPageSetting = getCookie("resultsPerPage");
     if (!resultsPerPageSetting) {
@@ -273,6 +274,10 @@ $( document ).ready(function() {
     }
 	var resultsOrderText = $("#sortByDropdown").find("[data-value='" + resultsOrderSetting + "']").html();
 	$('#sortByButton').html((resultsOrderText));
+	//If it's only discover add root arg
+    if (lastArg == "discover") {
+        window.history.pushState( {} , "", currentURL+"/root/"+resultsOrderSetting+"/"+resultsPerPageSetting+"/1" );
+    }
     //If it's the special url "url" let's add the sorting and paging arguments
     if (lastArg == 'root') {
 	    window.history.pushState( {} , "", currentURL+"/"+resultsOrderSetting+"/"+resultsPerPageSetting+"/1" );
@@ -393,6 +398,10 @@ $("form#sks-form").submit(function(event){
 			var maxDate = dateParts[2] + dateParts[1] + dateParts[0];
 		} else { var maxDate = todaysDate(); }
 		urlParams += 'mindate=' + minDate + '&maxdate=' + maxDate;
+	}
+	
+	if (!urlParams) {
+    	urlParams = "root";
 	}
 
 	window.location.href = '/browser/discover/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
