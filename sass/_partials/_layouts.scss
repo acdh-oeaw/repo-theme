@@ -551,6 +551,7 @@ figure.highlight {
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 14px;
+    padding-right: 60px;
     background-color: $lightgray;
     border-top: 1px solid $primary;
     border-bottom: 1px solid $primary;
@@ -1108,4 +1109,23 @@ main > .layout-content > .col-block-wrapper {
 
 .btn-clipboard:hover {
     background-color: #3c88ac;
+}
+
+.bd-clipboard {
+    position: relative;
+}
+
+#copy-cite-btn-confirmation {
+    display: none;
+    position: absolute;
+    width: 200px;
+    left: -200px;
+    top: -15px;
+    background-color: #f1f1f1;
+    padding: 2px 5px;
+    border: 1px solid #88dbdf;
+    border-radius: 5px;
+    color: #3c88ae;
+    font-size: 13px;
+    text-align: center;
 }

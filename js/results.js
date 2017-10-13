@@ -469,6 +469,8 @@ $("#copy-cite-btn").on('click', function(){
     var result = copyToClipboard(URLtoCopy);
     if (result) {
 	    //alert('copied');
+	    $('#copy-cite-btn-confirmation').fadeIn(100);
+	    setTimeout(function() { $('#copy-cite-btn-confirmation').fadeOut(200); }, 2000);
     }
 });
 
