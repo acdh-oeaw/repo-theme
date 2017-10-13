@@ -462,5 +462,15 @@ $('#res-act-button-copy-url').hover(
   }
 );
 
+//Copy cite content
+$("#copy-cite-btn").on('click', function(){
+    //var result = copyToClipboard(window.location.toString());
+    var URLtoCopy = $('.cite-content.active').html();
+    var result = copyToClipboard(URLtoCopy);
+    if (result) {
+	    //alert('copied');
+    }
+});
+
 /* You can safely use $ in this code block to reference jQuery */
 });
