@@ -265,6 +265,7 @@ nav.breadcrumb {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
+        word-break: break-all;
 
         .res-prop-label {
             min-width: 130px;
