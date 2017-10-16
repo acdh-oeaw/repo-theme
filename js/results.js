@@ -349,6 +349,13 @@ $( document ).ready(function() {
     	$('#searchInfo').html('/ '+breadcrumbSearchInfo);
     }
 
+    //Copy url button, if empty append this url
+    var URLtoCopy = $("#copyLinkInputBtn").data("copyuri");
+    if (!URLtoCopy) {
+        $("#copyLinkInputBtn").data("copyuri", currentURL);
+        $("#copyLinkTextfield").val(currentURL);
+    }
+
 });
 
 //Get today's date in the preferred format
