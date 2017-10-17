@@ -427,7 +427,7 @@ nav.breadcrumb {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  word-break: break-all; }
+  word-break: break-word; }
   .single-res-overview-basic .res-property .res-prop-label {
     min-width: 130px; }
   .single-res-overview-basic .res-property i {
@@ -739,8 +739,8 @@ figure.highlight {
 .single-res-thumb {
   /*border: 1px solid $gray;*/
   border-radius: 4px;
-  padding: 20px;
-  max-height: 200px;
+  padding: 10px;
+  height: 100px;
   position: relative;
   margin-top: 5px;
   float: right;
@@ -748,7 +748,8 @@ figure.highlight {
 
 .single-res-thumb img {
   max-width: 100%;
-  position: relative; }
+  position: relative;
+  max-height: 100%; }
 
 .res-thumb-info {
   font-size: 13px;
