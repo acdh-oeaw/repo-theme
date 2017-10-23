@@ -188,6 +188,11 @@ $('#edit-searchbox-types > .form-item').on('click', function(){
     $('#edit-actions').fadeIn(300); 
 });
 
+//Show apply-search button on ToR select
+$('#edit-datebox-years > .form-item').on('click', function(){    
+    $('#edit-actions').fadeIn(300); 
+});
+
 //Show apply-search button on search text keyup
 $("#edit-metavalue").keyup(function (e) {
     $('#edit-actions').fadeIn(300); 
@@ -321,6 +326,24 @@ $( document ).ready(function() {
 		}
 	}
 
+	//Year of resource field
+	var selectedYears = getParameterByName('years');
+	if (selectedYears) {
+		if (selectedYears.includes("+")) {
+			selectedYears = selectedTypes.split("+");
+			selectedYears.forEach(function(year) {
+				var checkboxID = '#edit-datebox-years-' + year;
+			    $(checkboxID).prop('checked', true);
+			});
+			var yearsString = selectedYears.join(" or ");
+			breadcrumbSearchInfo += ' from years ' + yearsString;
+		} else {
+			var checkboxID = '#edit-datebox-years-' + selectedYears;
+		    $(checkboxID).prop('checked', true);
+		    breadcrumbSearchInfo += ' from year ' + selectedYears;
+		}
+	}
+
 	//Metavalue field
     var metaValueField = getParameterByName('words');
 	if (metaValueField) {
@@ -400,13 +423,24 @@ $("form#sks-form").submit(function(event){
 	}
 	//ToR field
 	var selectedTypes = [];
-	$('.checkbox-custom input:checked').each(function() {
+	$('.searchbox_types input:checked').each(function() {
 	    selectedTypes.push($(this).attr('value'));
 	});
 	if (selectedTypes.length > 0) {
 		if (urlParams) { urlParams += '&'; }
 		urlParams += 'type=' + selectedTypes.join('+or+');
 	}
+	
+	//Year of resource field
+	var selectedYears = [];
+	$('.datebox_years input:checked').each(function() {
+	    selectedYears.push($(this).attr('value'));
+	});
+	if (selectedYears.length > 0) {
+		if (urlParams) { urlParams += '&'; }
+		urlParams += 'years=' + selectedYears.join('+');
+	}
+	
 	//Date of Publication field
 	var minDate = $("input[name='date_start_date']").val();
 	var maxDate = $("input[name='date_end_date']").val();
