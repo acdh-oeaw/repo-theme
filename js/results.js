@@ -61,6 +61,7 @@ function getCookie(cname) {
 
 var searchFilterVisibility = getCookie("searchFilterVisibility");
 var torFilterVisibility = getCookie("torFilterVisibility");
+var yorFilterVisibility = getCookie("yorFilterVisibility");
 var dopFilterVisibility = getCookie("dopFilterVisibility");
 
 if (searchFilterVisibility == 'hidden') {
@@ -70,16 +71,24 @@ if (searchFilterVisibility == 'hidden') {
 }
 
 if (torFilterVisibility == 'hidden') {
-  	$('.fieldset-legend').addClass('closed');
-  	$('.fieldset-legend').parent().next('.fieldset-wrapper').hide();
+  	$('#edit-searchbox-types--wrapper > legend > .fieldset-legend').addClass('closed');
+  	$('#edit-searchbox-types--wrapper > legend').next('.fieldset-wrapper').hide();
+}
+
+if (yorFilterVisibility == 'hidden') {
+  	$('#edit-datebox-years--wrapper > legend > .fieldset-legend').addClass('closed');
+  	$('#edit-datebox-years--wrapper > legend').next('.fieldset-wrapper').hide();
 }
 
 if (dopFilterVisibility == 'hidden') {
   	$('.extra-filter-heading').addClass('closed');
   	$('.extra-filter-heading').next().hide();
   	$('.extra-filter-heading').next().next().hide();
+} else if (dopFilterVisibility == 'visible') {
+  	$('.extra-filter-heading').removeClass('closed');
+  	$('.extra-filter-heading').next().show();
+  	$('.extra-filter-heading').next().next().show();
 }
-
 //Show the search block after comforming the user cookies
 $('#block-search').fadeIn(100);
 
@@ -97,7 +106,7 @@ $('#block-search > h3').click(function() {
 });
 
 //Toggle ToR filter
-$('.fieldset-legend').click(function() {
+$('#edit-searchbox-types--wrapper > legend > .fieldset-legend').click(function() {
 	if ($(this).hasClass('closed')) {
 	  	$(this).removeClass('closed');
 	  	$(this).parent().next('.fieldset-wrapper').fadeIn(200);
@@ -106,6 +115,19 @@ $('.fieldset-legend').click(function() {
 	  	$(this).addClass('closed');
 	  	$(this).parent().next('.fieldset-wrapper').fadeOut(200);
 	  	setCookie("torFilterVisibility", 'hidden', 180);
+	}
+});
+
+//Toggle year of resource filter
+$('#edit-datebox-years--wrapper > legend > .fieldset-legend').click(function() {
+	if ($(this).hasClass('closed')) {
+	  	$(this).removeClass('closed');
+	  	$(this).parent().next('.fieldset-wrapper').fadeIn(200);
+	  	setCookie("yorFilterVisibility", 'visible', 180);
+	} else {
+	  	$(this).addClass('closed');
+	  	$(this).parent().next('.fieldset-wrapper').fadeOut(200);
+	  	setCookie("yorFilterVisibility", 'hidden', 180);
 	}
 });
 
@@ -123,6 +145,7 @@ $('.extra-filter-heading').click(function() {
 	  	setCookie("dopFilterVisibility", 'hidden', 180);
 	}
 });
+
 
 $("#edit-date-start-date")
   .datepicker({
