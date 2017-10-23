@@ -353,7 +353,7 @@ $( document ).ready(function() {
 	var selectedYears = getParameterByName('years');
 	if (selectedYears) {
 		if (selectedYears.includes("+")) {
-			selectedYears = selectedTypes.split("+");
+			selectedYears = selectedYears.split("+");
 			selectedYears.forEach(function(year) {
 				var checkboxID = '#edit-datebox-years-' + year;
 			    $(checkboxID).prop('checked', true);
