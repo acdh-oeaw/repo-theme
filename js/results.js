@@ -62,7 +62,7 @@ function getCookie(cname) {
 var searchFilterVisibility = getCookie("searchFilterVisibility");
 var torFilterVisibility = getCookie("torFilterVisibility");
 var yorFilterVisibility = getCookie("yorFilterVisibility");
-var dopFilterVisibility = getCookie("dopFilterVisibility");
+var dorFilterVisibility = getCookie("dorFilterVisibility");
 
 if (searchFilterVisibility == 'hidden') {
 	$('#block-search > h3').addClass('closed');
@@ -80,11 +80,11 @@ if (yorFilterVisibility == 'hidden') {
   	$('#edit-datebox-years--wrapper > legend').next('.fieldset-wrapper').hide();
 }
 
-if (dopFilterVisibility == 'hidden') {
+if (dorFilterVisibility == 'hidden') {
   	$('.extra-filter-heading').addClass('closed');
   	$('.extra-filter-heading').next().hide();
   	$('.extra-filter-heading').next().next().hide();
-} else if (dopFilterVisibility == 'visible') {
+} else if (dorFilterVisibility == 'visible') {
   	$('.extra-filter-heading').removeClass('closed');
   	$('.extra-filter-heading').next().show();
   	$('.extra-filter-heading').next().next().show();
@@ -137,12 +137,12 @@ $('.extra-filter-heading').click(function() {
 	  	$(this).removeClass('closed');
 	  	$(this).next().fadeIn(200);
 	  	$(this).next().next().fadeIn(200);
-	  	setCookie("dopFilterVisibility", 'visible', 180);
+	  	setCookie("dorFilterVisibility", 'visible', 180);
 	} else {
 	  	$(this).addClass('closed');
 	  	$(this).next().fadeOut(200);
 	  	$(this).next().next().fadeOut(200);
-	  	setCookie("dopFilterVisibility", 'hidden', 180);
+	  	setCookie("dorFilterVisibility", 'hidden', 180);
 	}
 });
 

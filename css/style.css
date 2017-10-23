@@ -857,6 +857,9 @@ h3.latest-additions {
   border-bottom: 2px solid #88DBDF;
   border-radius: 0px; }
 
+.form-item-date-start-date, .form-item-date-end-date {
+  display: none; }
+
 .form-item-date-start-date label, .form-item-date-end-date label {
   margin-left: 10px;
   width: 50px; }
