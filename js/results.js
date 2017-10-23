@@ -352,8 +352,8 @@ $( document ).ready(function() {
 	//Year of resource field
 	var selectedYears = getParameterByName('years');
 	if (selectedYears) {
-		if (selectedYears.includes("+")) {
-			selectedYears = selectedYears.split("+");
+		if (selectedYears.includes(" ")) {
+			selectedYears = selectedYears.split(" ");
 			selectedYears.forEach(function(year) {
 				var checkboxID = '#edit-datebox-years-' + year;
 			    $(checkboxID).prop('checked', true);
