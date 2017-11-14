@@ -268,7 +268,7 @@ nav.breadcrumb {
         word-break: break-word;
 
         .res-prop-label {
-            min-width: 130px;
+            min-width: 142px;
         }
         
         i {
@@ -801,6 +801,10 @@ h3.latest-additions {
     border: 0;
     border-bottom: 2px solid #88DBDF;
     border-radius: 0px;
+}
+
+.form-item-date-start-date, .form-item-date-end-date {
+    display: none;
 }
 
 .form-item-date-start-date label, .form-item-date-end-date label {
