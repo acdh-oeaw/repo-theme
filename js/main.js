@@ -48,46 +48,56 @@ jQuery(function($) {
             }, 800, function() {});
         } // End if
 
+        
+        //enable bootstrap tooltip
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
         //Cite-this widget
         $('#cite-tooltip-mla').tooltip(); 
         $('#cite-tooltip-mla').on('click', function(event) {
-	        if (!$(this).hasClass('tooltip-active')) {
-				$(this).addClass('tooltip-active');
-			} else {
-				$(this).removeClass('tooltip-active');
-				$(this).tooltip('hide');
-			}
-		});
-		$('#cite-tooltip-mla').on('hidden.bs.tooltip', function () {
-			$(this).removeClass('tooltip-active');
-		});
-		//APA
+            if (!$(this).hasClass('tooltip-active')) {
+                $(this).addClass('tooltip-active');
+            } else {
+                $(this).removeClass('tooltip-active');
+                $(this).tooltip('hide');
+            }
+        });
+        
+        $('#cite-tooltip-mla').on('hidden.bs.tooltip', function () {
+            $(this).removeClass('tooltip-active');
+        });
+        
+        //APA
         $('#cite-tooltip-apa').tooltip(); 
         $('#cite-tooltip-apa').on('click', function(event) {
-	        if (!$(this).hasClass('tooltip-active')) {
-				$(this).addClass('tooltip-active');
-			} else {
-				$(this).removeClass('tooltip-active');
-				$(this).tooltip('hide');
-			}
-		});
-		$('#cite-tooltip-apa').on('hidden.bs.tooltip', function () {
-			$(this).removeClass('tooltip-active');
-		});
-		//CMS
+            if (!$(this).hasClass('tooltip-active')) {
+                $(this).addClass('tooltip-active');
+            } else {
+                $(this).removeClass('tooltip-active');
+                $(this).tooltip('hide');
+            }
+        });
+        
+        $('#cite-tooltip-apa').on('hidden.bs.tooltip', function () {
+            $(this).removeClass('tooltip-active');
+        });
+        
+        //CMS
         $('#cite-tooltip-cms').tooltip(); 
         $('#cite-tooltip-cms').on('click', function(event) {
-	        if (!$(this).hasClass('tooltip-active')) {
-				$(this).addClass('tooltip-active');
-			} else {
-				$(this).removeClass('tooltip-active');
-				$(this).tooltip('hide');
-			}
-		});
-		$('#cite-tooltip-cms').on('hidden.bs.tooltip', function () {
-			$(this).removeClass('tooltip-active');
-		});
-
+            if (!$(this).hasClass('tooltip-active')) {
+                $(this).addClass('tooltip-active');
+            } else {
+                $(this).removeClass('tooltip-active');
+                $(this).tooltip('hide');
+            }
+        });
+        
+        $('#cite-tooltip-cms').on('hidden.bs.tooltip', function () {
+            $(this).removeClass('tooltip-active');
+        });
 
     });
 
