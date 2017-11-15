@@ -414,7 +414,11 @@ nav.breadcrumb {
   padding-right: 3px; }
 
 .res-title {
-  font-weight: 600; }
+  font-family: "Cabin", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  padding-bottom: 5px; }
 
 .res-contributor {
   font-style: italic; }
