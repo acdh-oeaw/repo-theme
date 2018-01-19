@@ -763,14 +763,22 @@ figure.highlight {
 .single-res-overview-expert {
   display: none; }
 
-.single-res-heading .res-act-button {
+.children-overview-tree {
+  display: none; }
+
+.single-res-heading .res-act-button, .res-act-button-reverse {
   color: #3B89AD;
   background: transparent;
-  float: right;
   margin: 0px 0px 0px 10px;
-  transition: color ease .2s; }
-  .single-res-heading .res-act-button:hover {
-    color: #88DBDF; }
+  transition: color ease .2s;
+  font-family: "Cabin", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400; }
+  .single-res-heading .res-act-button:hover, .res-act-button-reverse:hover {
+    color: #88DBDF;
+    background: transparent; }
+
+.single-res-heading .res-act-button {
+  float: right; }
 
 .res-seeAlso a, .res-locationUrl a, .res-pid a {
   font-style: italic;

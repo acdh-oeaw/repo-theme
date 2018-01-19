@@ -688,17 +688,27 @@ figure.highlight {
 	display: none;
 }
 
-.single-res-heading .res-act-button {
+.children-overview-tree {
+	display: none;
+}
+
+.single-res-heading .res-act-button, .res-act-button-reverse {
     color: $accent;
     background: transparent;
-    float: right;
     margin: 0px 0px 0px 10px;
     transition: color ease .2s;
-    
+  	font-family: $headingfont;
+  	font-weight: 400;
+
     &:hover {
 	    color: $primary;
+	    background: transparent;
     }
     
+}
+
+.single-res-heading .res-act-button {
+    float: right;
 }
 
 .res-seeAlso a, .res-locationUrl a, .res-pid a {

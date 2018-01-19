@@ -36,6 +36,23 @@ $('.res-act-button-expertview').click(function() {
 	}
 });
 
+//Toggle tree-view or basic view on child resources section
+$('.res-act-button-treeview').click(function() {
+	if ($(this).hasClass('basic')) {
+		$('.children-overview-basic').hide();
+		$('.children-overview-tree').fadeIn(200);
+  	$(this).removeClass('basic');
+  	$(this).addClass('tree');
+  	$(this).children('span').text('Switch to List-View');
+	} else {
+		$('.children-overview-tree').hide();
+		$('.children-overview-basic').fadeIn(200);
+  	$(this).removeClass('tree');
+  	$(this).addClass('basic');
+  	$(this).children('span').text('Switch to Tree-View');		
+	}
+});
+
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
