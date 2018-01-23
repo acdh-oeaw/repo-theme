@@ -851,13 +851,17 @@ h3.latest-additions {
   color: #88DBDF;
   border: 1px solid #88DBDF;
   font-size: 15px;
-  padding: 3px 10px; }
+  padding: 0; }
 
 .res-act-button.global-button:hover {
   color: #fff;
   background-color: #88DBDF;
   border-color: #88DBDF;
   transition: background-color ease .2s; }
+
+.res-act-button.global-button a {
+  display: block;
+  padding: 3px 10px; }
 
 .date-filter {
   max-width: 90px;

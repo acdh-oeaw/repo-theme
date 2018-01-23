@@ -797,7 +797,7 @@ h3.latest-additions {
     color: $primary;
     border: 1px solid $primary;
     font-size: 15px;
-    padding: 3px 10px;
+    padding: 0;
 }
 
 .res-act-button.global-button:hover {
@@ -805,6 +805,11 @@ h3.latest-additions {
     background-color: $primary;
     border-color: $primary;
     @include bg-trans();
+}
+
+.res-act-button.global-button a {
+    display: block;
+    padding: 3px 10px;
 }
 
 .date-filter {
