@@ -316,7 +316,7 @@ $( document ).ready(function() {
     //Order setting comparison from cookies
     var resultsOrderSetting = getCookie("resultsOrder");
     if (!resultsOrderSetting) {
-	    resultsOrderSetting = 'titleasc';
+	    resultsOrderSetting = 'datedesc';
     }
 	var resultsOrderText = $("#sortByDropdown").find("[data-value='" + resultsOrderSetting + "']").html();
 	$('#sortByButton').html((resultsOrderText));
@@ -447,7 +447,7 @@ $("form#sks-form").submit(function(event){
     }
     var resultsOrderSetting = getCookie("resultsOrder");
     if (!resultsOrderSetting) {
-	    resultsOrderSetting = 'titleasc';
+	    resultsOrderSetting = 'datedesc';
     }
     var urlParams = "";
 	//Metavalue field
