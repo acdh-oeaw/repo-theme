@@ -8,9 +8,19 @@
       <div class="collapse navbar-collapse" id="navbarMain">
         {{ page.main_navigation }}
         <div class="navbar-icons">
-          <a href="https://fedora.localhost/browser/user/login">
-            <i class="fa fa-sign-in"></i>
-          </a>
+          {% if logged_in %}
+              <a href="{{ url('<front>') }}user/logout">
+                  <i class="fa fa-sign-out" aria-hidden="true"></i>
+              </a>
+              <a href="{{ url('<front>') }}user">
+                  <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+              </a>
+              &nbsp;&nbsp;{{ user.username }}
+          {% else %}
+              <a href="{{ url('<front>') }}user/login">
+                  <i class="fa fa-sign-in" aria-hidden="true"></i>
+              </a>
+          {% endif %}
         </div>
       </div>
     </div>
