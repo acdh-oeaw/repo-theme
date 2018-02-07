@@ -123,7 +123,7 @@ nav.breadcrumb {
     top: 70px;
     bottom: 30px;
     background: $gray;
-    margin-left: 260px;
+    margin-left: 265px;
 }
 
 .messages--error {
@@ -892,6 +892,7 @@ h3.latest-additions {
     transition: border-color ease .1s, color ease .1s;
     cursor: pointer;
     font-family: inherit;
+    background: #fff;
 }
 
 .show > .btn.dropdown-toggle {

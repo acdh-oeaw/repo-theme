@@ -270,6 +270,9 @@ animation: fadein 0.5s;
 nav.breadcrumb > .breadcrumb {
   width: 1110px; }
 
+.navbar-toggler {
+  margin-top: 15px; }
+
 /* _layouts.scss */
 main {
   margin-top: 20px;
@@ -362,7 +365,7 @@ nav.breadcrumb {
   top: 70px;
   bottom: 30px;
   background: #DDDDDD;
-  margin-left: 260px; }
+  margin-left: 265px; }
 
 .messages--error {
   background-position-y: 19px; }
@@ -978,7 +981,8 @@ h3.latest-additions {
   margin-left: 2px;
   transition: border-color ease .1s, color ease .1s;
   cursor: pointer;
-  font-family: inherit; }
+  font-family: inherit;
+  background: #fff; }
 
 .show > .btn.dropdown-toggle {
   background-color: initial;
@@ -1298,7 +1302,7 @@ footer h3 {
 
 @media (max-width: 1199px) {
   .vert-divider {
-    margin-left: 215px; }
+    margin-left: 220px; }
 
   .start_right_block .col-block-wrapper h3 img {
     width: 145px; }
@@ -1316,9 +1320,11 @@ footer h3 {
   .acdh-brand {
     display: none; }
 
-  .main-header {
-    padding: 20px 0 10px 0; }
-
+  /*
+      .main-header {
+          padding: 20px 0 10px 0;
+      }
+  */
   .navbar-toggler-right {
     top: 8px;
     right: 30px; }
