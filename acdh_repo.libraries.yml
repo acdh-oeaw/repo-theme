@@ -19,6 +19,7 @@ bootstrap:
       lib/bootstrap/bootstrap.min.css: {}
       lib/bootstrap/docs.min.css: {}
       lib/font-awesome/font-awesome.min.css: {}
+      lib/fundament/css/fundament.min.css: {}
   js:
     lib/bootstrap/bootstrap.min.js: {}
   dependencies:

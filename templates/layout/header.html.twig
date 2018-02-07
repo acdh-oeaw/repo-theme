@@ -1,11 +1,18 @@
 <header class="main-header" role="banner">
+  <nav class="navbar navbar-expand-md navbar-light bg-white box-shadow">
     <div class="container">
-    	<div class="top-branding">
-        	{{ page.header }}
+      {{ page.header }}
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse">
+        {{ page.main_navigation }}
+        <div class="navbar-icons">
+          <a href="https://fedora.localhost/browser/user/login">
+            <i class="fa fa-sign-in"></i>
+          </a>
         </div>
-
-        <div class="main-navigation">
-            {{ page.main_navigation }}
-        </div>
+      </div>
     </div>
+  </nav>
 </header>

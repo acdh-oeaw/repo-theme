@@ -150,77 +150,125 @@ animation: fadein 0.5s;
   color: #bababa; }
 
 /* _header.scss */
+/*
 .main-header {
-  background-color: #FFFFFF;
-  border-bottom: 1px solid #DDDDDD;
-  display: inline-block;
-  width: 100%;
-  z-index: 99;
-  padding: 35px 0 10px 0;
-  position: relative; }
-  .main-header > .container {
-    padding-left: 30px;
-    padding-right: 30px; }
-  .main-header #block-acdh-repo-branding {
-    display: flex;
-    flex-direction: row;
+	background-color: $white;
+    border-bottom: 1px solid $gray;
+    display: inline-block;
     width: 100%;
-    align-items: center; }
-  .main-header .logo img {
-    max-width: 190px; }
-  .main-header .main-navigation .navbar {
-    padding: 0;
-    position: inherit;
-    justify-content: flex-end; }
-    .main-header .main-navigation .navbar .navbar-collapse {
-      justify-content: flex-end;
-      margin: 4px -25px 0 0; }
-    .main-header .main-navigation .navbar ul.navbar-nav {
-      display: inline-block; }
-      .main-header .main-navigation .navbar ul.navbar-nav li.nav-item {
-        display: inline-block; }
-        .main-header .main-navigation .navbar ul.navbar-nav li.nav-item:nth-child(1) > a.nav-link {
-          border-left: 1px solid #DDDDDD; }
-        .main-header .main-navigation .navbar ul.navbar-nav li.nav-item a.nav-link {
-          text-transform: uppercase;
-          border-left: 1px solid #DDDDDD;
-          padding: 0 22px 16px 22px;
-          font-size: 13px;
-          font-weight: 600; }
+    z-index: 99;
+    padding: 35px 0 10px 0;
+    position: relative;
+
+    > .container {
+    padding-left: 30px;
+    padding-right: 30px;
+	}
+    
+    #block-acdh-repo-branding {
+		display: flex;
+	    flex-direction: row;
+	    width: 100%;
+	    align-items: center;
+	}
+
+	.logo {
+
+		img {
+            max-width: 190px;
+		}
+	
+	}
+
+
+    .main-navigation {
+    	
+    	.navbar {
+			padding: 0;
+			position: inherit;
+			justify-content: flex-end;
+
+			.navbar-collapse {
+			    justify-content: flex-end;
+			    margin: 4px -25px 0 0;
+			}
+	
+	    	ul.navbar-nav {
+			    display: inline-block;
+			    
+			    li.nav-item {
+				    display: inline-block;
+	
+					&:nth-child(1) > a.nav-link {
+						border-left: 1px solid $gray;
+					}
+				    
+				    a.nav-link {
+					    text-transform: uppercase;
+					    border-left: 1px solid $gray;
+					    padding: 0 22px 16px 22px;
+					    font-size: 13px;
+					    font-weight: 600;
+					}
+	   
+				}
+			}
+		}
+	}	
+		
+}
+
+
 
 .navbar-toggler-icon i {
-  font-size: 28px;
-  color: #88dbdf;
-  border: 2px solid #88dbdf;
-  border-radius: 5px;
-  padding: 0px 3px; }
+    font-size: 28px;
+    color: #88dbdf;
+    border: 2px solid #88dbdf;
+    border-radius: 5px;
+    padding: 0px 3px;
+}
 
 .navbar-toggler-right {
-  position: absolute;
-  top: 15px;
-  right: 24px;
-  cursor: pointer; }
+    position: absolute;
+    top: 15px;
+    right: 24px;
+    cursor: pointer;
+}
 
 .navbar-toggler-right:focus {
-  outline: none; }
+    outline: none;
+}
 
 .institut-left-color {
-  background-color: #88DBDF; }
+    background-color: $primary;
+}
 
 .institut-bar {
-  margin: 0 21px 6px 25px;
-  height: 30px;
-  flex: 1; }
+    margin: 0 21px 6px 25px;
+    height: 30px;
+    flex: 1;
+}
 
 .institut-bar > div {
-  text-align: right;
-  padding: 5px 16px;
-  font-size: 14px;
-  color: #FFFFFF; }
+    text-align: right;
+    padding: 5px 16px;
+    font-size: 14px;
+    color: $white;
+}
 
 .acdh-brand img {
-  max-width: 62px;
-  margin-bottom: 10px; }
+    max-width: 62px;
+    margin-bottom: 10px;
+}
+*/
+.navbar {
+  margin-bottom: 0 !important; }
+
+.navbar-expand-md > .container {
+  padding: 0 20px; }
+
+nav.breadcrumb > .breadcrumb {
+  width: 1110px; }
 
 /* _layouts.scss */
 main {

@@ -1,5 +1,5 @@
 /* _header.scss */
-
+/*
 .main-header {
 	background-color: $white;
     border-bottom: 1px solid $gray;
@@ -28,6 +28,7 @@
 		}
 	
 	}
+
 
     .main-navigation {
     	
@@ -107,4 +108,18 @@
 .acdh-brand img {
     max-width: 62px;
     margin-bottom: 10px;
+}
+*/
+
+
+.navbar {
+  margin-bottom: 0 !important;
+}
+
+.navbar-expand-md>.container {
+    padding: 0 20px;
+}
+
+nav.breadcrumb > .breadcrumb {
+    width: 1110px;
 }

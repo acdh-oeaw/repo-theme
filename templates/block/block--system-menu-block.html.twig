@@ -31,20 +31,8 @@
  * http://www.w3.org/TR/WCAG-TECHS/H42.html for more information.
  */
 #}
-{% set heading_id = attributes.id ~ '-menu'|clean_id %}
-<nav class="navbar navbar-toggleable-md">
-  
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon">
-    	<i class="material-icons">&#xE5D2;</i>
-    </span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarToggler">
 	  {# Menu. #}
-	  {% block content %}
-	    {{ content }}
-	  {% endblock %}
-  </div>
+	   {{ content }}
 
-</nav>
+
