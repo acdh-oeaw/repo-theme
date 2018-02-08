@@ -273,6 +273,18 @@ nav.breadcrumb > .breadcrumb {
 .navbar-toggler {
   margin-top: 15px; }
 
+.navbar-icons-text {
+  font-size: 15px;
+  font-weight: 600;
+  vertical-align: text-bottom;
+  color: #7f7f7f;
+  transition: color linear .2s; }
+  .navbar-icons-text:hover {
+    color: #444; }
+
+.navbar .navbar-icons i {
+  color: #88dcdf; }
+
 /* _layouts.scss */
 main {
   margin-top: 20px;
