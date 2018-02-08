@@ -4,27 +4,6 @@
             
             <div class="footer-sep">
                 <i class="fa fa-comment-o" aria-hidden="true"></i> CONTACT
-                    {% if logged_in %}
-                        
-                        <span class="footer-login-button logout">
-                            <a href="{{ url('<front>') }}user/logout">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i>
-                            </a>
-                        </span>
-                        <span class="footer-login-button account">
-                            {{ user.username }}&nbsp;&nbsp;
-                            <a href="{{ url('<front>') }}user">
-                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                            </a>
-                        </span>
-                    {% else %}
-                        <span class="footer-login-button">
-                            Login&nbsp;&nbsp;
-                            <a href="{{ url('<front>') }}user/login">
-                                <i class="fa fa-sign-in" aria-hidden="true"></i>
-                            </a>
-                        </span>
-                    {% endif %}
             </div>
 
             <div class="el-block col-md-3 first">
