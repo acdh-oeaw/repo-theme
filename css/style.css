@@ -1312,6 +1312,13 @@ footer h3 {
   padding: 8px;
   font-size: 14px; }
 
+.footer-brand {
+  border: 0; }
+
+footer .el-block.first {
+  padding-left: 0;
+  display: flex; }
+
 @media (max-width: 1199px) {
   .vert-divider {
     margin-left: 220px; }
@@ -1370,9 +1377,6 @@ footer h3 {
   .res-act-button-expertview > span {
     display: none; } }
 @media (max-width: 767px) {
-  .csc-textpic-text {
-    padding-left: 0px; }
-
   .footer-wrapper .el-block {
     padding-left: 0;
     padding-top: 10px; }

@@ -111,3 +111,12 @@ footer h3 {
     padding: 8px;
     font-size: 14px;
 }
+
+.footer-brand {
+  border: 0;
+}
+
+footer .el-block.first {
+    padding-left: 0;
+    display: flex;
+}
