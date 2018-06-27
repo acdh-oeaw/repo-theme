@@ -1226,6 +1226,27 @@ main > .layout-content > .col-block-wrapper {
 .res-diss-btn.gui-btn {
   display: none; }
 
+.green-dot {
+  height: 10px;
+  width: 10px;
+  background-color: #1dd1a1;
+  border-radius: 50%;
+  display: inline-block; }
+
+.orange-dot {
+  height: 10px;
+  width: 10px;
+  background-color: #ff9f43;
+  border-radius: 50%;
+  display: inline-block; }
+
+.red-dot {
+  height: 10px;
+  width: 10px;
+  background-color: #ee5253;
+  border-radius: 50%;
+  display: inline-block; }
+
 /* _footer.scss */
 .main-footer {
   background-color: #FFFFFF;
