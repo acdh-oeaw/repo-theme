@@ -2,6 +2,42 @@ jQuery(function($) {
     "use strict";
     /* You can safely use $ in this code block to reference jQuery */
 
+    /*
+     * remove the language text from the url after the lang change
+     * because it is messing up the custom pathprocessor urls
+     * inside the oeaw module
+     * @returns {undefined}
+     */
+    function removeLangFromUrl(){
+        if (history.pushState) {
+            var url = window.location.href;     // Returns full URL
+            if (url.indexOf("?language=") >= 0) {
+                let chrPos = url.indexOf("?language=");
+                var rmStr = url.substring(chrPos, chrPos + 12);
+                url = url.replace(rmStr, '');
+                window.history.pushState({path:url},'',url);
+            }
+        }
+    }
+    /**
+     * We have a special pathprocessor on the detail view
+     * Because of this we need some URL modification
+     * @returns {undefined}
+     */
+    function customUrlDecode(){
+        var url = window.location.href;     // Returns full URL
+        if (url.indexOf("browser/oeaw_detail/") >= 0 && 
+                ( url.indexOf("%3A") >= 0 || url.indexOf(":") >= 0 ) ) {
+            let chrPos = url.indexOf("/oeaw_detail/");
+            let urlMain =  url.substring(0, chrPos + 13);
+            var urlOther = url.substring(chrPos + 13, url.length);
+            urlOther = urlOther.replace(/%3A/g, '/');
+            urlOther = urlOther.replace(/:/g, '/');
+            let finalUrl = decodeURIComponent(urlMain+urlOther);
+            window.history.pushState({path:finalUrl},'',finalUrl);
+        }
+    }
+ 
     // Info menu scroll behaviour
     $(document).scroll(function() {
         if ($(document).scrollTop() >= 220) {
@@ -12,7 +48,22 @@ jQuery(function($) {
     });
 
     $(document).ready(function() {
-		// Info menu new page load behaviour
+        $('.language-switcher-language-session').on('click', function(event) {
+            var expires = new Date();
+                expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+            if(event.target.dataset.drupalLinkQuery){
+                var langVal = event.target.dataset.drupalLinkQuery;
+                var obj = JSON.parse(langVal);
+                document.cookie = 'archeLang'+ '=' + obj.language + ';expires=' + expires.toUTCString();
+            }else if(typeof  event.target.dataset.drupalLinkQuery === "undefined")  {
+                document.cookie = 'archeLang'+ '=en;expires=' + expires.toUTCString();
+            }
+        });
+        
+        removeLangFromUrl();
+        customUrlDecode();
+        
+        // Info menu new page load behaviour
         if ($(document).scrollTop() >= 220) {
             $('.info-menu-wrap').addClass('fixed-sidebar');
         } else {
