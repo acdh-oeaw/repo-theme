@@ -239,11 +239,21 @@ $("#edit-metavalue").keyup(function (e) {
 });
 
 //Function for pagination selector
-function removeUrlLastArgument(url)
+function modifyUrlParams(limit="10", sort="titleasc")
 {
-    var args = url.split('/');
-    args.pop();
-    return( args.join('/') );
+    var url = window.location.href;     // Returns full URL
+    var numb = 0;
+    var newUrl = "";
+    var page = 1;
+    if (url.indexOf("/discover/") != -1 ) {
+        numb = url.indexOf("/discover/")+10;
+        let mainUrl = url.substring(0, numb);
+        let restUrl = url.replace(mainUrl, '');
+        var restUrlArr =  restUrl.split('/'); 
+        if(restUrlArr[4]){ page = restUrlArr[4]; }
+        newUrl = mainUrl+restUrlArr[0]+'/'+sort+'/'+limit+'/'+page;
+    }
+    return newUrl;
 }
 
 //Results info-bar pagination selectors on click
@@ -251,16 +261,20 @@ $('#resPerPageButton > a').on('click', function(event){
 	event.preventDefault();
 	var currentSetting = $('#resPerPageButton').html();
 	var selectedSetting = $(this).html();
-	if (currentSetting == selectedSetting) {
-		//do nothing
-	} else {
-		$('#resPerPageButton').html(selectedSetting);
-		setCookie("resultsPerPage", selectedSetting, 180);
-		var currentURL = window.location.toString();
-		var newUrl = removeUrlLastArgument(currentURL);
-		newUrl = removeUrlLastArgument(newUrl);
-		newUrl = newUrl + '/'+selectedSetting + '/1';
-		window.location.href = newUrl;
+        
+	if (currentSetting != selectedSetting) {
+            var sorting = $('#sortByButton').html();
+            var sort = "titledesc";
+            $.each( $('#sortByDropdown > a'), function(key, val) {
+                if(val.text == sorting){
+                    sort = val.dataset.value;
+                }
+            });
+           
+            $('#resPerPageButton').html(selectedSetting);
+            setCookie("resultsPerPage", selectedSetting, 180);
+            var newUrl = modifyUrlParams(selectedSetting, sort);
+            window.location.href = newUrl;
 	}
 });
 
@@ -268,18 +282,13 @@ $('#sortByDropdown > a').on('click', function(event){
 	event.preventDefault();
 	var currentSetting = $('#sortByButton').html();
 	var selectedSetting = $(this).html();
-	if (currentSetting == selectedSetting) {
-		//do nothing
-	} else {
-		$('#sortByButton').html(selectedSetting);
-		selectedSetting = $(this).data("value");
-		setCookie("resultsOrder", selectedSetting, 180);
-	    var currentURL = window.location.toString();
-	    var args = currentURL.split('/');
-	    args[args.length-3] = selectedSetting;
-		args = args.join();
-		args = args.replace(/,/g, '/');
-		window.location.href = args;
+	if (currentSetting != selectedSetting) {
+            $('#sortByButton').html(selectedSetting);
+            selectedSetting = $(this).data("value");
+            var pageLimit = $('#resPerPageButton').html();
+            setCookie("resultsOrder", selectedSetting, 180);
+	    var newUrl = modifyUrlParams(pageLimit, selectedSetting);
+            window.location.href = newUrl;
 	}
 })
 
@@ -331,14 +340,14 @@ $( document ).ready(function() {
     }
     //If it's the detail page, add child pagination args
     if (preLastArg == 'oeaw_detail') {
-	    window.history.replaceState( {} , "", currentURL+"/10/1" );
-	    $('body').addClass('detailPage');
+	    //window.history.replaceState( {} , "", currentURL+"/10/1" );
+	    //$('body').addClass('detailPage');
     }
-	//Prepare pagination urls
-	$('.pagination-item').each(function() {
-	    var pageUrl = $(this).children('a').data("pagination");
-	    $(this).children('a').attr('href', pageUrl);
-	});
+    //Prepare pagination urls
+    $('.pagination-item').each(function() {
+        var pageUrl = $(this).children('a').data("pagination");
+        $(this).children('a').attr('href', pageUrl);
+    });
 
     //Cookies warning first page
     var cookiesAccepted = getCookie("cookiesAccepted");

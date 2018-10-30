@@ -1,6 +1,6 @@
 <div class="start_left_block col-block col-lg-6 col-md-12"/>
 	<div class="col-block-wrapper">
-	  <h2>Discover resources</h2>
+	  <h2>{{ "Discover resources"|trans }}</h2>
 
 	<form action="/browser/discover" method="post" id="sks-form" class="index-keyword-search" accept-charset="UTF-8" data-drupal-form-fields="edit-metavalue,edit-searchbox-types-collection,edit-searchbox-types-person,edit-searchbox-types-disseminationservice,edit-date-start-date,edit-date-end-date,edit-submit">
 	
@@ -17,13 +17,13 @@
 	
 	</form>
 
-	  <h3 class="latest-additions">Latest Additions</h3>
+	  <h3 class="latest-additions">{{ "Latest Additions"|trans }}</h3>
 	  {% block content %}
 	    {{ content }}
 	  {% endblock %}
   	<div class="res-act-button global-button">
   		<a href="/browser/discover/root">
-  			<span>See All Resources</span>
+  			<span>{{ "See All Resources"|trans }}</span>
   		</a>
   	</div>
 	  <!--

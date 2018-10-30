@@ -2,6 +2,43 @@ jQuery(function($) {
     "use strict";
     /* You can safely use $ in this code block to reference jQuery */
 
+    /*
+     * remove the language text from the url after the lang change
+     * because it is messing up the custom pathprocessor urls
+     * inside the oeaw module
+     * @returns {undefined}
+     */
+    function removeLangFromUrl(){
+        if (history.pushState) {
+            var url = window.location.href;     // Returns full URL
+            if (url.indexOf("?language=") >= 0) {
+                let chrPos = url.indexOf("?language=");
+                var rmStr = url.substring(chrPos, chrPos + 12);
+                url = url.replace(rmStr, '');
+                url = url + rmStr;
+                window.history.pushState({path:url},'',url);
+            }
+        }
+    }
+    /**
+     * We have a special pathprocessor on the detail view
+     * Because of this we need some URL modification
+     * @returns {undefined}
+     */
+    function customUrlDecode(){
+        var url = window.location.href;     // Returns full URL
+        if (url.indexOf("browser/oeaw_detail/") >= 0 && 
+                ( url.indexOf("%3A") >= 0 || url.indexOf(":") >= 0 ) ) {
+            let chrPos = url.indexOf("/oeaw_detail/");
+            let urlMain =  url.substring(0, chrPos + 13);
+            var urlOther = url.substring(chrPos + 13, url.length);
+            urlOther = urlOther.replace(/%3A/g, '/');
+            urlOther = urlOther.replace(/:/g, '/');
+            let finalUrl = decodeURIComponent(urlMain+urlOther);
+            window.history.pushState({path:finalUrl},'',finalUrl);
+        }
+    }
+ 
     // Info menu scroll behaviour
     $(document).scroll(function() {
         if ($(document).scrollTop() >= 220) {
@@ -12,7 +49,30 @@ jQuery(function($) {
     });
 
     $(document).ready(function() {
-		// Info menu new page load behaviour
+        /**
+         * Check that the user changed the language on the gui, if yes then we do 
+         * a small api call, to change the drupal session language variable
+         */
+        $('.language-switcher-language-session-oeaw').on('click', function(event) {
+            let lng = $(this).data('lang');
+            $.ajax({
+                url: '/browser/oeaw_change_lng/'+lng,
+                type: "POST",
+                success: function(data, status) {
+                    location.reload();
+                },
+                error: function(message) {
+                    return message;
+                }
+            });
+            event.preventDefault();
+            
+        });
+        
+      //  removeLangFromUrl();
+      //  customUrlDecode();
+        
+        // Info menu new page load behaviour
         if ($(document).scrollTop() >= 220) {
             $('.info-menu-wrap').addClass('fixed-sidebar');
         } else {
