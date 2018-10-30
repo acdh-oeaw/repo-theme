@@ -49,6 +49,7 @@ jQuery(function($) {
     });
 
     $(document).ready(function() {
+
         /**
          * Check that the user changed the language on the gui, if yes then we do 
          * a small api call, to change the drupal session language variable
@@ -69,8 +70,8 @@ jQuery(function($) {
             
         });
         
-      //  removeLangFromUrl();
-      //  customUrlDecode();
+        //  removeLangFromUrl();
+        //  customUrlDecode();
         
         // Info menu new page load behaviour
         if ($(document).scrollTop() >= 220) {
