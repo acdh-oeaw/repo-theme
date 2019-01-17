@@ -2,6 +2,18 @@ jQuery(function($) {
     "use strict";
     /* You can safely use $ in this code block to reference jQuery */
 
+
+    window.addEventListener('keydown', function(e)
+    {
+        if( e.keyCode == '8' )
+        {
+            e.preventDefault();  // prevent backspace from going to browser
+                              // history
+            // add reload code
+            location.reload();
+        }
+    }, false);
+
     /*
      * remove the language text from the url after the lang change
      * because it is messing up the custom pathprocessor urls
@@ -38,6 +50,14 @@ jQuery(function($) {
             window.history.pushState({path:finalUrl},'',finalUrl);
         }
     }
+    
+    function createNewUrl(newId){
+        if (history.pushState) {
+            var newurl = window.location.protocol + "//" + window.location.host + "/browser/oeaw_detail/" + newId;
+            window.history.pushState({path:newurl},'',newurl);
+        }
+    }
+ 
  
     // Info menu scroll behaviour
     $(document).scroll(function() {
@@ -49,6 +69,12 @@ jQuery(function($) {
     });
 
     $(document).ready(function() {
+        //if the user press the browser back button, then we need to reload the page
+        // because of the ajax page refresh
+        $(window).on('popstate', function() {
+            $(".loader-div").show();
+            location.reload(true);
+        });
 
         /**
          * Check that the user changed the language on the gui, if yes then we do 
@@ -69,6 +95,42 @@ jQuery(function($) {
             event.preventDefault();
             
         });
+        
+        /**
+         * If we are inside the oeaw_detail view, then we will just update the mainpagecontent div
+         */
+        //&& window.location.href.indexOf("ajax=1") >= 0
+        //jq2( document ).delegate( ".getChildView", "click", function(e) {
+        if(window.location.href.indexOf("browser/oeaw_detail/") >= 0 ){
+            //block-mainpagecontent
+            
+            $(document ).delegate( "a", "click", function(e) {
+            //$('a').click(function(e){
+                //$("#loader-div").show();
+                var url = $(this).attr('href');
+                if(url && url.indexOf("/browser/oeaw_detail/") >= 0 || url && url.indexOf("/browser//oeaw_detail/") >= 0 ) {
+                    url = url.substring(url.indexOf("/browser/"));
+                    $(".loader-div").show();
+                    var id = url.replace("/browser/oeaw_detail/", "");
+                    id  = url.replace("/browser//oeaw_detail/", "");
+                    url = url+"&ajax=1";
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        success: function(data, status) {
+                            //change url
+                            createNewUrl(id);
+                            $('#block-mainpagecontent').html(data);
+                        },
+                        error: function(message) {
+                            $('#block-mainpagecontent').html("Resource does not exists!");
+                        }
+                    });
+                    $("#loader-div").hide();
+                    e.preventDefault();
+                }
+            });
+        }
         
         //  removeLangFromUrl();
         //  customUrlDecode();
