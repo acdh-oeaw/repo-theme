@@ -111,8 +111,9 @@ jQuery(function($) {
                 if(url && url.indexOf("/browser/oeaw_detail/") >= 0 || url && url.indexOf("/browser//oeaw_detail/") >= 0 ) {
                     url = url.substring(url.indexOf("/browser/"));
                     $(".loader-div").show();
-                    var id = url.replace("/browser/oeaw_detail/", "");
-                    id  = url.replace("/browser//oeaw_detail/", "");
+                    var id = url;
+                    id = id.replace("/browser/oeaw_detail/", "");
+                    id = id.replace("/browser//oeaw_detail/", "");
                     url = url+"&ajax=1";
                     $.ajax({
                         url: url,
