@@ -550,7 +550,8 @@ $(".cookie-accept-btn").on('click', function(){
 });
 
 //$("#copy-url-tooltip").tooltip(); 
-$("#copyLinkInputBtn").on('click', function(){
+$(document ).delegate( "#copyLinkInputBtn", "click", function(e) {
+//$("#copyLinkInputBtn").on('click', function(){
     //var result = copyToClipboard(window.location.toString());
     var URLtoCopy = $(this).data("copyuri");
     var result = copyToClipboard(URLtoCopy);
@@ -560,18 +561,18 @@ $("#copyLinkInputBtn").on('click', function(){
     }
 });
 
-
-$('#res-act-button-copy-url').hover(
-  function () {
-    $('#copyLinkTextfield-wrapper').fadeIn(200);
-  }, 
-  function () {
-    $('#copyLinkTextfield-wrapper').fadeOut(200);
-  }
-);
+$(document).on({
+    mouseenter: function () {
+        $(this).find('#copyLinkTextfield-wrapper').fadeIn();
+    },
+    mouseleave: function () {
+        $(this).find('#copyLinkTextfield-wrapper').fadeOut();
+    }
+}, '#res-act-button-copy-url');
 
 //Copy cite content
-$("#copy-cite-btn").on('click', function(){
+//$("#copy-cite-btn").on('click', function(){
+$(document ).delegate( "#copy-cite-btn", "click", function(e) {    
     //var result = copyToClipboard(window.location.toString());
     var URLtoCopy = $('.cite-content.active').html();
     var result = copyToClipboard(URLtoCopy);
