@@ -20,7 +20,8 @@ $('.res-act-button-summary').click(function() {
 });
 
 //Toggle expert or basic view on single resource
-$('.res-act-button-expertview').click(function() {
+$(document ).delegate( ".res-act-button-expertview", "click", function(e) {
+//$('.res-act-button-expertview').click(function() {
 	if ($(this).hasClass('basic')) {
 		$('.single-res-overview-basic').hide();
 		$('.single-res-overview-expert').fadeIn(200);
@@ -37,7 +38,8 @@ $('.res-act-button-expertview').click(function() {
 });
 
 //Toggle tree-view or basic view on child resources section
-$('.res-act-button-treeview').click(function() {
+//$('.res-act-button-treeview').click(function() {
+$(document ).delegate( ".res-act-button-treeview", "click", function(e) {
 	if ($(this).hasClass('basic')) {
 		$('.children-overview-basic').hide();
 		$('.children-overview-tree').fadeIn(200);
