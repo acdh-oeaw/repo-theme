@@ -109,6 +109,7 @@ jQuery(function($) {
                 //$("#loader-div").show();
                 var url = $(this).attr('href');
                 if(url && url.indexOf("/browser/oeaw_detail/") >= 0 || url && url.indexOf("/browser//oeaw_detail/") >= 0 ) {
+                    $('html, body').animate({scrollTop: '0px'}, 0);
                     url = url.substring(url.indexOf("/browser/"));
                     $(".loader-div").show();
                     var id = url;
