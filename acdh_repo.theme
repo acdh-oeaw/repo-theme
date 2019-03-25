@@ -123,7 +123,8 @@ function acdh_repo_preprocess_breadcrumb(&$variables){
             $variables['breadcrumb'] = $breadcrumbArray;
             $prev = "";		
             foreach ($pieces as $piece) {
-                if ($piece) {	
+                if ($piece) {
+                    //check the actual site language
                     if(isset($_SESSION['language']) && $_SESSION['language'] == "de"){
                         $diss_res = "Ressourcen entdecken";
                         $detail_view = "Detaillierte Ansicht";
@@ -131,7 +132,6 @@ function acdh_repo_preprocess_breadcrumb(&$variables){
                         $diss_res = "Discover Resources";
                         $detail_view = "Detailed View";
                     }
-                    
                     if ($piece == "oeaw_keywordsearch" or $piece == "discover" or $piece == "oeaw_classes_result") {
                         $piece = $diss_res;
                         $url = "/browser/discover/root";
