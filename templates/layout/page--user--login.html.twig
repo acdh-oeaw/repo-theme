@@ -18,7 +18,7 @@
                         {% set myUrl = url('<front>')|raw %}
                         {% set myBaseUrl = myUrl["#markup"]|replace({"/browser/": ""}) %}
                         <br>
-                        <span class="res-title">Federated Login: </span>
+                        <span class="res-title">Click here to login with your federated account : </span>
                         <!-- <a class="shibboleth" href="{{ myBaseUrl }}/Shibboleth.sso/Login?target={{ myUrl["#markup"]|url_encode(true) }}"><i class="fa fa-sign-in" aria-hidden="true"></i></a>-->
                         <a class="shibboleth" href="/browser/federated_login"><i class="fa fa-sign-in" aria-hidden="true"></i></a>     
 		    </div>
