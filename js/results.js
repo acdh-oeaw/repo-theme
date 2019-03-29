@@ -39,7 +39,9 @@ $(document ).delegate( ".res-act-button-expertview", "click", function(e) {
 
 //Toggle tree-view or basic view on child resources section
 //$('.res-act-button-treeview').click(function() {
+/*
 $(document ).delegate( ".res-act-button-treeview", "click", function(e) {
+    console.log("designban");
 	if ($(this).hasClass('basic')) {
 		$('.children-overview-basic').hide();
 		$('.children-overview-tree').fadeIn(200);
@@ -54,7 +56,7 @@ $(document ).delegate( ".res-act-button-treeview", "click", function(e) {
   	$(this).children('span').text('Switch to Tree-View');		
 	}
 });
-
+*/
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
