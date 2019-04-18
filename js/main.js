@@ -5,12 +5,14 @@ jQuery(function($) {
 
     window.addEventListener('keydown', function(e)
     {
+        var rx = /INPUT|SELECT|TEXTAREA/i;
         if( e.keyCode == '8' )
         {
-            e.preventDefault();  // prevent backspace from going to browser
-                              // history
-            // add reload code
-            location.reload();
+            if(!rx.test(e.target.tagName) || e.target.disabled || e.target.readOnly ){
+                e.preventDefault();
+                // add reload code
+                location.reload();
+            }
         }
     }, false);
 
