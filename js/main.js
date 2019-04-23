@@ -98,6 +98,16 @@ jQuery(function($) {
             
         });
         
+        /** get the imprint **/
+        if(window.location.href.indexOf("browser/imprint") >= 0 ){
+            const imprintService = 'https://shared.acdh.oeaw.ac.at/acdh-common-assets/api/imprint.php?serviceID=7404';
+            $.get(imprintService, function(response){
+                response = "<h2><span class='title'>Imprint</span></h2><hr><br/>" + response;
+                document.getElementById('block-mainpagecontent').innerHTML = response;
+            });
+        };
+        
+        
         /**
          * If we are inside the oeaw_detail view, then we will just update the mainpagecontent div
          */
