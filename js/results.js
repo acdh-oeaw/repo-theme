@@ -3,20 +3,26 @@ jQuery(function ($) {
 /* You can safely use $ in this code block to reference jQuery */
 
 //Expand or collapse summary on results view
-$('.res-act-button-summary').click(function() {
-	if ($(this).hasClass('closed')) {
-		$(this).parent().siblings('.res-property-desc').fadeIn(200);
-	  	$(this).removeClass('closed');
-	  	$(this).addClass('open');
-	  	$(this).children('i').text('remove');
-	  	$(this).children('span').text('Hide Summary');
-	} else {
-		$(this).parent().siblings('.res-property-desc').fadeOut(200);
-	  	$(this).removeClass('open');
-	  	$(this).addClass('closed');
-	  	$(this).children('i').text('add');
-	  	$(this).children('span').text('Show Summary');		
-	}
+$('.res-act-button-summary').on('click', function(e) {
+    e.preventDefault();
+    if ($(this).hasClass('closed')) {
+        $(this).parent().siblings('.res-property-desc').fadeIn(200);
+        $('.res-act-button-summary .hide_summary').show();
+        $('.res-act-button-summary .show_summary').hide();
+        $(this).removeClass('closed');
+        $(this).addClass('open');
+        $(this).children('i').text('remove');
+        e.preventDefault();
+    } else {
+        $('.res-act-button-summary .hide_summary').hide();
+        $('.res-act-button-summary .show_summary').show();
+        $(this).parent().siblings('.res-property-desc').fadeOut(200);
+        $(this).removeClass('open');
+        $(this).addClass('closed');
+        $(this).children('i').text('add');
+        e.preventDefault();
+    }
+    e.preventDefault();
 });
 
 //Toggle expert or basic view on single resource
@@ -319,6 +325,10 @@ $( document ).ready(function() {
     var lastArg = args[args.length-1];
     var preLastArg = args[args.length-2];
     var breadcrumbSearchInfo = "";
+
+
+    $('.res-act-button-summary .hide_summary').hide();
+
 
     //Results per page setting comparison from cookies
     var resultsPerPageSetting = getCookie("resultsPerPage");

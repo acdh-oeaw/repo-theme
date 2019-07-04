@@ -111,8 +111,7 @@ jQuery(function($) {
         /**
          * If we are inside the oeaw_detail view, then we will just update the mainpagecontent div
          */
-        //&& window.location.href.indexOf("ajax=1") >= 0
-        //jq2( document ).delegate( ".getChildView", "click", function(e) {
+        
         if(window.location.href.indexOf("browser/oeaw_detail/") >= 0 ){
             //block-mainpagecontent
             
