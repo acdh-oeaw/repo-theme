@@ -3,7 +3,8 @@ jQuery(function ($) {
 /* You can safely use $ in this code block to reference jQuery */
 
 //Expand or collapse summary on results view
-$('.res-act-button-summary').on('click', function(e) {
+$(document ).delegate( ".res-act-button-summary", "click", function(e) {
+//$('.res-act-button-summary').on('click', function(e) {
     e.preventDefault();
     if ($(this).hasClass('closed')) {
         $(this).parent().siblings('.res-property-desc').fadeIn(200);
