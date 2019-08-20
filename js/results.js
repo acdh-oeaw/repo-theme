@@ -34,13 +34,13 @@ $(document ).delegate( ".res-act-button-expertview", "click", function(e) {
 		$('.single-res-overview-expert').fadeIn(200);
 	  	$(this).removeClass('basic');
 	  	$(this).addClass('expert');
-	  	$(this).children('span').text('Switch to Basic-View');
+	  	$(this).children('span').text(Drupal.t('Switch to Basic-View'));
 	} else {
 		$('.single-res-overview-expert').hide();
 		$('.single-res-overview-basic').fadeIn(200);
 	  	$(this).removeClass('expert');
 	  	$(this).addClass('basic');
-	  	$(this).children('span').text('Switch to Expert-View');		
+	  	$(this).children('span').text(Drupal.t('Switch to Expert-View'));
 	}
 });
 
