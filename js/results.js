@@ -410,26 +410,26 @@ $( document ).ready(function() {
 
 	//Metavalue field
     var metaValueField = getParameterByName('words');
-	if (metaValueField) {
-		$("input[name='metavalue']").val(metaValueField);
-		breadcrumbSearchInfo += ' containing: "' + metaValueField + '"';
-	}
+    if (metaValueField) {
+            $("input[name='metavalue']").val(metaValueField);
+            breadcrumbSearchInfo += ' containing: "' + metaValueField + '"';
+    }
 
-	//Date of Publication field
-	var minDate = getParameterByName('mindate');
-	var maxDate = getParameterByName('maxdate');
-	if (minDate || maxDate) {
-		if (minDate != '19000101') {
-			var minDate = minDate.insertAt(4, ",").insertAt(7, ",");
-			$('#edit-date-start-date').datepicker('setDate', new Date(minDate));
-			minDate = minDate.replace(/,/g , "/");
-			breadcrumbSearchInfo += ' from ' + minDate;
-		}
-		var maxDate = maxDate.insertAt(4, ",").insertAt(7, ",");
-		$('#edit-date-end-date').datepicker('setDate', new Date(maxDate));
-		maxDate = maxDate.replace(/,/g , "/");
-		breadcrumbSearchInfo += ' until ' + maxDate;
-	}
+    //Date of Publication field
+    var minDate = getParameterByName('mindate');
+    var maxDate = getParameterByName('maxdate');
+    if (minDate || maxDate) {
+            if (minDate != '19000101') {
+                    var minDate = minDate.insertAt(4, ",").insertAt(7, ",");
+                    $('#edit-date-start-date').datepicker('setDate', new Date(minDate));
+                    minDate = minDate.replace(/,/g , "/");
+                    breadcrumbSearchInfo += ' from ' + minDate;
+            }
+            var maxDate = maxDate.insertAt(4, ",").insertAt(7, ",");
+            $('#edit-date-end-date').datepicker('setDate', new Date(maxDate));
+            maxDate = maxDate.replace(/,/g , "/");
+            breadcrumbSearchInfo += ' until ' + maxDate;
+    }
 	
     if (breadcrumbSearchInfo) {
     	breadcrumbSearchInfo = '<a href="'+currentURL+'">Searched for' + breadcrumbSearchInfo + '</a>';
@@ -524,8 +524,14 @@ $("form#sks-form").submit(function(event){
 	if (!urlParams) {
     	urlParams = "root";
 	}
-
-	window.location.href = '/browser/discover/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
+        var bgSearch = $('input[name="bgSearch"]:checked').length;
+        
+        if(bgSearch) {
+            window.location.href = '/browser/search/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
+        }else {
+            window.location.href = '/browser/discover/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
+        }
+	
 });
 
 
