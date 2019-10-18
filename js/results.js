@@ -328,6 +328,9 @@ $( document ).ready(function() {
     var breadcrumbSearchInfo = "";
 
 
+    if (currentURL.indexOf("/browser/search/") >= 0) {
+        $( ".bgSearch" ).prop( "checked", true );
+    }
     $('.res-act-button-summary .hide_summary').hide();
 
 
@@ -410,26 +413,26 @@ $( document ).ready(function() {
 
 	//Metavalue field
     var metaValueField = getParameterByName('words');
-    if (metaValueField) {
-            $("input[name='metavalue']").val(metaValueField);
-            breadcrumbSearchInfo += ' containing: "' + metaValueField + '"';
-    }
+	if (metaValueField) {
+		$("input[name='metavalue']").val(metaValueField);
+		breadcrumbSearchInfo += ' containing: "' + metaValueField + '"';
+	}
 
-    //Date of Publication field
-    var minDate = getParameterByName('mindate');
-    var maxDate = getParameterByName('maxdate');
-    if (minDate || maxDate) {
-            if (minDate != '19000101') {
-                    var minDate = minDate.insertAt(4, ",").insertAt(7, ",");
-                    $('#edit-date-start-date').datepicker('setDate', new Date(minDate));
-                    minDate = minDate.replace(/,/g , "/");
-                    breadcrumbSearchInfo += ' from ' + minDate;
-            }
-            var maxDate = maxDate.insertAt(4, ",").insertAt(7, ",");
-            $('#edit-date-end-date').datepicker('setDate', new Date(maxDate));
-            maxDate = maxDate.replace(/,/g , "/");
-            breadcrumbSearchInfo += ' until ' + maxDate;
-    }
+	//Date of Publication field
+	var minDate = getParameterByName('mindate');
+	var maxDate = getParameterByName('maxdate');
+	if (minDate || maxDate) {
+		if (minDate != '19000101') {
+			var minDate = minDate.insertAt(4, ",").insertAt(7, ",");
+			$('#edit-date-start-date').datepicker('setDate', new Date(minDate));
+			minDate = minDate.replace(/,/g , "/");
+			breadcrumbSearchInfo += ' from ' + minDate;
+		}
+		var maxDate = maxDate.insertAt(4, ",").insertAt(7, ",");
+		$('#edit-date-end-date').datepicker('setDate', new Date(maxDate));
+		maxDate = maxDate.replace(/,/g , "/");
+		breadcrumbSearchInfo += ' until ' + maxDate;
+	}
 	
     if (breadcrumbSearchInfo) {
     	breadcrumbSearchInfo = '<a href="'+currentURL+'">Searched for' + breadcrumbSearchInfo + '</a>';
@@ -480,7 +483,13 @@ $("form#sks-form").submit(function(event){
 		metaValueField = metaValueField.replace(/\s/g, '+');
 		if (metaValueField.includes('type=') || metaValueField.includes('words=') || metaValueField.includes('mindate=') || metaValueField.includes('maxdate=')) {
 			urlParams += metaValueField;
-			window.location.href = '/browser/discover/' + urlParams + '/' + resultsPerPageSetting + '/1';
+                        //new BG search selected
+                        if($( ".bgSearch" ).is(":checked")) {
+                            window.location.href = '/browser/search/' + urlParams + '/' + resultsPerPageSetting + '/1';
+                        }else {
+                            window.location.href = '/browser/discover/' + urlParams + '/' + resultsPerPageSetting + '/1';
+                        }
+			
 		} else {
 			urlParams += 'words=' + metaValueField;
 		}
@@ -524,9 +533,8 @@ $("form#sks-form").submit(function(event){
 	if (!urlParams) {
     	urlParams = "root";
 	}
-        var bgSearch = $('input[name="bgSearch"]:checked').length;
-        
-        if(bgSearch) {
+        //new BG search selected
+        if($( ".bgSearch" ).is(":checked")) {
             window.location.href = '/browser/search/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
         }else {
             window.location.href = '/browser/discover/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
