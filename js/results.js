@@ -29,41 +29,21 @@ $(document ).delegate( ".res-act-button-summary", "click", function(e) {
 //Toggle expert or basic view on single resource
 $(document ).delegate( ".res-act-button-expertview", "click", function(e) {
 //$('.res-act-button-expertview').click(function() {
-	if ($(this).hasClass('basic')) {
-		$('.single-res-overview-basic').hide();
-		$('.single-res-overview-expert').fadeIn(200);
-	  	$(this).removeClass('basic');
-	  	$(this).addClass('expert');
-	  	$(this).children('span').text(Drupal.t('Switch to Basic-View'));
-	} else {
-		$('.single-res-overview-expert').hide();
-		$('.single-res-overview-basic').fadeIn(200);
-	  	$(this).removeClass('expert');
-	  	$(this).addClass('basic');
-	  	$(this).children('span').text(Drupal.t('Switch to Expert-View'));
-	}
+    if ($(this).hasClass('basic')) {
+        $('.single-res-overview-basic').hide();
+        $('.single-res-overview-expert').fadeIn(200);
+        $(this).removeClass('basic');
+        $(this).addClass('expert');
+        $(this).children('span').text(Drupal.t('Switch to Basic-View'));
+    } else {
+        $('.single-res-overview-expert').hide();
+        $('.single-res-overview-basic').fadeIn(200);
+        $(this).removeClass('expert');
+        $(this).addClass('basic');
+        $(this).children('span').text(Drupal.t('Switch to Expert-View'));
+    }
 });
 
-//Toggle tree-view or basic view on child resources section
-//$('.res-act-button-treeview').click(function() {
-/*
-$(document ).delegate( ".res-act-button-treeview", "click", function(e) {
-    console.log("designban");
-	if ($(this).hasClass('basic')) {
-		$('.children-overview-basic').hide();
-		$('.children-overview-tree').fadeIn(200);
-  	$(this).removeClass('basic');
-  	$(this).addClass('tree');
-  	$(this).children('span').text('Switch to List-View');
-	} else {
-		$('.children-overview-tree').hide();
-		$('.children-overview-basic').fadeIn(200);
-  	$(this).removeClass('tree');
-  	$(this).addClass('basic');
-  	$(this).children('span').text('Switch to Tree-View');		
-	}
-});
-*/
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -93,85 +73,85 @@ var yorFilterVisibility = getCookie("yorFilterVisibility");
 var dorFilterVisibility = getCookie("dorFilterVisibility");
 
 if (searchFilterVisibility == 'hidden') {
-	$('#block-search > h3').addClass('closed');
-	$('#sks-form > .form-item-metavalue').hide();
-	$('#edit-actions').hide();
+    $('#block-search > h3').addClass('closed');
+    $('#sks-form > .form-item-metavalue').hide();
+    $('#edit-actions').hide();
 }
 
 if (torFilterVisibility == 'hidden') {
-  	$('#edit-searchbox-types--wrapper > legend > .fieldset-legend').addClass('closed');
-  	$('#edit-searchbox-types--wrapper > legend').next('.fieldset-wrapper').hide();
+    $('#edit-searchbox-types--wrapper > legend > .fieldset-legend').addClass('closed');
+    $('#edit-searchbox-types--wrapper > legend').next('.fieldset-wrapper').hide();
 }
 
 if (yorFilterVisibility == 'hidden') {
-  	$('#edit-datebox-years--wrapper > legend > .fieldset-legend').addClass('closed');
-  	$('#edit-datebox-years--wrapper > legend').next('.fieldset-wrapper').hide();
+    $('#edit-datebox-years--wrapper > legend > .fieldset-legend').addClass('closed');
+    $('#edit-datebox-years--wrapper > legend').next('.fieldset-wrapper').hide();
 }
 
 if (dorFilterVisibility == 'hidden') {
-  	$('.extra-filter-heading').addClass('closed');
-  	$('.extra-filter-heading').next().hide();
-  	$('.extra-filter-heading').next().next().hide();
+    $('.extra-filter-heading').addClass('closed');
+    $('.extra-filter-heading').next().hide();
+    $('.extra-filter-heading').next().next().hide();
 } else if (dorFilterVisibility == 'visible') {
-  	$('.extra-filter-heading').removeClass('closed');
-  	$('.extra-filter-heading').next().show();
-  	$('.extra-filter-heading').next().next().show();
+    $('.extra-filter-heading').removeClass('closed');
+    $('.extra-filter-heading').next().show();
+    $('.extra-filter-heading').next().next().show();
 }
 //Show the search block after comforming the user cookies
 $('#block-search').fadeIn(100);
 
 //Toggle Search filter
 $('#block-search > h3').click(function() {
-	if ($(this).hasClass('closed')) {
-	  	$(this).removeClass('closed');
-	  	$('#sks-form > .form-item-metavalue').fadeIn(200);
-	  	setCookie("searchFilterVisibility", 'visible', 180);
-	} else {
-	  	$(this).addClass('closed');
-	  	$('#sks-form > .form-item-metavalue').fadeOut(200);
-	  	setCookie("searchFilterVisibility", 'hidden', 180);
-	}
+    if ($(this).hasClass('closed')) {
+        $(this).removeClass('closed');
+        $('#sks-form > .form-item-metavalue').fadeIn(200);
+        setCookie("searchFilterVisibility", 'visible', 180);
+    } else {
+        $(this).addClass('closed');
+        $('#sks-form > .form-item-metavalue').fadeOut(200);
+        setCookie("searchFilterVisibility", 'hidden', 180);
+    }
 });
 
 //Toggle ToR filter
 $('#edit-searchbox-types--wrapper > legend > .fieldset-legend').click(function() {
-	if ($(this).hasClass('closed')) {
-	  	$(this).removeClass('closed');
-	  	$(this).parent().next('.fieldset-wrapper').fadeIn(200);
-	  	setCookie("torFilterVisibility", 'visible', 180);
-	} else {
-	  	$(this).addClass('closed');
-	  	$(this).parent().next('.fieldset-wrapper').fadeOut(200);
-	  	setCookie("torFilterVisibility", 'hidden', 180);
-	}
+    if ($(this).hasClass('closed')) {
+        $(this).removeClass('closed');
+        $(this).parent().next('.fieldset-wrapper').fadeIn(200);
+        setCookie("torFilterVisibility", 'visible', 180);
+    } else {
+        $(this).addClass('closed');
+        $(this).parent().next('.fieldset-wrapper').fadeOut(200);
+        setCookie("torFilterVisibility", 'hidden', 180);
+    }
 });
 
 //Toggle year of resource filter
 $('#edit-datebox-years--wrapper > legend > .fieldset-legend').click(function() {
-	if ($(this).hasClass('closed')) {
-	  	$(this).removeClass('closed');
-	  	$(this).parent().next('.fieldset-wrapper').fadeIn(200);
-	  	setCookie("yorFilterVisibility", 'visible', 180);
-	} else {
-	  	$(this).addClass('closed');
-	  	$(this).parent().next('.fieldset-wrapper').fadeOut(200);
-	  	setCookie("yorFilterVisibility", 'hidden', 180);
-	}
+    if ($(this).hasClass('closed')) {
+        $(this).removeClass('closed');
+        $(this).parent().next('.fieldset-wrapper').fadeIn(200);
+        setCookie("yorFilterVisibility", 'visible', 180);
+    } else {
+        $(this).addClass('closed');
+        $(this).parent().next('.fieldset-wrapper').fadeOut(200);
+        setCookie("yorFilterVisibility", 'hidden', 180);
+    }
 });
 
 //Toggle DoP filter
 $('.extra-filter-heading').click(function() {
-	if ($(this).hasClass('closed')) {
-	  	$(this).removeClass('closed');
-	  	$(this).next().fadeIn(200);
-	  	$(this).next().next().fadeIn(200);
-	  	setCookie("dorFilterVisibility", 'visible', 180);
-	} else {
-	  	$(this).addClass('closed');
-	  	$(this).next().fadeOut(200);
-	  	$(this).next().next().fadeOut(200);
-	  	setCookie("dorFilterVisibility", 'hidden', 180);
-	}
+    if ($(this).hasClass('closed')) {
+        $(this).removeClass('closed');
+        $(this).next().fadeIn(200);
+        $(this).next().next().fadeIn(200);
+        setCookie("dorFilterVisibility", 'visible', 180);
+    } else {
+        $(this).addClass('closed');
+        $(this).next().fadeOut(200);
+        $(this).next().next().fadeOut(200);
+        setCookie("dorFilterVisibility", 'hidden', 180);
+    }
 });
 
 
@@ -269,39 +249,47 @@ function modifyUrlParams(limit="10", sort="titleasc")
 
 //Results info-bar pagination selectors on click
 $('#resPerPageButton > a').on('click', function(event){
-	event.preventDefault();
-	var currentSetting = $('#resPerPageButton').html();
-	var selectedSetting = $(this).html();
-        
-	if (currentSetting != selectedSetting) {
-            var sorting = $('#sortByButton').html();
-            var sort = "titledesc";
-            $.each( $('#sortByDropdown > a'), function(key, val) {
-                if(val.text == sorting){
-                    sort = val.dataset.value;
-                }
-            });
-           
-            $('#resPerPageButton').html(selectedSetting);
-            setCookie("resultsPerPage", selectedSetting, 180);
-            var newUrl = modifyUrlParams(selectedSetting, sort);
-            window.location.href = newUrl;
-	}
+    event.preventDefault();
+    var currentSetting = $('#resPerPageButton').html();
+    var currentSettingBottom = $('#resPerPageButton').html();
+    var selectedSetting = $(this).html();
+
+    if (currentSetting != selectedSetting || currentSettingBottom != selectedSetting) {
+        var sorting = $('#sortByButton').html();        
+        var sort = "titledesc";
+        $.each( $('#sortByDropdown > a'), function(key, val) {
+            if(val.text == sorting){
+                sort = val.dataset.value;
+            }
+        });
+
+        $('#resPerPageButton').html(selectedSetting);
+        $('#resPerPageButtonBottom').html(selectedSetting);
+        setCookie("resultsPerPage", selectedSetting, 180);
+        var newUrl = modifyUrlParams(selectedSetting, sort);
+        window.location.href = newUrl;
+    }
 });
 
 $('#sortByDropdown > a').on('click', function(event){
-	event.preventDefault();
-	var currentSetting = $('#sortByButton').html();
-	var selectedSetting = $(this).html();
-	if (currentSetting != selectedSetting) {
-            $('#sortByButton').html(selectedSetting);
-            selectedSetting = $(this).data("value");
-            var pageLimit = $('#resPerPageButton').html();
-            setCookie("resultsOrder", selectedSetting, 180);
-	    var newUrl = modifyUrlParams(pageLimit, selectedSetting);
-            window.location.href = newUrl;
-	}
+    event.preventDefault();
+    var currentSetting = $('#sortByButton').html();
+    var currentSettingBottom = $('#sortByButtonBottom').html();
+    var selectedSetting = $(this).html();
+    console.log(currentSetting);
+    console.log(selectedSetting);
+    if (currentSetting != selectedSetting || currentSettingBottom != selectedSetting) {
+        $('#sortByButton').html(selectedSetting);
+        $('#sortByButtonBottom').html(selectedSetting);
+        selectedSetting = $(this).data("value");
+        var pageLimit = $('#resPerPageButton').html();
+        setCookie("resultsOrder", selectedSetting, 180);
+        var newUrl = modifyUrlParams(pageLimit, selectedSetting);
+        window.location.href = newUrl;
+    }
 })
+
+
 
 //Getting the params from url
 function getParameterByName(name, url) {
@@ -337,16 +325,18 @@ $( document ).ready(function() {
     //Results per page setting comparison from cookies
     var resultsPerPageSetting = getCookie("resultsPerPage");
     if (!resultsPerPageSetting) {
-	    resultsPerPageSetting = 10;
+        resultsPerPageSetting = 10;
     }
     $('#resPerPageButton').html((resultsPerPageSetting));
+    $('#resPerPageButtonBottom').html((resultsPerPageSetting));
     //Order setting comparison from cookies
     var resultsOrderSetting = getCookie("resultsOrder");
     if (!resultsOrderSetting) {
-	    resultsOrderSetting = 'datedesc';
+        resultsOrderSetting = 'datedesc';
     }
-	var resultsOrderText = $("#sortByDropdown").find("[data-value='" + resultsOrderSetting + "']").html();
-	$('#sortByButton').html((resultsOrderText));
+    var resultsOrderText = $("#sortByDropdown").find("[data-value='" + resultsOrderSetting + "']").html();
+    $('#sortByButton').html((resultsOrderText));
+    $('#sortByButtonBottom').html((resultsOrderText));
     
 	//If it's only discover add root arg
     if (lastArg == "discover") {
@@ -354,12 +344,12 @@ $( document ).ready(function() {
     }
     //If it's the special url "url" let's add the sorting and paging arguments
     if (lastArg == 'root') {
-	    window.history.replaceState( {} , "", currentURL+"/"+resultsOrderSetting+"/"+resultsPerPageSetting+"/1" );
+        window.history.replaceState( {} , "", currentURL+"/"+resultsOrderSetting+"/"+resultsPerPageSetting+"/1" );
     }
     //If it's the detail page, add child pagination args
     if (preLastArg == 'oeaw_detail') {
-	    //window.history.replaceState( {} , "", currentURL+"/10/1" );
-	    //$('body').addClass('detailPage');
+        //window.history.replaceState( {} , "", currentURL+"/10/1" );
+        //$('body').addClass('detailPage');
     }
     //Prepare pagination urls
     $('.pagination-item').each(function() {
@@ -373,66 +363,66 @@ $( document ).ready(function() {
         $("#cookie-overlay").fadeIn(100);
     }
 
-	//Check if we can append selected query to filters
-	//ToR field
-	var selectedTypes = getParameterByName('type');
-	if (selectedTypes) {
-		selectedTypes = selectedTypes.toLowerCase();
-		if (selectedTypes.includes(" or ")) {
-			selectedTypes = selectedTypes.split(" or ");
-			selectedTypes.forEach(function(type) {
-				var checkboxID = '#edit-searchbox-types-' + type;
-			    $(checkboxID).prop('checked', true);
-			});
-			var typesString = selectedTypes.join(" or ");
-			breadcrumbSearchInfo += ' types: "' + typesString + '"';
-		} else {
-			var checkboxID = '#edit-searchbox-types-' + selectedTypes;
-		    $(checkboxID).prop('checked', true);
-		    breadcrumbSearchInfo += ' type: "' + selectedTypes + '"';
-		}
-	}
+    //Check if we can append selected query to filters
+    //ToR field
+    var selectedTypes = getParameterByName('type');
+    if (selectedTypes) {
+        selectedTypes = selectedTypes.toLowerCase();
+        if (selectedTypes.includes(" or ")) {
+            selectedTypes = selectedTypes.split(" or ");
+            selectedTypes.forEach(function(type) {
+                var checkboxID = '#edit-searchbox-types-' + type;
+                $(checkboxID).prop('checked', true);
+            });
+            var typesString = selectedTypes.join(" or ");
+            breadcrumbSearchInfo += ' types: "' + typesString + '"';
+        } else {
+            var checkboxID = '#edit-searchbox-types-' + selectedTypes;
+            $(checkboxID).prop('checked', true);
+            breadcrumbSearchInfo += ' type: "' + selectedTypes + '"';
+        }
+    }
 
-	//Year of resource field
-	var selectedYears = getParameterByName('years');
-	if (selectedYears) {
-		if (selectedYears.includes(" ")) {
-			selectedYears = selectedYears.split(" ");
-			selectedYears.forEach(function(year) {
-				var checkboxID = '#edit-datebox-years-' + year;
-			    $(checkboxID).prop('checked', true);
-			});
-			var yearsString = selectedYears.join(" or ");
-			breadcrumbSearchInfo += ' from years ' + yearsString;
-		} else {
-			var checkboxID = '#edit-datebox-years-' + selectedYears;
-		    $(checkboxID).prop('checked', true);
-		    breadcrumbSearchInfo += ' from year ' + selectedYears;
-		}
-	}
+    //Year of resource field
+    var selectedYears = getParameterByName('years');
+    if (selectedYears) {
+        if (selectedYears.includes(" ")) {
+            selectedYears = selectedYears.split(" ");
+            selectedYears.forEach(function(year) {
+                var checkboxID = '#edit-datebox-years-' + year;
+                $(checkboxID).prop('checked', true);
+            });
+            var yearsString = selectedYears.join(" or ");
+            breadcrumbSearchInfo += ' from years ' + yearsString;
+        } else {
+            var checkboxID = '#edit-datebox-years-' + selectedYears;
+            $(checkboxID).prop('checked', true);
+            breadcrumbSearchInfo += ' from year ' + selectedYears;
+        }
+    }
 
 	//Metavalue field
     var metaValueField = getParameterByName('words');
-	if (metaValueField) {
-		$("input[name='metavalue']").val(metaValueField);
-		breadcrumbSearchInfo += ' containing: "' + metaValueField + '"';
-	}
+    if (metaValueField) {
+        $("input[name='metavalue']").val(metaValueField);
+        breadcrumbSearchInfo += ' containing: "' + metaValueField + '"';
+    }
 
-	//Date of Publication field
-	var minDate = getParameterByName('mindate');
-	var maxDate = getParameterByName('maxdate');
-	if (minDate || maxDate) {
-		if (minDate != '19000101') {
-			var minDate = minDate.insertAt(4, ",").insertAt(7, ",");
-			$('#edit-date-start-date').datepicker('setDate', new Date(minDate));
-			minDate = minDate.replace(/,/g , "/");
-			breadcrumbSearchInfo += ' from ' + minDate;
-		}
-		var maxDate = maxDate.insertAt(4, ",").insertAt(7, ",");
-		$('#edit-date-end-date').datepicker('setDate', new Date(maxDate));
-		maxDate = maxDate.replace(/,/g , "/");
-		breadcrumbSearchInfo += ' until ' + maxDate;
-	}
+    //Date of Publication field
+    var minDate = getParameterByName('mindate');
+    var maxDate = getParameterByName('maxdate');
+    if (minDate || maxDate) {
+        if (minDate != '19000101') {
+            var minDate = minDate.insertAt(4, ",").insertAt(7, ",");
+            $('#edit-date-start-date').datepicker('setDate', new Date(minDate));
+            minDate = minDate.replace(/,/g , "/");
+            breadcrumbSearchInfo += ' from ' + minDate;
+        }
+        var maxDate = maxDate.insertAt(4, ",").insertAt(7, ",");
+        $('#edit-date-end-date').datepicker('setDate', new Date(maxDate));
+        maxDate = maxDate.replace(/,/g , "/");
+        breadcrumbSearchInfo += ' until ' + maxDate;
+    }
 	
     if (breadcrumbSearchInfo) {
     	breadcrumbSearchInfo = '<a href="'+currentURL+'">Searched for' + breadcrumbSearchInfo + '</a>';
@@ -450,96 +440,98 @@ $( document ).ready(function() {
 
 //Get today's date in the preferred format
 function todaysDate() {
-	var today = new Date();
-	var dd = today.getDate();
-	var mm = today.getMonth()+1; //January is 0!
-	
-	var yyyy = today.getFullYear();
-	if(dd<10){
-	    dd='0'+dd;
-	} 
-	if(mm<10){
-	    mm='0'+mm;
-	} 
-	var today = yyyy+''+''+mm+''+dd;
-	return today;
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+
+    var yyyy = today.getFullYear();
+    if(dd<10){
+        dd='0'+dd;
+    } 
+    if(mm<10){
+        mm='0'+mm;
+    } 
+    var today = yyyy+''+''+mm+''+dd;
+    return today;
 }
 
 //Complex search-form behaviour
 $("form#sks-form").submit(function(event){
+    
     event.preventDefault();
     var resultsPerPageSetting = getCookie("resultsPerPage");
     if (!resultsPerPageSetting) {
-	    resultsPerPageSetting = 10;
+        resultsPerPageSetting = 10;
     }
     var resultsOrderSetting = getCookie("resultsOrder");
     if (!resultsOrderSetting) {
-	    resultsOrderSetting = 'datedesc';
+        resultsOrderSetting = 'datedesc';
     }
     var urlParams = "";
-	//Metavalue field
+    //Metavalue field
     var metaValueField = $("input[name='metavalue']").val();
-	if (metaValueField) {
-		metaValueField = metaValueField.replace(/\s/g, '+');
-		if (metaValueField.includes('type=') || metaValueField.includes('words=') || metaValueField.includes('mindate=') || metaValueField.includes('maxdate=')) {
-			urlParams += metaValueField;
-                        //new BG search selected
-                        if($( ".bgSearch" ).is(":checked")) {
-                            window.location.href = '/browser/search/' + urlParams + '/' + resultsPerPageSetting + '/1';
-                        }else {
-                            window.location.href = '/browser/discover/' + urlParams + '/' + resultsPerPageSetting + '/1';
-                        }
-			
-		} else {
-			urlParams += 'words=' + metaValueField;
-		}
-	}
-	//ToR field
-	var selectedTypes = [];
-	$('.searchbox_types input:checked').each(function() {
-	    selectedTypes.push($(this).attr('value'));
-	});
-	if (selectedTypes.length > 0) {
-		if (urlParams) { urlParams += '&'; }
-		urlParams += 'type=' + selectedTypes.join('+or+');
-	}
-	
-	//Year of resource field
-	var selectedYears = [];
-	$('.datebox_years input:checked').each(function() {
-	    selectedYears.push($(this).attr('value'));
-	});
-	if (selectedYears.length > 0) {
-		if (urlParams) { urlParams += '&'; }
-		urlParams += 'years=' + selectedYears.join('+');
-	}
-	
-	//Date of Publication field
-	var minDate = $("input[name='date_start_date']").val();
-	var maxDate = $("input[name='date_end_date']").val();
-	if (minDate || maxDate) {
-		if (urlParams) { urlParams += '&'; }
-		if (minDate) {
-			var dateParts = minDate.split('/');
-			var minDate = dateParts[2] + dateParts[1] + dateParts[0];
-		} else { var minDate = '19000101'; }
-		if (maxDate) {
-			var dateParts = maxDate.split('/');
-			var maxDate = dateParts[2] + dateParts[1] + dateParts[0];
-		} else { var maxDate = todaysDate(); }
-		urlParams += 'mindate=' + minDate + '&maxdate=' + maxDate;
-	}
-	
-	if (!urlParams) {
-    	urlParams = "root";
-	}
-        //new BG search selected
-        if($( ".bgSearch" ).is(":checked")) {
-            window.location.href = '/browser/search/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
-        }else {
-            window.location.href = '/browser/discover/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
+    
+    if (metaValueField) {
+        metaValueField = metaValueField.replace(/\s/g, '+');
+        if (metaValueField.includes('type=') || metaValueField.includes('words=') || metaValueField.includes('mindate=') || metaValueField.includes('maxdate=')) {
+            urlParams += metaValueField;
+            
+            if($( ".bgSearch" ).is(":checked")) {
+                window.location.href = '/browser/search/' + urlParams + '/' + resultsPerPageSetting + '/1';
+            }else {
+                window.location.href = '/browser/discover/' + urlParams + '/' + resultsPerPageSetting + '/1';
+            }
+
+        } else {
+            urlParams += 'words=' + metaValueField;
         }
-	
+    }
+    //ToR field
+    var selectedTypes = [];
+    $('.searchbox_types input:checked').each(function() {
+        selectedTypes.push($(this).attr('value'));
+    });
+    if (selectedTypes.length > 0) {
+        if (urlParams) { urlParams += '&'; }
+        urlParams += 'type=' + selectedTypes.join('+or+');
+    }
+
+    //Year of resource field
+    var selectedYears = [];
+    $('.datebox_years input:checked').each(function() {
+        selectedYears.push($(this).attr('value'));
+    });
+    if (selectedYears.length > 0) {
+        if (urlParams) { urlParams += '&'; }
+        urlParams += 'years=' + selectedYears.join('+');
+    }
+
+    //Date of Publication field
+    var minDate = $("input[name='date_start_date']").val();
+    var maxDate = $("input[name='date_end_date']").val();
+    if (minDate || maxDate) {
+        if (urlParams) { urlParams += '&'; }
+        if (minDate) {
+            var dateParts = minDate.split('/');
+            var minDate = dateParts[2] + dateParts[1] + dateParts[0];
+        } else { var minDate = '19000101'; }
+        if (maxDate) {
+            var dateParts = maxDate.split('/');
+            var maxDate = dateParts[2] + dateParts[1] + dateParts[0];
+        } else { var maxDate = todaysDate(); }
+        urlParams += 'mindate=' + minDate + '&maxdate=' + maxDate;
+    }
+
+
+    if (!urlParams) {
+    urlParams = "root";
+    }
+    //new BG search selected
+    if($( ".bgSearch" ).is(":checked")) {
+        window.location.href = '/browser/search/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
+    }else {
+        window.location.href = '/browser/discover/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
+    }
 });
 
 
@@ -583,8 +575,8 @@ $(document ).delegate( "#copyLinkInputBtn", "click", function(e) {
     var URLtoCopy = $(this).data("copyuri");
     var result = copyToClipboard(URLtoCopy);
     if (result) {
-	    $('#copyLinkTextfield').val("URL is copied to clipboard!");
-	    setTimeout(function() { $('#copyLinkTextfield').val(URLtoCopy); }, 2000);
+        $('#copyLinkTextfield').val("URL is copied to clipboard!");
+        setTimeout(function() { $('#copyLinkTextfield').val(URLtoCopy); }, 2000);
     }
 });
 
@@ -604,9 +596,9 @@ $(document ).delegate( "#copy-cite-btn", "click", function(e) {
     var URLtoCopy = $('.cite-content.active').html();
     var result = copyToClipboard(URLtoCopy);
     if (result) {
-	    //alert('copied');
-	    $('#copy-cite-btn-confirmation').fadeIn(100);
-	    setTimeout(function() { $('#copy-cite-btn-confirmation').fadeOut(200); }, 2000);
+        //alert('copied');
+        $('#copy-cite-btn-confirmation').fadeIn(100);
+        setTimeout(function() { $('#copy-cite-btn-confirmation').fadeOut(200); }, 2000);
     }
 });
 
