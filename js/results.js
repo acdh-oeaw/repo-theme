@@ -270,14 +270,13 @@ $('#resPerPageButton > a').on('click', function(event){
         window.location.href = newUrl;
     }
 });
-
-$('#sortByDropdown > a').on('click', function(event){
+$(document).delegate( '#sortByDropdown > a', "click", function(event) {
+//$('#sortByDropdown > a').on('click', function(event){
     event.preventDefault();
     var currentSetting = $('#sortByButton').html();
     var currentSettingBottom = $('#sortByButtonBottom').html();
     var selectedSetting = $(this).html();
-    console.log(currentSetting);
-    console.log(selectedSetting);
+    
     if (currentSetting != selectedSetting || currentSettingBottom != selectedSetting) {
         $('#sortByButton').html(selectedSetting);
         $('#sortByButtonBottom').html(selectedSetting);
@@ -322,6 +321,16 @@ $( document ).ready(function() {
     $('.res-act-button-summary .hide_summary').hide();
 
 
+    //extend the search dropdown for the persons
+    if (currentURL.indexOf("type=Person") >= 0) {
+        if (currentURL.indexOf("+or+Person") != 0 || currentURL.indexOf("Person+or+") != 0) {
+            $('#sortByDropdown').append('<a class="dropdown-item" data-value="lastnameasc" href="#">Last Name (ASC)</a>');
+            $('#sortByDropdown').append('<a class="dropdown-item" data-value="lastnamedesc" href="#">Last Name (DESC)</a>');
+            $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="lastnameasc" href="#">Last Name (ASC)</a>');
+            $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="lastnamedesc" href="#">Last Name (DESC)</a>');
+        }
+    }
+
     //Results per page setting comparison from cookies
     var resultsPerPageSetting = getCookie("resultsPerPage");
     if (!resultsPerPageSetting) {
@@ -332,7 +341,7 @@ $( document ).ready(function() {
     //Order setting comparison from cookies
     var resultsOrderSetting = getCookie("resultsOrder");
     if (!resultsOrderSetting) {
-        resultsOrderSetting = 'datedesc';
+        resultsOrderSetting = 'titleasc';
     }
     var resultsOrderText = $("#sortByDropdown").find("[data-value='" + resultsOrderSetting + "']").html();
     $('#sortByButton').html((resultsOrderText));
@@ -465,7 +474,7 @@ $("form#sks-form").submit(function(event){
     }
     var resultsOrderSetting = getCookie("resultsOrder");
     if (!resultsOrderSetting) {
-        resultsOrderSetting = 'datedesc';
+        resultsOrderSetting = 'titleasc';
     }
     var urlParams = "";
     //Metavalue field
