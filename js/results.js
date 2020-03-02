@@ -322,14 +322,28 @@ $( document ).ready(function() {
 
 
     //extend the search dropdown for the persons
-    if (currentURL.indexOf("type=Person") >= 0) {
-        if (currentURL.indexOf("+or+Person") != 0 || currentURL.indexOf("Person+or+") != 0) {
-            $('#sortByDropdown').append('<a class="dropdown-item" data-value="lastnameasc" href="#">Last Name (ASC)</a>');
-            $('#sortByDropdown').append('<a class="dropdown-item" data-value="lastnamedesc" href="#">Last Name (DESC)</a>');
-            $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="lastnameasc" href="#">Last Name (ASC)</a>');
-            $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="lastnamedesc" href="#">Last Name (DESC)</a>');
-        }
+    if (currentURL.indexOf("type=Person/") >= 0 || currentURL.indexOf("type=Person&") >= 0) {
+        $('#sortByDropdown').append('<a class="dropdown-item" data-value="lastnameasc" href="#">Last Name (ASC)</a>');
+        $('#sortByDropdown').append('<a class="dropdown-item" data-value="lastnamedesc" href="#">Last Name (DESC)</a>');            
+        $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="lastnameasc" href="#">Last Name (ASC)</a>');
+        $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="lastnamedesc" href="#">Last Name (DESC)</a>');
     }
+    //extend the collection with 
+    if (currentURL.indexOf("type=Collection/") >= 0 || currentURL.indexOf("type=Collection&") >= 0) {
+        $('#sortByDropdown').append('<a class="dropdown-item" data-value="dateasc" href="#">Date (ASC)</a>');
+        $('#sortByDropdown').append('<a class="dropdown-item" data-value="datedesc" href="#">Date (DESC)</a>');
+        $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="dateasc" href="#">Date (ASC)</a>');
+        $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="datedesc" href="#">Date (DESC)</a>');
+    }
+    
+    if (currentURL.indexOf("discover/root") >= 0) {
+        $('#sortByDropdown').append('<a class="dropdown-item" data-value="dateasc" href="#">Date (ASC)</a>');
+        $('#sortByDropdown').append('<a class="dropdown-item" data-value="datedesc" href="#">Date (DESC)</a>');
+        $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="dateasc" href="#">Date (ASC)</a>');
+        $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="datedesc" href="#">Date (DESC)</a>');
+    }
+
+
 
     //Results per page setting comparison from cookies
     var resultsPerPageSetting = getCookie("resultsPerPage");
@@ -341,7 +355,11 @@ $( document ).ready(function() {
     //Order setting comparison from cookies
     var resultsOrderSetting = getCookie("resultsOrder");
     if (!resultsOrderSetting) {
-        resultsOrderSetting = 'titleasc';
+        if (currentURL.indexOf("discover/root") >= 0) {
+            resultsOrderSetting = 'datedesc';
+        }else {
+            resultsOrderSetting = 'titleasc';
+        }
     }
     var resultsOrderText = $("#sortByDropdown").find("[data-value='" + resultsOrderSetting + "']").html();
     $('#sortByButton').html((resultsOrderText));
@@ -466,7 +484,7 @@ function todaysDate() {
 
 //Complex search-form behaviour
 $("form#sks-form").submit(function(event){
-    
+    var currentURL = window.location.toString();
     event.preventDefault();
     var resultsPerPageSetting = getCookie("resultsPerPage");
     if (!resultsPerPageSetting) {
@@ -474,7 +492,11 @@ $("form#sks-form").submit(function(event){
     }
     var resultsOrderSetting = getCookie("resultsOrder");
     if (!resultsOrderSetting) {
-        resultsOrderSetting = 'titleasc';
+        if (currentURL.indexOf("discover/root") >= 0) {
+            resultsOrderSetting = 'datedesc';
+        }else {
+            resultsOrderSetting = 'titleasc';
+        }
     }
     var urlParams = "";
     //Metavalue field
