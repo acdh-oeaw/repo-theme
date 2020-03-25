@@ -265,7 +265,7 @@ $('#resPerPageButton > a').on('click', function(event){
 
         $('#resPerPageButton').html(selectedSetting);
         $('#resPerPageButtonBottom').html(selectedSetting);
-        setCookie("resultsPerPage", selectedSetting, 180);
+        setCookie("resultsPerPage", selectedSetting, 30);
         var newUrl = modifyUrlParams(selectedSetting, sort);
         window.location.href = newUrl;
     }
@@ -282,7 +282,7 @@ $(document).delegate( '#sortByDropdown > a', "click", function(event) {
         $('#sortByButtonBottom').html(selectedSetting);
         selectedSetting = $(this).data("value");
         var pageLimit = $('#resPerPageButton').html();
-        setCookie("resultsOrder", selectedSetting, 180);
+        setCookie("resultsOrder", selectedSetting, 30);
         var newUrl = modifyUrlParams(pageLimit, selectedSetting);
         window.location.href = newUrl;
     }
@@ -309,6 +309,7 @@ String.prototype.insertAt=function(index, string) {
 //Update the pagination selector depending on the url
 $( document ).ready(function() {
     var currentURL = window.location.toString();
+    
     var args = currentURL.split('/');
     var lastArg = args[args.length-1];
     var preLastArg = args[args.length-2];
@@ -343,18 +344,20 @@ $( document ).ready(function() {
         $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="datedesc" href="#">Date (DESC)</a>');
     }
 
-
-
     //Results per page setting comparison from cookies
     var resultsPerPageSetting = getCookie("resultsPerPage");
-    if (!resultsPerPageSetting) {
+    if(currentURL.endsWith('discover/root/') || currentURL.endsWith('discover/root')) {
+        resultsPerPageSetting = 10;
+    }else if (!resultsPerPageSetting) {
         resultsPerPageSetting = 10;
     }
     $('#resPerPageButton').html((resultsPerPageSetting));
     $('#resPerPageButtonBottom').html((resultsPerPageSetting));
     //Order setting comparison from cookies
     var resultsOrderSetting = getCookie("resultsOrder");
-    if (!resultsOrderSetting) {
+    if(currentURL.endsWith('discover/root/') || currentURL.endsWith('discover/root')) {
+        resultsOrderSetting = 'datedesc';
+    }else if (!resultsOrderSetting) {
         if (currentURL.indexOf("discover/root") >= 0) {
             resultsOrderSetting = 'datedesc';
         }else {
