@@ -1,0 +1,13 @@
+{
+    "name": "acdh-oeaw/arche-gui",
+    "description": "Drupal module to ACDH ARCHE repository",
+    "type": "drupal-theme",
+    "homepage": "https://github.com/acdh-oeaw/repo-theme",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Asil Çetin",
+            "email": "asil.cetin@oeaw.ac.at"
+        }
+    ]
+}
