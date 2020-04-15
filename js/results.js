@@ -27,22 +27,7 @@ $(document ).delegate( ".res-act-button-summary", "click", function(e) {
 });
 
 //Toggle expert or basic view on single resource
-$(document ).delegate( ".res-act-button-expertview", "click", function(e) {
-//$('.res-act-button-expertview').click(function() {
-    if ($(this).hasClass('basic')) {
-        $('.single-res-overview-basic').hide();
-        $('.single-res-overview-expert').fadeIn(200);
-        $(this).removeClass('basic');
-        $(this).addClass('expert');
-        $(this).children('span').text(Drupal.t('Switch to Basic-View'));
-    } else {
-        $('.single-res-overview-expert').hide();
-        $('.single-res-overview-basic').fadeIn(200);
-        $(this).removeClass('expert');
-        $(this).addClass('basic');
-        $(this).children('span').text(Drupal.t('Switch to Expert-View'));
-    }
-});
+
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -247,49 +232,6 @@ function modifyUrlParams(limit="10", sort="titleasc")
     return newUrl;
 }
 
-//Results info-bar pagination selectors on click
-$('#resPerPageButton > a').on('click', function(event){
-    event.preventDefault();
-    var currentSetting = $('#resPerPageButton').html();
-    var currentSettingBottom = $('#resPerPageButton').html();
-    var selectedSetting = $(this).html();
-
-    if (currentSetting != selectedSetting || currentSettingBottom != selectedSetting) {
-        var sorting = $('#sortByButton').html();        
-        var sort = "titledesc";
-        $.each( $('#sortByDropdown > a'), function(key, val) {
-            if(val.text == sorting){
-                sort = val.dataset.value;
-            }
-        });
-
-        $('#resPerPageButton').html(selectedSetting);
-        $('#resPerPageButtonBottom').html(selectedSetting);
-        setCookie("resultsPerPage", selectedSetting, 30);
-        var newUrl = modifyUrlParams(selectedSetting, sort);
-        window.location.href = newUrl;
-    }
-});
-$(document).delegate( '#sortByDropdown > a', "click", function(event) {
-//$('#sortByDropdown > a').on('click', function(event){
-    event.preventDefault();
-    var currentSetting = $('#sortByButton').html();
-    var currentSettingBottom = $('#sortByButtonBottom').html();
-    var selectedSetting = $(this).html();
-    
-    if (currentSetting != selectedSetting || currentSettingBottom != selectedSetting) {
-        $('#sortByButton').html(selectedSetting);
-        $('#sortByButtonBottom').html(selectedSetting);
-        selectedSetting = $(this).data("value");
-        var pageLimit = $('#resPerPageButton').html();
-        setCookie("resultsOrder", selectedSetting, 30);
-        var newUrl = modifyUrlParams(pageLimit, selectedSetting);
-        window.location.href = newUrl;
-    }
-})
-
-
-
 //Getting the params from url
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -309,7 +251,6 @@ String.prototype.insertAt=function(index, string) {
 //Update the pagination selector depending on the url
 $( document ).ready(function() {
     var currentURL = window.location.toString();
-    
     var args = currentURL.split('/');
     var lastArg = args[args.length-1];
     var preLastArg = args[args.length-2];
@@ -320,44 +261,17 @@ $( document ).ready(function() {
         $( ".bgSearch" ).prop( "checked", true );
     }
     $('.res-act-button-summary .hide_summary').hide();
-
-
-    //extend the search dropdown for the persons
-    if (currentURL.indexOf("type=Person/") >= 0 || currentURL.indexOf("type=Person&") >= 0) {
-        $('#sortByDropdown').append('<a class="dropdown-item" data-value="lastnameasc" href="#">Last Name (ASC)</a>');
-        $('#sortByDropdown').append('<a class="dropdown-item" data-value="lastnamedesc" href="#">Last Name (DESC)</a>');            
-        $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="lastnameasc" href="#">Last Name (ASC)</a>');
-        $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="lastnamedesc" href="#">Last Name (DESC)</a>');
-    }
-    //extend the collection with 
-    if (currentURL.indexOf("type=Collection/") >= 0 || currentURL.indexOf("type=Collection&") >= 0) {
-        $('#sortByDropdown').append('<a class="dropdown-item" data-value="dateasc" href="#">Date (ASC)</a>');
-        $('#sortByDropdown').append('<a class="dropdown-item" data-value="datedesc" href="#">Date (DESC)</a>');
-        $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="dateasc" href="#">Date (ASC)</a>');
-        $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="datedesc" href="#">Date (DESC)</a>');
-    }
-    
-    if (currentURL.indexOf("discover/root") >= 0) {
-        $('#sortByDropdown').append('<a class="dropdown-item" data-value="dateasc" href="#">Date (ASC)</a>');
-        $('#sortByDropdown').append('<a class="dropdown-item" data-value="datedesc" href="#">Date (DESC)</a>');
-        $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="dateasc" href="#">Date (ASC)</a>');
-        $('.sortByDropdownBottom').append('<a class="dropdown-item" data-value="datedesc" href="#">Date (DESC)</a>');
-    }
-
     //Results per page setting comparison from cookies
+    /*
     var resultsPerPageSetting = getCookie("resultsPerPage");
-    if(currentURL.endsWith('discover/root/') || currentURL.endsWith('discover/root')) {
-        resultsPerPageSetting = 10;
-    }else if (!resultsPerPageSetting) {
+    if (!resultsPerPageSetting) {
         resultsPerPageSetting = 10;
     }
     $('#resPerPageButton').html((resultsPerPageSetting));
     $('#resPerPageButtonBottom').html((resultsPerPageSetting));
     //Order setting comparison from cookies
     var resultsOrderSetting = getCookie("resultsOrder");
-    if(currentURL.endsWith('discover/root/') || currentURL.endsWith('discover/root')) {
-        resultsOrderSetting = 'datedesc';
-    }else if (!resultsOrderSetting) {
+    if (!resultsOrderSetting) {
         if (currentURL.indexOf("discover/root") >= 0) {
             resultsOrderSetting = 'datedesc';
         }else {
@@ -371,16 +285,18 @@ $( document ).ready(function() {
 	//If it's only discover add root arg
     if (lastArg == "discover") {
         window.history.replaceState( {} , "", currentURL+"/root/"+resultsOrderSetting+"/"+resultsPerPageSetting+"/1" );
-    }
+    }*/
     //If it's the special url "url" let's add the sorting and paging arguments
+    /*
     if (lastArg == 'root') {
-        window.history.replaceState( {} , "", currentURL+"/"+resultsOrderSetting+"/"+resultsPerPageSetting+"/1" );
+        resultsOrderSetting = 'datedesc';
+        resultsPerPageSetting = 10;
+        var resultsOrderText = $("#sortByDropdown").find("[data-value='" + resultsOrderSetting + "']").html();
+        $('#sortByButton').html(resultsOrderText);
+        $('#sortByButtonBottom').html(resultsOrderText);
+        window.history.replaceState( {} , "", currentURL+"/datedesc/10/1" );
     }
-    //If it's the detail page, add child pagination args
-    if (preLastArg == 'oeaw_detail') {
-        //window.history.replaceState( {} , "", currentURL+"/10/1" );
-        //$('body').addClass('detailPage');
-    }
+    
     //Prepare pagination urls
     $('.pagination-item').each(function() {
         var pageUrl = $(this).children('a').data("pagination");
@@ -392,7 +308,7 @@ $( document ).ready(function() {
     if (!cookiesAccepted) {
         $("#cookie-overlay").fadeIn(100);
     }
-
+    */
     //Check if we can append selected query to filters
     //ToR field
     var selectedTypes = getParameterByName('type');
