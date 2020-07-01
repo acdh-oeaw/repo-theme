@@ -321,11 +321,11 @@ $( document ).ready(function() {
                 $(checkboxID).prop('checked', true);
             });
             var typesString = selectedTypes.join(" or ");
-            breadcrumbSearchInfo += ' types: "' + typesString + '"';
+            breadcrumbSearchInfo += ' ' + Drupal.t('types') + ': "' + typesString + '"';
         } else {
             var checkboxID = '#edit-searchbox-types-' + selectedTypes;
             $(checkboxID).prop('checked', true);
-            breadcrumbSearchInfo += ' type: "' + selectedTypes + '"';
+            breadcrumbSearchInfo += ' ' + Drupal.t('type') + ': "' + selectedTypes + '"';
         }
     }
 
@@ -351,7 +351,7 @@ $( document ).ready(function() {
     var metaValueField = getParameterByName('words');
     if (metaValueField) {
         $("input[name='metavalue']").val(metaValueField);
-        breadcrumbSearchInfo += ' containing: "' + metaValueField + '"';
+        breadcrumbSearchInfo += Drupal.t('containing')+': "' + metaValueField + '"';
     }
 
     //Date of Publication field
@@ -371,7 +371,7 @@ $( document ).ready(function() {
     }
 	
     if (breadcrumbSearchInfo) {
-    	breadcrumbSearchInfo = '<a href="'+currentURL+'">Searched for' + breadcrumbSearchInfo + '</a>';
+    	breadcrumbSearchInfo = '<a href="'+currentURL+'">'+Drupal.t("Searched for") + breadcrumbSearchInfo + '</a>';
     	$('#searchInfo').html('/ '+breadcrumbSearchInfo);
     }
 
