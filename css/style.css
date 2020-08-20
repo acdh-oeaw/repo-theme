@@ -495,7 +495,10 @@ nav.breadcrumb {
   align-items: flex-start;
   word-break: break-word; }
   .single-res-overview-basic .res-property .res-prop-label {
-    min-width: 142px; }
+    width: 160px;
+  word-break: break-word;}
+  .single-res-overview-basic .res-property .res-prop-value {
+  word-break: break-word;}
   .single-res-overview-basic .res-property i {
     padding-top: 4px; }
 
