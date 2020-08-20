@@ -493,14 +493,18 @@ nav.breadcrumb {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  word-break: break-word; }
-  .single-res-overview-basic .res-property .res-prop-label {
-    width: 160px;
-  word-break: break-word;}
-  .single-res-overview-basic .res-property .res-prop-value {
-  word-break: break-word;}
-  .single-res-overview-basic .res-property i {
-    padding-top: 4px; }
+  word-break: break-word; 
+}
+.single-res-overview-basic .res-property .res-prop-label {
+    min-width: 160px;
+    word-break: break-word;
+}
+.single-res-overview-basic .res-property .res-prop-value {
+  word-break: break-word;
+}
+.single-res-overview-basic .res-property i {
+    padding-top: 4px; 
+}
 
 .res-act-button {
   display: inline-block;
