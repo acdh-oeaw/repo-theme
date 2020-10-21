@@ -3,7 +3,6 @@ description: A custom theme for ACDH-Repo
 base theme: stable
 type: theme
 core_version_requirement: ^8.8 || ^9
-version: 8.x-0.7
 
 libraries:
   - acdh_repo/global-styling
