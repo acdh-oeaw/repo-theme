@@ -107,9 +107,10 @@ function acdh_repo_preprocess_status_messages(&$variables) {
 function acdh_repo_preprocess_breadcrumb(&$variables){
     if(($node = \Drupal::routeMatch()->getParameter('node')) && $variables['breadcrumb']){
 		// Adding the title of the drupal page in the breadcrumb
+        
         $variables['breadcrumb'][] = array(
             'text' => $node->getTitle(),
-            'url' => $node->URL()
+            'url' => ($node->toLink()->getUrl()->toString()) ? $node->toLink()->getUrl()->toString() : ""
         );
 
     } else {
