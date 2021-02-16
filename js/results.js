@@ -350,12 +350,9 @@ jQuery(function ($) {
             resultsPerPageSetting = 10;
         }
         var resultsOrderSetting = getCookie("resultsOrder");
-        if (!resultsOrderSetting) {
-            if (currentURL.indexOf("discover/root") >= 0) {
-                resultsOrderSetting = 'datedesc';
-            } else {
-                resultsOrderSetting = 'titleasc';
-            }
+        
+        if (!resultsOrderSetting) {           
+            resultsOrderSetting = 'titleasc';
         }
         var urlParams = "";
         //Metavalue field
