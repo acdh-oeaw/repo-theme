@@ -486,7 +486,7 @@ jQuery(function ($) {
 //$("#copy-cite-btn").on('click', function(){
     $(document).delegate("#copy-cite-btn", "click", function (e) {
         //var result = copyToClipboard(window.location.toString());
-        var URLtoCopy = $('.cite-content.active').html();
+        var URLtoCopy = $('.cite-content.selected').text();
         var result = copyToClipboard(URLtoCopy);
         if (result) {
             //alert('copied');
