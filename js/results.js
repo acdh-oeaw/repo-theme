@@ -7,17 +7,24 @@ jQuery(function ($) {
 //$('.res-act-button-summary').on('click', function(e) {
         e.preventDefault();
         if ($(this).hasClass('closed')) {
-            $(this).parent().siblings('.res-property-desc').fadeIn(200);
-            $('.res-act-button-summary .hide_summary').show();
-            $('.res-act-button-summary .show_summary').hide();
+            
+            let id = e.target.id;
+            let acdhid = id.replace('show_summary_', '');
+            let summary_id = id.replace('show_summary_', 'summary_');
+            $('#'+summary_id).show();
+            $('#'+id).hide();
+            $('#res-property-desc-' + acdhid).fadeIn(200);
             $(this).removeClass('closed');
             $(this).addClass('open');
             $(this).children('i').text('remove');
             e.preventDefault();
         } else {
-            $('.res-act-button-summary .hide_summary').hide();
-            $('.res-act-button-summary .show_summary').show();
-            $(this).parent().siblings('.res-property-desc').fadeOut(200);
+            let id = e.target.id;
+            let acdhid = id.replace('summary_', '');
+            let summary_id = id.replace('summary_', 'show_summary_');
+            $('#'+summary_id).show();
+            $('#'+id).hide();
+            $('#res-property-desc-'+acdhid).fadeOut(200);
             $(this).removeClass('open');
             $(this).addClass('closed');
             $(this).children('i').text('add');
