@@ -255,17 +255,19 @@ jQuery(function ($) {
         //ToR field
         var selectedTypes = getParameterByName('type');
         if (selectedTypes) {
-            selectedTypes = selectedTypes.toLowerCase();
+            selectedTypes = selectedTypes.toLowerCase();            
             if (selectedTypes.includes(" or ")) {
                 selectedTypes = selectedTypes.split(" or ");
                 selectedTypes.forEach(function (type) {
+                    type = type.replace(":", "");
                     var checkboxID = '#edit-searchbox-types-' + type;
                     $(checkboxID).prop('checked', true);
                 });
                 var typesString = selectedTypes.join(" or ");
                 breadcrumbSearchInfo += ' ' + Drupal.t('types') + ': "' + typesString + '"';
             } else {
-                var checkboxID = '#edit-searchbox-types-' + selectedTypes;
+                let type = selectedTypes.replace(":", "");
+                var checkboxID = '#edit-searchbox-types-' + type;
                 $(checkboxID).prop('checked', true);
                 breadcrumbSearchInfo += ' ' + Drupal.t('type') + ': "' + selectedTypes + '"';
             }
