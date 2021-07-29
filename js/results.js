@@ -2,17 +2,16 @@ jQuery(function ($) {
     "use strict";
     /* You can safely use $ in this code block to reference jQuery */
 
-//Expand or collapse summary on results view
+    //Expand or collapse summary on results view
     $(document).delegate(".res-act-button-summary", "click", function (e) {
-//$('.res-act-button-summary').on('click', function(e) {
         e.preventDefault();
         if ($(this).hasClass('closed')) {
-            
+
             let id = e.target.id;
             let acdhid = id.replace('show_summary_', '');
             let summary_id = id.replace('show_summary_', 'summary_');
-            $('#'+summary_id).show();
-            $('#'+id).hide();
+            $('#' + summary_id).show();
+            $('#' + id).hide();
             $('#res-property-desc-' + acdhid).fadeIn(200);
             $(this).removeClass('closed');
             $(this).addClass('open');
@@ -22,9 +21,9 @@ jQuery(function ($) {
             let id = e.target.id;
             let acdhid = id.replace('summary_', '');
             let summary_id = id.replace('summary_', 'show_summary_');
-            $('#'+summary_id).show();
-            $('#'+id).hide();
-            $('#res-property-desc-'+acdhid).fadeOut(200);
+            $('#' + summary_id).show();
+            $('#' + id).hide();
+            $('#res-property-desc-' + acdhid).fadeOut(200);
             $(this).removeClass('open');
             $(this).addClass('closed');
             $(this).children('i').text('add');
@@ -33,7 +32,7 @@ jQuery(function ($) {
         e.preventDefault();
     });
 
-//Toggle expert or basic view on single resource
+    //Toggle expert or basic view on single resource
 
 
     function setCookie(cname, cvalue, exdays) {
@@ -59,40 +58,180 @@ jQuery(function ($) {
         return "";
     }
 
+
     var searchFilterVisibility = getCookie("searchFilterVisibility");
+    var porFilterVisibility = getCookie("porFilterVisibility");
     var torFilterVisibility = getCookie("torFilterVisibility");
+    var corFilterVisibility = getCookie("corFilterVisibility");
     var yorFilterVisibility = getCookie("yorFilterVisibility");
     var dorFilterVisibility = getCookie("dorFilterVisibility");
 
-    if (searchFilterVisibility == 'hidden') {
-        $('#block-search > h3').addClass('closed');
-        $('#sks-form > .form-item-metavalue').hide();
-        $('#edit-actions').hide();
+    searchBoxFilters();
+
+    function searchBoxFilters() {
+
+        if (searchFilterVisibility == 'hidden') {
+            $('#block-search > h3').addClass('closed');
+            $('#sks-form > .form-item-metavalue').hide();
+            $('#edit-actions').hide();
+        }
+
+        if (torFilterVisibility == 'hidden') {
+            $('#edit-searchbox-types--wrapper > legend > .fieldset-legend').addClass('closed');
+            $('#edit-searchbox-types--wrapper > legend').next('.fieldset-wrapper').hide();
+        }
+        
+        if (porFilterVisibility == 'hidden') {
+            $('#edit-payloadsearch--wrapper > legend > .fieldset-legend').addClass('closed');
+            $('#edit-payloadsearch--wrapper > legend').next('.fieldset-wrapper').hide();
+        }
+
+        if (corFilterVisibility == 'hidden') {
+            $('#edit-searchbox-category--wrapper > legend > .fieldset-legend').addClass('closed');
+            $('#edit-searchbox-category--wrapper > legend').next('.fieldset-wrapper').hide();
+        }
+
+        if (yorFilterVisibility == 'hidden') {
+            $('#edit-datebox-years--wrapper > legend > .fieldset-legend').addClass('closed');
+            $('#edit-datebox-years--wrapper > legend').next('.fieldset-wrapper').hide();
+        }
+
+        if (dorFilterVisibility == 'hidden') {
+            $('.extra-filter-heading').addClass('closed');
+            $('.extra-filter-heading').next().hide();
+            $('.extra-filter-heading').next().next().hide();
+        } else if (dorFilterVisibility == 'visible') {
+            $('.extra-filter-heading').removeClass('closed');
+            $('.extra-filter-heading').next().show();
+            $('.extra-filter-heading').next().next().show();
+        }
+        //Show the search block after comforming the user cookies
+        $('#block-search').fadeIn(100);
     }
 
-    if (torFilterVisibility == 'hidden') {
-        $('#edit-searchbox-types--wrapper > legend > .fieldset-legend').addClass('closed');
-        $('#edit-searchbox-types--wrapper > legend').next('.fieldset-wrapper').hide();
-    }
+    
+    
+    /********************** EVENTS *************************************/
+    
+    //Complex search-form behaviour
+    $("form#sks-form").submit(function (event) {
+        var currentURL = window.location.toString();
+        event.preventDefault();
+        var resultsPerPageSetting = getCookie("resultsPerPage");
+        if (!resultsPerPageSetting) {
+            resultsPerPageSetting = 10;
+        }
+        var resultsOrderSetting = getCookie("resultsOrder");
 
-    if (yorFilterVisibility == 'hidden') {
-        $('#edit-datebox-years--wrapper > legend > .fieldset-legend').addClass('closed');
-        $('#edit-datebox-years--wrapper > legend').next('.fieldset-wrapper').hide();
-    }
+        if (!resultsOrderSetting) {
+            resultsOrderSetting = 'titleasc';
+        }
+        var urlParams = "";
+        //Metavalue field
+        var metaValueField = $("input[name='metavalue']").val();
 
-    if (dorFilterVisibility == 'hidden') {
-        $('.extra-filter-heading').addClass('closed');
-        $('.extra-filter-heading').next().hide();
-        $('.extra-filter-heading').next().next().hide();
-    } else if (dorFilterVisibility == 'visible') {
-        $('.extra-filter-heading').removeClass('closed');
-        $('.extra-filter-heading').next().show();
-        $('.extra-filter-heading').next().next().show();
-    }
-//Show the search block after comforming the user cookies
-    $('#block-search').fadeIn(100);
+        if (metaValueField) {
+            metaValueField = metaValueField.replace(/\s/g, '+');
+            if (metaValueField.includes('type=') || metaValueField.includes('words=') || metaValueField.includes('mindate=')
+                    || metaValueField.includes('maxdate=') || metaValueField.includes('payload=')) {
+                urlParams += metaValueField;
+                window.location.href = '/browser/search/' + urlParams + '/' + resultsPerPageSetting + '/1';
+            } else {
+                urlParams += 'words=' + metaValueField;
+            }
+        }
+        //ToR field
+        var selectedTypes = [];
+        $('.searchbox_types input:checked').each(function () {
+            selectedTypes.push($(this).attr('value'));
+        });
+        if (selectedTypes.length > 0) {
+            if (urlParams) {
+                urlParams += '&';
+            }
+            urlParams += 'type=' + selectedTypes.join('+or+');
+        }
 
-//Toggle Search filter
+        var selectedCategories = [];
+        $('.searchbox_category input:checked').each(function () {
+            selectedCategories.push($(this).attr('value'));
+        });
+        if (selectedCategories.length > 0) {
+            if (urlParams) {
+                urlParams += '&';
+            }
+            urlParams += 'category=' + selectedCategories.join('+or+');
+        }
+
+        //Year of resource field
+        var selectedYears = [];
+        $('.datebox_years input:checked').each(function () {
+            selectedYears.push($(this).attr('value'));
+        });
+        if (selectedYears.length > 0) {
+            if (urlParams) {
+                urlParams += '&';
+            }
+            urlParams += 'years=' + selectedYears.join('+');
+        }
+
+        //Date of Publication field
+        var minDate = $("input[name='date_start_date']").val();
+        var maxDate = $("input[name='date_end_date']").val();
+        if (minDate || maxDate) {
+            if (urlParams) {
+                urlParams += '&';
+            }
+            if (minDate) {
+                var dateParts = minDate.split('/');
+                var minDate = dateParts[2] + dateParts[1] + dateParts[0];
+            } else {
+                var minDate = '19000101';
+            }
+            if (maxDate) {
+                var dateParts = maxDate.split('/');
+                var maxDate = dateParts[2] + dateParts[1] + dateParts[0];
+            } else {
+                var maxDate = todaysDate();
+            }
+            urlParams += 'mindate=' + minDate + '&maxdate=' + maxDate;
+        }
+        //add the payload checkbox value  
+
+        var payload = $('.payloadSearch:checkbox:checked').length > 0;
+        urlParams += '&payload=' + payload;
+
+        if (!urlParams) {
+            urlParams = "root";
+        }
+
+        window.location.href = '/browser/search/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
+    });
+    
+    //Show apply-search button on ToR select
+    $('#edit-searchbox-types > .form-item').on('click', function () {
+        $('#edit-actions').fadeIn(300);
+    });
+
+    $('#edit-searchbox-category > .form-item').on('click', function () {
+        $('#edit-actions').fadeIn(300);
+    });
+
+    $('#edit-payloadsearch-yes').on('click', function () {
+        $('#edit-actions').fadeIn(300);
+    });
+
+    //Show apply-search button on ToR select
+    $('#edit-datebox-years > .form-item').on('click', function () {
+        $('#edit-actions').fadeIn(300);
+    });
+
+    //Show apply-search button on search text keyup
+    $("#edit-metavalue").keyup(function (e) {
+        $('#edit-actions').fadeIn(300);
+    });
+    
+    //Toggle Search filter
     $('#block-search > h3').click(function () {
         if ($(this).hasClass('closed')) {
             $(this).removeClass('closed');
@@ -105,7 +244,7 @@ jQuery(function ($) {
         }
     });
 
-//Toggle ToR filter
+    //Toggle ToR filter
     $('#edit-searchbox-types--wrapper > legend > .fieldset-legend').click(function () {
         if ($(this).hasClass('closed')) {
             $(this).removeClass('closed');
@@ -117,8 +256,35 @@ jQuery(function ($) {
             setCookie("torFilterVisibility", 'hidden', 180);
         }
     });
+    
+    //Toggle payload filter
+    $('#edit-payloadsearch--wrapper > legend > .fieldset-legend').click(function () {
+        if ($(this).hasClass('closed')) {
+            $(this).removeClass('closed');
+            $(this).parent().next('.fieldset-wrapper').fadeIn(200);
+            setCookie("porFilterVisibility", 'visible', 180);
+        } else {
+            $(this).addClass('closed');
+            $(this).parent().next('.fieldset-wrapper').fadeOut(200);
+            setCookie("porFilterVisibility", 'hidden', 180);
+        }
+    });
 
-//Toggle year of resource filter
+
+    //Toggle CoR filter
+    $('#edit-searchbox-category--wrapper > legend > .fieldset-legend').click(function () {
+        if ($(this).hasClass('closed')) {
+            $(this).removeClass('closed');
+            $(this).parent().next('.fieldset-wrapper').fadeIn(200);
+            setCookie("corFilterVisibility", 'visible', 180);
+        } else {
+            $(this).addClass('closed');
+            $(this).parent().next('.fieldset-wrapper').fadeOut(200);
+            setCookie("corFilterVisibility", 'hidden', 180);
+        }
+    });
+
+    //Toggle year of resource filter
     $('#edit-datebox-years--wrapper > legend > .fieldset-legend').click(function () {
         if ($(this).hasClass('closed')) {
             $(this).removeClass('closed');
@@ -131,7 +297,7 @@ jQuery(function ($) {
         }
     });
 
-//Toggle DoP filter
+    //Toggle DoP filter
     $('.extra-filter-heading').click(function () {
         if ($(this).hasClass('closed')) {
             $(this).removeClass('closed');
@@ -145,7 +311,6 @@ jQuery(function ($) {
             setCookie("dorFilterVisibility", 'hidden', 180);
         }
     });
-
 
     $("#edit-date-start-date")
             .datepicker({
@@ -202,27 +367,42 @@ jQuery(function ($) {
         }
 
     });
+    
+     //Accept cookies
+    $(".cookie-accept-btn").on('click', function () {
+        setCookie("cookiesAccepted", true, 180);
+        $("#cookie-overlay").fadeOut(100);
+    });
 
-//Show apply-search button on ToR select
-    $('#edit-searchbox-types > .form-item').on('click', function () {
-        $('#edit-actions').fadeIn(300);
+    //$("#copy-url-tooltip").tooltip(); 
+    $(document).delegate("#copyLinkInputBtn", "click", function (e) {
+        var URLtoCopy = $(this).data("copyuri");
+        var result = copyToClipboard(URLtoCopy);
+        if (result) {
+            $('#copyLinkTextfield').val("URL is copied to clipboard!");
+            setTimeout(function () {
+                $('#copyLinkTextfield').val(URLtoCopy);
+            }, 2000);
+        }
     });
     
-    $('#edit-payloadsearch-yes').on('click', function () {
-        $('#edit-actions').fadeIn(300);
+    //Copy cite content
+    $(document).delegate("#copy-cite-btn", "click", function (e) {
+        var URLtoCopy = $('.cite-content.selected').text();
+        var result = copyToClipboard(URLtoCopy);
+        if (result) {
+            //alert('copied');
+            $('#copy-cite-btn-confirmation').fadeIn(100);
+            setTimeout(function () {
+                $('#copy-cite-btn-confirmation').fadeOut(200);
+            }, 2000);
+        }
     });
-
-//Show apply-search button on ToR select
-    $('#edit-datebox-years > .form-item').on('click', function () {
-        $('#edit-actions').fadeIn(300);
-    });
-
-//Show apply-search button on search text keyup
-    $("#edit-metavalue").keyup(function (e) {
-        $('#edit-actions').fadeIn(300);
-    });
-
-//Getting the params from url
+    
+    
+    /******************************** FUNCTIONS ***********************************/
+    
+    //Getting the params from url
     function getParameterByName(name, url) {
         if (!url)
             url = window.location.href;
@@ -236,12 +416,60 @@ jQuery(function ($) {
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
 
-//Reformating date from url to datepicker value
+    //Reformating date from url to datepicker value
     String.prototype.insertAt = function (index, string) {
         return this.substr(0, index) + string + this.substr(index);
     }
 
-//Update the pagination selector depending on the url
+    //Get today's date in the preferred format
+    function todaysDate() {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        var today = yyyy + '' + '' + mm + '' + dd;
+        return today;
+    }
+    
+    
+    // Copies a string to the clipboard. Must be called from within an event handler such as click.
+    // May return false if it failed, but this is not always
+    // possible. Browser support for Chrome 43+, Firefox 42+, Edge and IE 10+, Safari 10+.
+    // IE: The clipboard feature may be disabled by an adminstrator. By default a prompt is
+    // shown the first time the clipboard is used (per session).
+    function copyToClipboard(text) {
+        if (window.clipboardData && window.clipboardData.setData) {
+            // IE specific code path to prevent textarea being shown while dialog is visible.
+            return clipboardData.setData("Text", text);
+
+        } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+            var textarea = document.createElement("textarea");
+            textarea.textContent = text;
+            textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+            } catch (ex) {
+                console.warn("Copy to clipboard failed.", ex);
+                return false;
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+    }
+
+
+    /*** READY ***/
+    
+    //Update the pagination selector depending on the url
     $(document).ready(function () {
         var currentURL = window.location.toString();
         var args = currentURL.split('/');
@@ -250,12 +478,12 @@ jQuery(function ($) {
         var breadcrumbSearchInfo = "";
 
         $('.res-act-button-summary .hide_summary').hide();
-        
+
         //Check if we can append selected query to filters
         //ToR field
         var selectedTypes = getParameterByName('type');
         if (selectedTypes) {
-            selectedTypes = selectedTypes.toLowerCase();            
+            selectedTypes = selectedTypes.toLowerCase();
             if (selectedTypes.includes(" or ")) {
                 selectedTypes = selectedTypes.split(" or ");
                 selectedTypes.forEach(function (type) {
@@ -273,11 +501,31 @@ jQuery(function ($) {
             }
         }
 
+        var selectedCategory = getParameterByName('category');
+        if (selectedCategory) {
+            selectedCategory = selectedCategory.toLowerCase();
+            if (selectedCategory.includes(" or ")) {
+                selectedCategory = selectedCategory.split(" or ");
+                selectedCategory.forEach(function (category) {
+                    category = category.replace(":", "");
+                    var checkboxID = '#edit-searchbox-types-' + category;
+                    $(checkboxID).prop('checked', true);
+                });
+                var categoryString = selectedCategory.join(" or ");
+                breadcrumbSearchInfo += ' ' + Drupal.t('category') + ': "' + categoryString + '"';
+            } else {
+                let category = selectedCategory.replace(":", "");
+                var checkboxID = '#edit-searchbox-types-' + category;
+                $(checkboxID).prop('checked', true);
+                breadcrumbSearchInfo += ' ' + Drupal.t('category') + ': "' + selectedCategory + '"';
+            }
+        }
+
         var selectedPayload = getParameterByName('payload');
         if (selectedPayload == 'true') {
             $('#edit-payloadsearch-yes').prop('checked', true);
-        } 
-        
+        }
+
         //Year of resource field
         var selectedYears = getParameterByName('years');
         if (selectedYears) {
@@ -333,155 +581,6 @@ jQuery(function ($) {
 
     });
 
-//Get today's date in the preferred format
-    function todaysDate() {
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1; //January is 0!
-
-        var yyyy = today.getFullYear();
-        if (dd < 10) {
-            dd = '0' + dd;
-        }
-        if (mm < 10) {
-            mm = '0' + mm;
-        }
-        var today = yyyy + '' + '' + mm + '' + dd;
-        return today;
-    }
-
-//Complex search-form behaviour
-    $("form#sks-form").submit(function (event) {
-        var currentURL = window.location.toString();
-        event.preventDefault();
-        var resultsPerPageSetting = getCookie("resultsPerPage");
-        if (!resultsPerPageSetting) {
-            resultsPerPageSetting = 10;
-        }
-        var resultsOrderSetting = getCookie("resultsOrder");
-        
-        if (!resultsOrderSetting) {           
-            resultsOrderSetting = 'titleasc';
-        }
-        var urlParams = "";
-        //Metavalue field
-        var metaValueField = $("input[name='metavalue']").val();
-
-        if (metaValueField) {
-            metaValueField = metaValueField.replace(/\s/g, '+');
-            if (metaValueField.includes('type=') || metaValueField.includes('words=') || metaValueField.includes('mindate=') 
-                    || metaValueField.includes('maxdate=') || metaValueField.includes('payload=')) {
-                urlParams += metaValueField;
-                window.location.href = '/browser/search/' + urlParams + '/' + resultsPerPageSetting + '/1';
-            } else {
-                urlParams += 'words=' + metaValueField;
-            }
-        }
-        //ToR field
-        var selectedTypes = [];
-        $('.searchbox_types input:checked').each(function () {
-            selectedTypes.push($(this).attr('value'));
-        });
-        if (selectedTypes.length > 0) {
-            if (urlParams) {
-                urlParams += '&';
-            }
-            urlParams += 'type=' + selectedTypes.join('+or+');
-        }
-
-        //Year of resource field
-        var selectedYears = [];
-        $('.datebox_years input:checked').each(function () {
-            selectedYears.push($(this).attr('value'));
-        });
-        if (selectedYears.length > 0) {
-            if (urlParams) {
-                urlParams += '&';
-            }
-            urlParams += 'years=' + selectedYears.join('+');
-        }
-        
-        //Date of Publication field
-        var minDate = $("input[name='date_start_date']").val();
-        var maxDate = $("input[name='date_end_date']").val();
-        if (minDate || maxDate) {
-            if (urlParams) {
-                urlParams += '&';
-            }
-            if (minDate) {
-                var dateParts = minDate.split('/');
-                var minDate = dateParts[2] + dateParts[1] + dateParts[0];
-            } else {
-                var minDate = '19000101';
-            }
-            if (maxDate) {
-                var dateParts = maxDate.split('/');
-                var maxDate = dateParts[2] + dateParts[1] + dateParts[0];
-            } else {
-                var maxDate = todaysDate();
-            }
-            urlParams += 'mindate=' + minDate + '&maxdate=' + maxDate;
-        }
-        //add the payload checkbox value  
-        
-        var payload = $('.payloadSearch:checkbox:checked').length > 0;
-        urlParams += '&payload='+payload;
-
-        if (!urlParams) {
-            urlParams = "root";
-        }
-        
-        window.location.href = '/browser/search/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
-    });
-
-
-// Copies a string to the clipboard. Must be called from within an event handler such as click.
-// May return false if it failed, but this is not always
-// possible. Browser support for Chrome 43+, Firefox 42+, Edge and IE 10+, Safari 10+.
-// IE: The clipboard feature may be disabled by an adminstrator. By default a prompt is
-// shown the first time the clipboard is used (per session).
-    function copyToClipboard(text) {
-        if (window.clipboardData && window.clipboardData.setData) {
-            // IE specific code path to prevent textarea being shown while dialog is visible.
-            return clipboardData.setData("Text", text);
-
-        } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
-            var textarea = document.createElement("textarea");
-            textarea.textContent = text;
-            textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-                return document.execCommand("copy");  // Security exception may be thrown by some browsers.
-            } catch (ex) {
-                console.warn("Copy to clipboard failed.", ex);
-                return false;
-            } finally {
-                document.body.removeChild(textarea);
-            }
-        }
-    }
-
-//Accept cookies
-    $(".cookie-accept-btn").on('click', function () {
-        setCookie("cookiesAccepted", true, 180);
-        $("#cookie-overlay").fadeOut(100);
-    });
-
-//$("#copy-url-tooltip").tooltip(); 
-    $(document).delegate("#copyLinkInputBtn", "click", function (e) {
-//$("#copyLinkInputBtn").on('click', function(){
-        //var result = copyToClipboard(window.location.toString());
-        var URLtoCopy = $(this).data("copyuri");
-        var result = copyToClipboard(URLtoCopy);
-        if (result) {
-            $('#copyLinkTextfield').val("URL is copied to clipboard!");
-            setTimeout(function () {
-                $('#copyLinkTextfield').val(URLtoCopy);
-            }, 2000);
-        }
-    });
-
     $(document).on({
         mouseenter: function () {
             $(this).find('#copyLinkTextfield-wrapper').fadeIn();
@@ -490,21 +589,6 @@ jQuery(function ($) {
             $(this).find('#copyLinkTextfield-wrapper').fadeOut();
         }
     }, '#res-act-button-copy-url');
-
-//Copy cite content
-//$("#copy-cite-btn").on('click', function(){
-    $(document).delegate("#copy-cite-btn", "click", function (e) {
-        //var result = copyToClipboard(window.location.toString());
-        var URLtoCopy = $('.cite-content.selected').text();
-        var result = copyToClipboard(URLtoCopy);
-        if (result) {
-            //alert('copied');
-            $('#copy-cite-btn-confirmation').fadeIn(100);
-            setTimeout(function () {
-                $('#copy-cite-btn-confirmation').fadeOut(200);
-            }, 2000);
-        }
-    });
 
     /* You can safely use $ in this code block to reference jQuery */
 });
