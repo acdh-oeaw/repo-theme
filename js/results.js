@@ -1,12 +1,11 @@
 jQuery(function ($) {
     "use strict";
     /* You can safely use $ in this code block to reference jQuery */
-
+    
     //Expand or collapse summary on results view
     $(document).delegate(".res-act-button-summary", "click", function (e) {
         e.preventDefault();
         if ($(this).hasClass('closed')) {
-
             let id = e.target.id;
             let acdhid = id.replace('show_summary_', '');
             let summary_id = id.replace('show_summary_', 'summary_');
@@ -58,7 +57,6 @@ jQuery(function ($) {
         return "";
     }
 
-
     var searchFilterVisibility = getCookie("searchFilterVisibility");
     var porFilterVisibility = getCookie("porFilterVisibility");
     var torFilterVisibility = getCookie("torFilterVisibility");
@@ -71,9 +69,9 @@ jQuery(function ($) {
     function searchBoxFilters() {
 
         if (searchFilterVisibility == 'hidden') {
-            $('#block-search > h3').addClass('closed');
-            $('#sks-form > .form-item-metavalue').hide();
-            $('#edit-actions').hide();
+            $('.sks-form > h3').addClass('closed');
+            $('.sks-form > form .form-item-metavalue').hide();
+            $('.sks-form > form > .form-actions').hide();
         }
 
         if (torFilterVisibility == 'hidden') {
@@ -106,7 +104,7 @@ jQuery(function ($) {
             $('.extra-filter-heading').next().next().show();
         }
         //Show the search block after comforming the user cookies
-        $('#block-search').fadeIn(100);
+        $('.sks-form').fadeIn(100);
     }
 
     
@@ -114,9 +112,22 @@ jQuery(function ($) {
     /********************** EVENTS *************************************/
     
     //Complex search-form behaviour
-    $("form#sks-form").submit(function (event) {
-        var currentURL = window.location.toString();
+    //front page search
+    $("#sks-form-front").submit(function (event) {
+        searchMethod();
         event.preventDefault();
+    });
+    //main search block
+    $(".sks-form > form").submit(function (event) {
+        searchMethod(); 
+        event.preventDefault();        
+    });
+    
+    /**
+     * This method contains the search functionality
+     * @returns {undefined}
+     */
+    function searchMethod() {
         var resultsPerPageSetting = getCookie("resultsPerPage");
         if (!resultsPerPageSetting) {
             resultsPerPageSetting = 10;
@@ -206,46 +217,46 @@ jQuery(function ($) {
         }
 
         window.location.href = '/browser/search/' + urlParams + '/' + resultsOrderSetting + '/' + resultsPerPageSetting + '/1';
-    });
+    }
     
     //Show apply-search button on ToR select
-    $('#edit-searchbox-types > .form-item').on('click', function () {
-        $('#edit-actions').fadeIn(300);
+    $('.searchbox_types').change(function () {
+        $('.sks-form > form > .form-actions').fadeIn(300);
     });
 
-    $('#edit-searchbox-category > .form-item').on('click', function () {
-        $('#edit-actions').fadeIn(300);
-    });
-
-    $('#edit-payloadsearch-yes').on('click', function () {
-        $('#edit-actions').fadeIn(300);
+    $('.searchbox_category').change(function() {
+       $('.sks-form > form > .form-actions').fadeIn(300);
+    });    
+  
+    $('.payloadSearch').change(function () {
+        $('.sks-form > form > .form-actions').fadeIn(300);
     });
 
     //Show apply-search button on ToR select
-    $('#edit-datebox-years > .form-item').on('click', function () {
-        $('#edit-actions').fadeIn(300);
+    $('.datebox_years').change(function () {
+        $('.sks-form > form > .form-actions').fadeIn(300);
     });
 
     //Show apply-search button on search text keyup
-    $("#edit-metavalue").keyup(function (e) {
-        $('#edit-actions').fadeIn(300);
+    $(".sks-form > form input").keyup(function (e) {
+        $('.sks-form > form > .form-actions').fadeIn(300);
     });
     
     //Toggle Search filter
-    $('#block-search > h3').click(function () {
+    $('.sks-form > h3').click(function () {
         if ($(this).hasClass('closed')) {
             $(this).removeClass('closed');
-            $('#sks-form > .form-item-metavalue').fadeIn(200);
+            $('.sks-form > form .form-item-metavalue').fadeIn(200);
             setCookie("searchFilterVisibility", 'visible', 180);
         } else {
             $(this).addClass('closed');
-            $('#sks-form > .form-item-metavalue').fadeOut(200);
+            $('.sks-form > form .form-item-metavalue').fadeOut(200);
             setCookie("searchFilterVisibility", 'hidden', 180);
         }
     });
 
     //Toggle ToR filter
-    $('#edit-searchbox-types--wrapper > legend > .fieldset-legend').click(function () {
+    $('.searchbox_types > legend > .fieldset-legend').click(function () {
         if ($(this).hasClass('closed')) {
             $(this).removeClass('closed');
             $(this).parent().next('.fieldset-wrapper').fadeIn(200);
@@ -258,7 +269,7 @@ jQuery(function ($) {
     });
     
     //Toggle payload filter
-    $('#edit-payloadsearch--wrapper > legend > .fieldset-legend').click(function () {
+    $('.payloadSearch  > legend > .fieldset-legend').click(function () {
         if ($(this).hasClass('closed')) {
             $(this).removeClass('closed');
             $(this).parent().next('.fieldset-wrapper').fadeIn(200);
@@ -272,7 +283,7 @@ jQuery(function ($) {
 
 
     //Toggle CoR filter
-    $('#edit-searchbox-category--wrapper > legend > .fieldset-legend').click(function () {
+    $('.searchbox_category  > legend > .fieldset-legend').click(function () {
         if ($(this).hasClass('closed')) {
             $(this).removeClass('closed');
             $(this).parent().next('.fieldset-wrapper').fadeIn(200);
@@ -285,7 +296,7 @@ jQuery(function ($) {
     });
 
     //Toggle year of resource filter
-    $('#edit-datebox-years--wrapper > legend > .fieldset-legend').click(function () {
+    $('.datebox_years > legend > .fieldset-legend').click(function () {
         if ($(this).hasClass('closed')) {
             $(this).removeClass('closed');
             $(this).parent().next('.fieldset-wrapper').fadeIn(200);
@@ -312,37 +323,9 @@ jQuery(function ($) {
         }
     });
 
-    $("#edit-date-start-date")
-            .datepicker({
-                dateFormat: "dd/mm/yy",
-                changeYear: true,
-                showOn: "button",
-                constrainInput: true,
-                onSelect: function () {
-                    $('#edit-actions').fadeIn(300);
-                }
-            })
-            .next("button").button()
-            .addClass("date-filter-btn")
-            .html('<i class="material-icons">&#xE8DF;</i>')
-
-    $("#edit-date-end-date")
-            .datepicker({
-                dateFormat: "dd/mm/yy",
-                changeYear: true,
-                showOn: "button",
-                constrainInput: true,
-                onSelect: function () {
-                    $('#edit-actions').fadeIn(300);
-                }
-            })
-            .next("button").button()
-            .addClass("date-filter-btn")
-            .html('<i class="material-icons">&#xE878;</i>')
-
     $("input[type=text].date-filter").keyup(function (e) {
         //Show apply-search button on date keyup
-        $('#edit-actions').fadeIn(300);
+        $('.sks-form > form > .form-actions').fadeIn(300);
         var textSoFar = $(this).val();
         if (e.keyCode != 191) {
             if (e.keyCode != 8) {
@@ -404,6 +387,7 @@ jQuery(function ($) {
     
     //Getting the params from url
     function getParameterByName(name, url) {
+        
         if (!url)
             url = window.location.href;
         name = name.replace(/[\[\]]/g, "\\$&");
@@ -471,102 +455,17 @@ jQuery(function ($) {
     
     //Update the pagination selector depending on the url
     $(document).ready(function () {
+        
         var currentURL = window.location.toString();
         var args = currentURL.split('/');
-        var lastArg = args[args.length - 1];
-        var preLastArg = args[args.length - 2];
+        //var lastArg = args[args.length - 1];
+        //var preLastArg = args[args.length - 2];
         var breadcrumbSearchInfo = "";
 
         $('.res-act-button-summary .hide_summary').hide();
 
-        //Check if we can append selected query to filters
-        //ToR field
-        var selectedTypes = getParameterByName('type');
-        if (selectedTypes) {
-            selectedTypes = selectedTypes.toLowerCase();
-            if (selectedTypes.includes(" or ")) {
-                selectedTypes = selectedTypes.split(" or ");
-                selectedTypes.forEach(function (type) {
-                    type = type.replace(":", "");
-                    var checkboxID = '#edit-searchbox-types-' + type;
-                    $(checkboxID).prop('checked', true);
-                });
-                var typesString = selectedTypes.join(" or ");
-                breadcrumbSearchInfo += ' ' + Drupal.t('types') + ': "' + typesString + '"';
-            } else {
-                let type = selectedTypes.replace(":", "");
-                var checkboxID = '#edit-searchbox-types-' + type;
-                $(checkboxID).prop('checked', true);
-                breadcrumbSearchInfo += ' ' + Drupal.t('type') + ': "' + selectedTypes + '"';
-            }
-        }
-
-        var selectedCategory = getParameterByName('category');
-        if (selectedCategory) {
-            selectedCategory = selectedCategory.toLowerCase();
-            if (selectedCategory.includes(" or ")) {
-                selectedCategory = selectedCategory.split(" or ");
-                selectedCategory.forEach(function (category) {
-                    category = category.replace(":", "");
-                    var checkboxID = '#edit-searchbox-types-' + category;
-                    $(checkboxID).prop('checked', true);
-                });
-                var categoryString = selectedCategory.join(" or ");
-                breadcrumbSearchInfo += ' ' + Drupal.t('category') + ': "' + categoryString + '"';
-            } else {
-                let category = selectedCategory.replace(":", "");
-                var checkboxID = '#edit-searchbox-types-' + category;
-                $(checkboxID).prop('checked', true);
-                breadcrumbSearchInfo += ' ' + Drupal.t('category') + ': "' + selectedCategory + '"';
-            }
-        }
-
-        var selectedPayload = getParameterByName('payload');
-        if (selectedPayload == 'true') {
-            $('#edit-payloadsearch-yes').prop('checked', true);
-        }
-
-        //Year of resource field
-        var selectedYears = getParameterByName('years');
-        if (selectedYears) {
-            if (selectedYears.includes(" ")) {
-                selectedYears = selectedYears.split(" ");
-                selectedYears.forEach(function (year) {
-                    var checkboxID = '#edit-datebox-years-' + year;
-                    $(checkboxID).prop('checked', true);
-                });
-                var yearsString = selectedYears.join(" or ");
-                breadcrumbSearchInfo += ' from years ' + yearsString;
-            } else {
-                var checkboxID = '#edit-datebox-years-' + selectedYears;
-                $(checkboxID).prop('checked', true);
-                breadcrumbSearchInfo += ' from year ' + selectedYears;
-            }
-        }
-
-        //Metavalue field
-        var metaValueField = getParameterByName('words');
-        if (metaValueField) {
-            $("input[name='metavalue']").val(metaValueField);
-            breadcrumbSearchInfo += Drupal.t('containing') + ': "' + metaValueField + '"';
-        }
-
-        //Date of Publication field
-        var minDate = getParameterByName('mindate');
-        var maxDate = getParameterByName('maxdate');
-        if (minDate || maxDate) {
-            if (minDate != '19000101') {
-                var minDate = minDate.insertAt(4, ",").insertAt(7, ",");
-                $('#edit-date-start-date').datepicker('setDate', new Date(minDate));
-                minDate = minDate.replace(/,/g, "/");
-                breadcrumbSearchInfo += ' from ' + minDate;
-            }
-            var maxDate = maxDate.insertAt(4, ",").insertAt(7, ",");
-            $('#edit-date-end-date').datepicker('setDate', new Date(maxDate));
-            maxDate = maxDate.replace(/,/g, "/");
-            breadcrumbSearchInfo += ' until ' + maxDate;
-        }
-
+        breadcrumbSearchInfo = checkSelectedSearchValues();
+        
         if (breadcrumbSearchInfo) {
             breadcrumbSearchInfo = '<a href="' + currentURL + '">' + Drupal.t("Searched for") + breadcrumbSearchInfo + '</a>';
             $('#searchInfo').html('/ ' + breadcrumbSearchInfo);
@@ -578,8 +477,86 @@ jQuery(function ($) {
             $("#copyLinkInputBtn").data("copyuri", currentURL);
             $("#copyLinkTextfield").val(currentURL);
         }
-
     });
+    
+    //Check if we can append selected query to filters
+    function checkSelectedSearchValues() {
+        var breadcrumbSearchInfo = "";
+        breadcrumbSearchInfo = checkSelectedTypes();
+        breadcrumbSearchInfo += checkSelectedCategories();        
+        var selectedPayload = getParameterByName('payload', window.location.toString());
+        if (selectedPayload === 'true') {
+            $('input.payloadSearch').prop('checked', true);
+        }
+
+        breadcrumbSearchInfo += checkSelectedYears();
+
+        //Metavalue field
+        var metaValueField = getParameterByName('words');
+        if (metaValueField) {
+            $("input[name='metavalue']").val(metaValueField);
+            breadcrumbSearchInfo += Drupal.t('containing') + ': "' + metaValueField + '"';
+        }
+       return breadcrumbSearchInfo;
+    }
+    
+    function checkSelectedCategories() {
+        var returnBreadcrumb = "";
+        var selectedCategory = getParameterByName('category', window.location.toString());
+        if (selectedCategory) {
+            if (selectedCategory.includes(" or ")) {
+                selectedCategory = selectedCategory.split(" or ");
+                selectedCategory.forEach(function (category) {
+                    $('input[value="'+category+'"]').prop('checked', true);
+                });
+                var categoryString = selectedCategory.join(" or ");
+                returnBreadcrumb += ' ' + Drupal.t('category') + ': "' + categoryString + '"';
+            } else {
+                $('input[value="'+selectedCategory+'"]').prop('checked', true);
+                returnBreadcrumb += ' ' + Drupal.t('type') + ': "' + selectedCategory + '"';
+            }
+        }
+        return returnBreadcrumb;
+    }    
+    
+    function checkSelectedYears() {
+        var returnBreadcrumb = "";
+        //Year of resource field
+        var selectedYears = getParameterByName('years', window.location.toString());
+        if (selectedYears) {
+            if (selectedYears.includes(" ")) {
+                selectedYears = selectedYears.split(" ");
+                selectedYears.forEach(function (year) {
+                    $('input[value="'+year+'"]').prop('checked', true);
+                });
+                var yearsString = selectedYears.join(" or ");
+                returnBreadcrumb += ' from years ' + yearsString;
+            } else {
+                $('input[value="'+selectedYears+'"]').prop('checked', true);
+                returnBreadcrumb += ' from year ' + selectedYears;
+            }
+        }
+        return returnBreadcrumb;
+    }
+    
+    function checkSelectedTypes() {
+        var returnBreadcrumb = "";
+        var selectedTypes = getParameterByName('type', window.location.toString());
+        if (selectedTypes) {
+            if (selectedTypes.includes(" or ")) {
+                selectedTypes = selectedTypes.split(" or ");
+                selectedTypes.forEach(function (type) {
+                    $('input[value="'+type+'"]').prop('checked', true);
+                });
+                var typesString = selectedTypes.join(" or ");
+                returnBreadcrumb += ' ' + Drupal.t('types') + ': "' + typesString + '"';
+            } else {
+                $('input[value="'+selectedTypes+'"]').prop('checked', true);
+                returnBreadcrumb += ' ' + Drupal.t('type') + ': "' + selectedTypes + '"';
+            }
+        }
+        return returnBreadcrumb;
+    }
 
     $(document).on({
         mouseenter: function () {
