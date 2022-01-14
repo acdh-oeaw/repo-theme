@@ -495,7 +495,7 @@ jQuery(function ($) {
         var metaValueField = getParameterByName('words');
         if (metaValueField) {
             $("input[name='metavalue']").val(metaValueField);
-            breadcrumbSearchInfo += Drupal.t('containing') + ': "' + metaValueField + '"';
+            breadcrumbSearchInfo += ' '+Drupal.t('containing') + ': "' + metaValueField + '"';
         }
        return breadcrumbSearchInfo;
     }
