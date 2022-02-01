@@ -1,0 +1,163 @@
+<?php
+
+/**
+ * Prepares variables for `html.html.twig`.
+ 
+function acdh_repo_preprocess_html(&$variables) {
+  $variables['attributes']['class'][] = 'container';
+}
+*/
+
+/**
+ * Prepares variables for `region.html.twig`.
+
+function acdh_repo_preprocess_region(&$variables) {
+  $variables['attributes']['class'][] = 'mb-3';
+}
+ */
+ 
+function acdh_repo_preprocess_region__primary_menu(&$variables) {
+  $variables['attributes']['class'][] = 'navbar navbar-toggleable-md navbar-light bg-faded';
+}
+/**
+function acdh_repo_preprocess_region__footer(&$variables) {
+  $variables['attributes']['class'][] = 'card-group';
+}
+ */
+
+function acdh_repo_preprocess_field(&$variables) {
+  $variables['attributes']['class'][] = $variables['element']['#field_name'];  
+}
+
+
+/**
+ * Prepares variables for `block.html.twig`.
+ */
+function acdh_repo_preprocess_block(&$variables) {
+  $block = \Drupal\block\Entity\Block::load($variables['elements']['#id']);
+
+  switch ($variables['elements']['#plugin_id']) {
+    case 'system_menu_block:main':
+      $variables['attributes']['class'][] = 'mr-auto';
+      break;
+  }
+  
+  switch ($variables['attributes']['id']) {
+    case 'block-informationpagenavigation':
+      $variables['attributes']['class'][] = "col-block col-lg-3 col-md-4 col-sm-12";
+      break;
+    case 'block-mainpagecontent':  
+      $variables['attributes']['class'][] = "col-block col-lg-9 col-md-8 col-sm-12";
+      break;      
+  }  
+
+
+}
+
+/**
+ * Prepares variables for `menu.html.twig`.
+ */
+function acdh_repo_preprocess_menu(&$variables) {
+  $menu_name = isset($variables['menu_name']) ? $variables['menu_name'] : '';
+
+  switch ($menu_name) {
+    case 'main':
+    case 'account':
+      $variables['attributes']['class'][] = 'navbar-nav nav';
+      foreach ($variables['items'] as &$item) {
+        $item['attributes']->addClass('nav-item');
+        $attrs = $item['url']->getOption('attributes');
+        $attrs['class'][] = 'nav-link';
+        $item['url']->setOption('attributes', $attrs);
+      }
+      break;
+    default:
+      $variables['attributes']['class'][] = 'list-unstyled mb-0';
+      break;
+  }
+}
+
+/**
+ * Prepares variables for `menu-local-task.html.twig`.
+ */
+function acdh_repo_preprocess_menu_local_task(&$variables) {
+  $variables['attributes']['class'][] = 'nav-item';
+  $variables['link']['#options']['attributes']['class'][] = 'nav-link' . (!empty($variables['is_active']) ? ' active' : '');
+}
+
+/**
+ * Prepares variables for `form.html.twig`.
+ */
+function acdh_repo_preprocess_form(&$variables) {
+  if ($variables['element']['#form_id'] == 'search_block_form') {
+    $variables['attributes']['class'][] = 'container-inline';
+  }
+}
+
+/**
+ * Prepares variables for `status-messages.html.twig`.
+function acdh_repo_preprocess_status_messages(&$variables) {
+  $variables['attributes']['class'][] = 'alert alert-info';
+}
+*/
+
+/**
+ * Implements current title to breadcrumb.
+ */
+function acdh_repo_preprocess_breadcrumb(&$variables){
+    if(($node = \Drupal::routeMatch()->getParameter('node')) && $variables['breadcrumb']){
+		// Adding the title of the drupal page in the breadcrumb
+        
+        $variables['breadcrumb'][] = array(
+            'text' => $node->getTitle(),
+            'url' => ($node->toLink()->getUrl()->toString()) ? $node->toLink()->getUrl()->toString() : ""
+        );
+
+    } else {
+        // Adding the title of the custom pages in the breadcrumb
+        $current_uri = $_SERVER['REQUEST_URI'];
+        if ($current_uri) {
+            $pieces = explode("/", $current_uri);
+            //Only use the first (Home) link
+            $breadcrumbArray = $variables['breadcrumb'];
+            $breadcrumbArray = array_slice($breadcrumbArray, 0, 1);
+            $variables['breadcrumb'] = $breadcrumbArray;
+            $prev = "";		
+            foreach ($pieces as $piece) {
+                if ($piece) {
+                    //check the actual site language
+                    if(isset($_SESSION['language']) && $_SESSION['language'] == "de"){
+                        $diss_res = "Ressourcen entdecken";
+                        $detail_view = "Detaillierte Ansicht";
+                    }else {
+                        $diss_res = "Discover Resources";
+                        $detail_view = "Detailed View";
+                    }
+                    if ($piece == "oeaw_keywordsearch" or $piece == "discover" or $piece == "oeaw_classes_result") {
+                        $piece = $diss_res;
+                        $url = "/browser/discover/root";
+                    } else if ($piece == "oeaw_detail") {
+                        $piece = $diss_res;
+                        $url = "/browser/discover/root";
+                        $prev = "oeaw_detail";
+                    } else {	
+                        if($prev == "oeaw_detail") {
+                            $url = $piece;
+                            $piece = $detail_view;
+                            $prev = "Detailed View";
+                        } else {
+                            $piece = "";
+                        }							 
+                    } 
+                    if ($piece) {
+                        $variables['breadcrumb'][] = array(
+                            'text' => $piece,
+                            'url' => $url
+                            //'url' => $node->URL()
+                        );
+                    }			
+                }			
+            }
+        }	    	   	    
+    }
+}

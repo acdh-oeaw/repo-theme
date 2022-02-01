@@ -1,0 +1,17 @@
+name: acdh_repo
+description: A custom theme for ACDH-Repo
+base theme: stable
+type: theme
+core_version_requirement: ^8.8 || ^9
+
+libraries:
+  - acdh_repo/global-styling
+  - acdh_repo/fonts  
+regions:
+  header: 'Header'
+  breadcrumbs: 'Breadcrumbs'
+  main_navigation: 'Main Navigation'
+  content: 'Main Content'
+  sidebar_first: 'Left Sidebar' 
+  footer: 'Footer'
+  start_page_content: 'Start Page Content'

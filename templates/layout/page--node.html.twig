@@ -1,0 +1,27 @@
+{% include directory ~ '/templates/layout/header.html.twig' %}
+
+<div class="container">
+  <main role="main" class="node">
+    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+    <div class="layout-content col-block col-lg-12">
+      <div class="col-block-wrapper">
+
+	      <!--- Start Breadcrumbs -->
+	      {% if page.breadcrumbs %}
+
+	            {{ page.breadcrumbs }}
+
+	      {% endif %}
+	      <!---End Breadcrumbs -->	
+	           
+	      {{ page.content }}
+	        
+        </div>
+    </div>{# /.layout-content #}
+
+
+  </main>
+</div>{# /.layout-container #}
+
+{% include directory ~ '/templates/layout/footer.html.twig' %}
