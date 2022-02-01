@@ -94,7 +94,7 @@ jQuery(function ($) {
             $('#edit-datebox-years--wrapper > legend > .fieldset-legend').addClass('closed');
             $('#edit-datebox-years--wrapper > legend').next('.fieldset-wrapper').hide();
         }
-        console.log(actionsFilterVisibility);
+
         if (actionsFilterVisibility == 'hidden') {
             $('.actions-on-results > legend > .fieldset-legend').addClass('closed');
             $('.actions-on-results > legend').next('.fieldset-wrapper').hide();
@@ -125,7 +125,7 @@ jQuery(function ($) {
     });
     //main search block
     $(".sks-form > form").submit(function (event) {
-        searchMethod();
+        searchMethod(); 
         event.preventDefault();        
     });
     
@@ -248,10 +248,10 @@ jQuery(function ($) {
         $('.sks-form > form > .form-actions').fadeIn(300);
     });
     
+
     $('.sks-form :input').on('change input', function() {
          $('#vcr-submit-form').css('margin-top', '65px');
     });
-    
     
     //Toggle Search filter
     $('.sks-form > h3').click(function () {
@@ -318,7 +318,7 @@ jQuery(function ($) {
             setCookie("yorFilterVisibility", 'hidden', 180);
         }
     });
-    
+
     //Toggle actions filter
     $('.actions-on-results > legend > .fieldset-legend').click(function () {
         if ($(this).hasClass('closed')) {
