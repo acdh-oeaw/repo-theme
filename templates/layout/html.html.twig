@@ -48,9 +48,23 @@
 	<meta property="og:description" content="ARCHE (A Resource Centre for HumanitiEs) is a service aimed at offering stable and persistent hosting as well as dissemination of digital research data and resources for the Austrian humanities community. ">
 	<meta property="og:title" content="ARCHE - A Resource Centre for Humanities Related Research in Austria">
 	<meta property="og:url" content="https://arche.acdh.oeaw.ac.at/">
-        <!-- <script crossorigin src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
-        <script crossorigin src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
-        <script type='text/babel' src="/browser/themes/contrib/arche-theme/js/app.js"></script> -->
+       
+        <!-- OpenAir Matomo #20571 -->
+        <script>
+          var _paq = window._paq = window._paq || [];
+          /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+          _paq.push(['trackPageView']);
+          _paq.push(['enableLinkTracking']);
+          (function() {
+            var u="https://analytics.openaire.eu/";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', '602']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+          })();
+        </script>
+        <!-- End OpenAir Matomo #20571 -->
+        
   </head>
   <body{{ attributes }}>
       
