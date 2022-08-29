@@ -1373,6 +1373,16 @@ main > .layout-content > .col-block-wrapper {
     padding: 15px 10px;
     text-align: center;
     display: none;
+    height: 100%;
+}
+
+#cookie-overlay .container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid white;
+    padding: 10px;
 }
 
 .cookie-message {
@@ -1383,7 +1393,7 @@ main > .layout-content > .col-block-wrapper {
     color: #88DBDF;
 }
 
-.cookie-accept-btn {
+.cookie-accept-btn, .cookie-accept-necessary-btn {
     display: inline-block;
     background-color: #ffd534;
     color: #333;
@@ -1394,7 +1404,7 @@ main > .layout-content > .col-block-wrapper {
     margin: 0 0 0 20px;
 }
 
-.cookie-accept-btn {
+.cookie-accept-btn, .cookie-accept-necessary-btn {
     display: inline-block;
     background-color: #ffd534;
     color: #333;
@@ -1406,7 +1416,8 @@ main > .layout-content > .col-block-wrapper {
     transition: background-color ease .2s;
 }
 
-.cookie-accept-btn:hover {
+.cookie-accept-btn:hover,
+.cookie-accept-necessary-btn:hover{
     background-color: #d2b33d;
 }
 

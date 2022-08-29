@@ -49,21 +49,6 @@
 	<meta property="og:title" content="ARCHE - A Resource Centre for Humanities Related Research in Austria">
 	<meta property="og:url" content="https://arche.acdh.oeaw.ac.at/">
        
-        <!-- OpenAir Matomo #20571 -->
-        <script>
-          var _paq = window._paq = window._paq || [];
-          /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-          _paq.push(['trackPageView']);
-          _paq.push(['enableLinkTracking']);
-          (function() {
-            var u="https://analytics.openaire.eu/";
-            _paq.push(['setTrackerUrl', u+'piwik.php']);
-            _paq.push(['setSiteId', '602']);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-          })();
-        </script>
-        <!-- End OpenAir Matomo #20571 -->
         
   </head>
   <body{{ attributes }}>
@@ -72,9 +57,12 @@
       
     <div id="cookie-overlay">
         <div class="container">
-            <div class="cookie-message">This website uses cookies to ensure you get the best experience on our website. <a href="/browser/imprint">More info</a></div>
-            <div class="cookie-accept-btn">Accept</div>
+            <div class="cookie-message">This website uses cookies to ensure you get the best experience on our website. <a href="/browser/imprint">More info</a><br/></div>  
+            <div class="cookie-buttons">
+                <div class="cookie-accept-btn">Accept All Cookies (functional and tracking)</div>
+                <div class="cookie-accept-necessary-btn">Accept Necessary Cookies Only</div>
         </div>
+    </div>
     </div>
     {#
       Keyboard navigation/accessibility link to main content section in
