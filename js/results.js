@@ -30,56 +30,7 @@ jQuery(function ($) {
         }
         e.preventDefault();
     });
-
-    //Toggle expert or basic view on single resource
-   function setCookie(cname, cvalue, exdays) {
-        var d = new Date();
-        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-        var expires = "expires=" + d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    }
-
-    function removeCookie(cname) {
-        document.cookie = cname+'=; Max-Age=-99999999;';  
-    }
-
-    function getCookie(cname) {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length);
-            }
-        }
-        return "";
-   }
-       
-
-   var cookiesAccepted = getCookie("cookiesAccepted");
-    var cookiesAcceptedNecessary = getCookie("cookiesAcceptedNecessary");
-    if (!cookiesAccepted && !cookiesAcceptedNecessary) {
-        $("#cookie-overlay").fadeIn(100);
-    }
-    
-     //Accept cookies
-    $(".cookie-accept-btn").on('click', function () {
-        removeCookie("cookiesAcceptedNecessary");
-        setCookie("cookiesAccepted", true, 180);
-        $("#cookie-overlay").fadeOut(100);
-    });
-
-    $(".cookie-accept-necessary-btn").on('click', function () {
-        removeCookie("cookiesAccepted");
-        setCookie("cookiesAcceptedNecessary", true, 180);
-        //Once the function requireConsent is executed then no tracking request will be sent to Matomo and no cookies will be set.
-        _paq.push(['requireConsent']);
-        $("#cookie-overlay").fadeOut(100);
-    });
+  
 
     //$("#copy-url-tooltip").tooltip(); 
     $(document).delegate("#copyLinkInputBtn", "click", function (e) {

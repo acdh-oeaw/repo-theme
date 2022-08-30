@@ -1412,7 +1412,7 @@ main > .layout-content > .col-block-wrapper {
     border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
-    margin: 0 0 0 20px;
+    margin: 10px 10px 10px 20px;
     transition: background-color ease .2s;
 }
 
