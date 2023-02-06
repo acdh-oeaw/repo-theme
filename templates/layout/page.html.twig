@@ -1,44 +1,84 @@
 {% include directory ~ '/templates/layout/header.html.twig' %}
 
-<div class="container">
-  <main role="main">
-    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+{% set url = url('<current>') %}
+{% if '/detail/' in url|render|render  %}
+    <div class="container-fluid">
+        <main role="main">
+            <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+            <div class="row-fluid">
+                <div class="layout-content col-block col-lg-12">
+                    <div class="col-block-wrapper">
 
-    <div class="layout-content col-block col-lg-12">
-      <div class="col-block-wrapper">
+                        <!--- Start Breadcrumbs -->
+                        {% if page.breadcrumbs %}
+                            {{ page.breadcrumbs }}
+                        {% endif %}
+                        <!---End Breadcrumbs -->	  
 
-	      <!--- Start Breadcrumbs -->
-	      {% if page.breadcrumbs %}
-
-	            {{ page.breadcrumbs }}
-
-	      {% endif %}
-	      <!---End Breadcrumbs -->	  	  
-      
-	      <!--- Start Left Sidebar -->
-	      {% if page.sidebar_first %}
-	        <div class="left-sidebar col-block col-lg-3 col-md-4 col-sm-12" >
-                    <div class="left-sidebar-info">
-                      {{ "Refine your search using filters:"|trans }}
+                        <div id="block-mainpagecontent-full" class="col-block col-lg-12 col-md-12 col-sm-12">        
+                            {{ page.content }}
+                        </div>
                     </div>
-	          <div class = {{sidebarfirst}} >
-	            {{ page.sidebar_first }}
-	          </div>
-	        </div>
-	      {% endif %}
-	      <!---End Left Sidebar -->
-	      
-	      <div class="vert-divider"></div>
-	      
-	      <div id="block-mainpagecontent" class="col-block col-lg-9 col-md-8 col-sm-12">        
-	        {{ page.content }}
-	      </div>  
-	        
-        </div>
-    </div>{# /.layout-content #}
+                </div>{# /.layout-content #}
+            </div>
 
+        </main>
+    </div>
 
-  </main>
-</div>{# /.layout-container #}
+{% elseif '/dashboard/' in url|render|render or '/dashboard-' in url|render|render  %}            
+    <div class="container">
+        <main role="main">
+            <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+            <div class="row">
+                <div class="layout-content col-block col-lg-12">
+                    <div class="col-block-wrapper">
+                        <div id="block-mainpagecontent-full" class="col-block col-lg-12 col-md-12 col-sm-12">        
+                            {{ page.content }}
+                        </div>
+                    </div>
+                </div>{# /.layout-content #}
+            </div>
 
+        </main>
+    </div> 
+
+{% else %}
+    <div class="container">
+        <main role="main">
+            <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+            <div class="layout-content col-block col-lg-12">
+                <div class="col-block-wrapper">
+
+                    <!--- Start Breadcrumbs -->
+                    {% if page.breadcrumbs %}
+                        {{ page.breadcrumbs }}
+                    {% endif %}
+                    <!---End Breadcrumbs -->	  	  
+		    
+                    <!--- Start Left Sidebar -->
+                    {% if page.sidebar_first %}
+                        <div class="left-sidebar col-block col-lg-3 col-md-4 col-sm-12" >
+                            <div class="left-sidebar-info">
+                                {{ "Refine your search using filters:"|trans }}
+                            </div>
+                            <div class = {{sidebarfirst}} >
+                                {{ page.sidebar_first }}
+                            </div>
+                        </div>
+                    {% endif %}
+                    <!---End Left Sidebar -->
+
+                    <div class="vert-divider"></div>
+
+                    <div id="block-mainpagecontent" class="col-block col-lg-9 col-md-8 col-sm-12">        
+                        {{ page.content }}
+                    </div>  
+
+                </div>
+            </div>{# /.layout-content #}
+
+        </main>
+    </div>{# /.layout-container #}
+{% endif %}
 {% include directory ~ '/templates/layout/footer.html.twig' %}
