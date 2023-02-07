@@ -71,6 +71,7 @@ jQuery(function($) {
     });
 
     $(document).ready(function() {
+        
         //if the user press the browser back button, then we need to reload the page
         // because of the ajax page refresh
         $(window).on('popstate', function() {
@@ -97,6 +98,8 @@ jQuery(function($) {
             event.preventDefault();
             
         });
+        
+        getMetadataTable();
         
         /** get the imprint **/
         if(window.location.href.indexOf("browser/imprint") >= 0 ){
@@ -195,6 +198,20 @@ jQuery(function($) {
         });
 
     });
+    
+    
+    function getMetadataTable() {
+        
+        if(window.location.href.indexOf("browser/formats-filenames-and-metadata") >= 0 ){
+            
+            const url = '/browser/api/getMetadataGuiHTML/en';
+            $.get(url, function(response){
+                document.getElementById('metadata-table-api').innerHTML = response;
+            });
+        };
+      
+    }
+    
 
     /* You can safely use $ in this code block to reference jQuery */
 });
