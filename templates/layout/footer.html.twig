@@ -1,0 +1,52 @@
+<footer class="main-footer" role="contentinfo">
+    <div class="container">
+    	<div class="footer-wrapper">
+            
+            <div class="footer-sep">
+                <i class="fa fa-comment-o" aria-hidden="true"></i> {{ "Contact"|trans }}
+            </div>
+
+            <div class="el-block col-lg-6 col-md-6 first">
+                  <a href="https://www.oeaw.ac.at/acdh/" style="border-bottom: none !important;"><img src="https://fundament.acdh.oeaw.ac.at/common-assets/images/acdh_logo.svg" class="image" alt="ACDH Logo" style="max-width: 100%; height: auto;" title="ACDH Logo"></a>
+              <div class="csc-textpic-text">
+                  <p class="bodytext">
+                    ACDH-CH
+                    <br>
+                    Austrian Centre for Digital Humanities <br/> and Cultural Heritage
+                    <br>
+                    Austrian Academy of Sciences
+                  </p>
+                  <p class="bodytext">Bäckerstraße 13<br>1010 Vienna
+                  </p>
+                  <p class="bodytext">T: +43 1 51581-2200</p>
+              </div>
+            </div>
+            
+            <div class="el-block col-md-3">
+                <div id="wrapper">
+                    <div style="float: right;">
+                        <a href="https://www.coretrustseal.org/wp-content/uploads/2021/07/20210709-ARCHE-CTS_Certification_2020-2022.pdf" style="border-bottom: none !important;"><img src="{{ base_path ~ directory }}/images/CoreTrustSeal_Logo-BW_60.png" class="image" alt="CoreTrustSeal Logo" style="max-width: 100%; height: 60px;" title="CoreTrustSeal Logo"></a>
+                    </div>
+                    <br>
+                    <div style="float: right; clear: right;">    
+                        <a href="http://hdl.handle.net/11372/DOC-105" style="border-bottom: none !important;"><img src="{{ base_path ~ directory }}/images/clarin_b_centre_logo_white.png" class="image" alt="Clarin B Centre Logo" style="max-width: 100%; height: 55px;" title="Clarin B Centre Logo"></a>                
+                    </div>
+                </div>    
+            </div>
+            <div class="el-block col-md-3 last">
+                <h3>HELPDESK</h3>
+                <p class="bodytext">{{ "ACDH-CH runs a helpdesk offering advice for questions related to various digital humanities topics."|trans }}</p>
+                <p class="bodytext"><a href="mailto:acdh-ch-helpdesk@oeaw.ac.at" class="helpdesk-button">{{ "ASK US!"|trans }}</a></p>
+            </div>
+        </div>    
+    </div>
+    <div class="footer-imprint-bar">
+    	© Copyright OEAW | <a href="{{ url('<front>') }}imprint">Impressum/Imprint</a>
+        <br>
+        <p style="margin-top: 5px;">
+            {{ get_acdh_composer_versions('name')|raw }}
+            <br/>
+            {{ get_acdh_ontology_import_date()|raw }}
+        </p>
+    </div>
+</footer>

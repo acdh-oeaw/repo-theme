@@ -1,0 +1,183 @@
+/* _fundamentals.scss */
+
+/* Variables */
+$primary: #88DBDF;
+$accent: #3B89AD;
+$black: #333333;
+$white: #FFFFFF;
+$lightgray: #F1F1F1;
+$gray: #DDDDDD;
+
+$headingfont: 'Cabin', -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+$bodyfont: 'Lato', -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+
+/* Default transition, usage: @include bg-trans(); */
+@mixin bg-trans() {
+    transition: background-color ease .2s;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../lib/material-icons/MaterialIcons-Regular.eot'); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url('../lib/material-icons/MaterialIcons-Regular.woff2') format('woff2'),
+    url('../lib/material-icons/MaterialIcons-Regular.woff') format('woff'),
+    url('../lib/material-icons/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+html, body {
+	background-color: $lightgray;
+}
+
+body {
+  	word-wrap: break-word;
+  	font-family: $bodyfont;
+  	font-weight: 300;
+}
+
+h1, h2, h3 {
+	font-family: $headingfont;
+	font-weight: 400;
+}
+
+h2 {
+	font-size: 30px;
+	line-height: 38px;
+	text-align: center;
+}
+
+h3 {
+	font-size: 20px;
+	line-height: 26px;
+}
+
+h2:after {
+    content: '';
+    display: block;
+    width: 60px;
+    margin-left: calc(50% - 30px);
+    border-top: 2px solid $primary;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid $primary;
+    transition: color ease .2s;
+}
+
+a:focus, a:hover {
+    color: $accent;
+    text-decoration: none;
+}
+
+//Exceptions from link border-bottom style
+.res-title a, a.nav-link, .logo a, .cite-selector a, .start_right_block a, .res-act-button a, .pagination-item a, .acdh-brand a, .single-res-thumb a, nav a, .footer-login-button a, .lb-close {
+    border-bottom: none;
+}
+
+b, strong {
+    font-weight: 600;
+}
+
+.inverse {
+    color: $white;
+}
+
+.form-control {
+    border: 2px solid $primary;
+    border-radius: 8px;
+    font: inherit;
+    padding: 6px 12px;
+}
+
+pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    font-size: 14px;
+}
+
+/*
+body {
+animation: fadein 0.5s;
+-moz-animation: fadein 0.5s;
+-webkit-animation: fadein 0.5s;
+-o-animation: fadein 0.5s;
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+*/
+
+
+.form-text::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #bababa;
+}
+.form-text::-moz-placeholder { /* Firefox 19+ */
+  color: #bababa;
+}
+.form-text:-ms-input-placeholder { /* IE 10+ */
+  color: #bababa;
+}
+.form-text:-moz-placeholder { /* Firefox 18- */
+  color: #bababa;
+}

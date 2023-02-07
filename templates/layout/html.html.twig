@@ -1,0 +1,79 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the basic structure of a single Drupal page.
+ *
+ * Variables:
+ * - logged_in: A flag indicating if user is logged in.
+ * - root_path: The root path of the current page (e.g., node, admin, user).
+ * - node_type: The content type for the current node, if the page is a node.
+ * - head_title: List of text elements that make up the head_title variable.
+ *   May contain one or more of the following:
+ *   - title: The title of the page.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site.
+ * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page: The rendered page markup.
+ * - page_bottom: Closing rendered markup. This variable should be printed after
+ *   'page'.
+ * - db_offline: A flag indicating if the database is offline.
+ * - placeholder_token: The token for generating head, css, js and js-bottom
+ *   placeholders.
+ *
+ * @see template_preprocess_html()
+ *
+ * @ingroup themeable
+ */
+#}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+  <head>
+    <head-placeholder token="{{ placeholder_token }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <css-placeholder token="{{ placeholder_token }}">
+    <js-placeholder token="{{ placeholder_token }}">
+    <!-- Favicon / App Icons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="/browser/themes/contrib/arche-theme/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/browser/themes/contrib/arche-theme/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/browser/themes/contrib/arche-theme/icons/favicon-16x16.png">
+	<link rel="manifest" href="/browser/themes/contrib/arche-theme/icons/manifest.json">
+	<link rel="mask-icon" href="/browser/themes/contrib/arche-themeo/icons/safari-pinned-tab.svg" color="#88dbdf">
+	<link rel="shortcut icon" href="/browser/themes/contrib/arche-theme/icons/favicon.ico">
+	<meta name="msapplication-config" content="/browser/themes/contrib/arche-theme/icons/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+	<!-- Social-media metadata -->
+	<meta property="og:image" content="/browser/themes/contrib/arche-theme/icons/og-image.jpg">
+	<meta property="og:image:height" content="1109">
+	<meta property="og:image:width" content="2118">
+	<meta property="og:description" content="ARCHE (A Resource Centre for HumanitiEs) is a service aimed at offering stable and persistent hosting as well as dissemination of digital research data and resources for the Austrian humanities community. ">
+	<meta property="og:title" content="ARCHE - A Resource Centre for Humanities Related Research in Austria">
+	<meta property="og:url" content="https://arche.acdh.oeaw.ac.at/">
+       
+        
+  </head>
+  <body{{ attributes }}>
+      
+      <!-- <div id="example"></div> -->
+      
+    <div id="cookie-overlay">
+        <div class="container">
+            <div class="cookie-message">This website uses cookies to ensure you get the best experience on our website. <a href="/browser/imprint">More info</a><br/></div>  
+            <div class="cookie-buttons">
+                <div class="cookie-accept-btn">Accept All Cookies (functional and tracking)</div>
+                <div class="cookie-accept-necessary-btn">Accept Necessary Cookies Only</div>
+        </div>
+    </div>
+    </div>
+    {#
+      Keyboard navigation/accessibility link to main content section in
+      page.html.twig.
+    #}
+    <a href="#main-content" class="visually-hidden focusable">
+      {{ 'Skip to main content'|t }}
+    </a>
+    {{ page_top }}
+    {{ page }}
+    {{ page_bottom }}
+    <js-bottom-placeholder token="{{ placeholder_token }}">
+  </body>
+</html>

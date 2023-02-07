@@ -1,0 +1,31 @@
+{% include directory ~ '/templates/layout/header.html.twig' %}
+
+<div class="container">
+    <main role="main" class="node">
+        <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+        <div class="layout-content col-block col-lg-12">
+            <div class="col-block-wrapper">
+                <!--- Start Breadcrumbs -->
+                {% if page.breadcrumbs %}
+                    {{ page.breadcrumbs }}
+                {% endif %}
+                <!---End Breadcrumbs -->	
+
+                <div class="row justify-content-md-center">
+		    <div class="col col-lg-6">
+                        {{ page.content }}
+                        {% set myUrl = url('<front>')|raw %}
+                        {% set myBaseUrl = myUrl["#markup"]|replace({"/browser/": ""}) %}
+                        <br>
+                        <span class="res-title">Click here to login with your federated account : </span>
+                        <!-- <a class="shibboleth" href="{{ myBaseUrl }}/Shibboleth.sso/Login?target={{ myUrl["#markup"]|url_encode(true) }}"><i class="fa fa-sign-in" aria-hidden="true"></i></a>-->
+                        <a class="shibboleth" href="/browser/federated_login"><i class="fa fa-sign-in" aria-hidden="true"></i></a>     
+		    </div>
+                </div> 
+            </div>
+        </div>{# /.layout-content #}
+    </main>
+</div>{# /.layout-container #}
+
+{% include directory ~ '/templates/layout/footer.html.twig' %}

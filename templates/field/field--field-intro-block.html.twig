@@ -1,0 +1,13 @@
+<div class="{{ field_name }} inverse col-block col-12"/>
+	<div class="col-block-wrapper" style="background-image: url({{ directory }}/images/intro-bg.jpg);" alt="ACDH OEAW Logo">
+		{% if multiple %}
+		  {% for item in items %}
+		    <div{{ item.attributes }}>{{ item.content }}</div>
+		  {% endfor %}
+		{% else %}
+		{% for item in items %}
+		  {{ item.content }}
+		{% endfor %}
+		{% endif %}
+	</div>   
+</div>
