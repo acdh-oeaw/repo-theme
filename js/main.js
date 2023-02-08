@@ -208,6 +208,12 @@ jQuery(function($) {
             $.get(url, function(response){
                 document.getElementById('metadata-table-api').innerHTML = response;
             });
+            
+            
+            const urlff = '/browser/api/getFileFormatsHTML/en';
+            $.get(urlff, function(response){
+                document.getElementById('fileformats-table-api').innerHTML = response;
+            });
         };
       
     }
