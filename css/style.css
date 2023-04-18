@@ -1874,3 +1874,7 @@ footer .el-block.first {
     color: #4895b2;
     margin-left: 5px;
 }
+
+.navbar-nav > li > a::after  {
+    display: none;
+}

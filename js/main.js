@@ -101,6 +101,26 @@ jQuery(function($) {
         
         getMetadataTable();
         
+        //load the homepage top 3 topcollections block
+        if(window.location.href.indexOf("browser/") >= 0 ){
+            if(document.getElementById("hp-top-collections-block-div") !== null) {
+                $.get('/browser/api/getHPTop/en', function(response){
+                    document.getElementById('hp-top-collections-block-div').innerHTML = response;
+                });
+            }
+        };
+        
+        //load the left side search block
+        if(window.location.href.indexOf("browser/") >= 0 ){
+            if(document.getElementById("search-block-div") !== null) {
+                console.log('searchblock ajax done');
+                $.get('/browser/api/getSearchBlock/en', function(response){
+                    document.getElementById('search-block-div').innerHTML = response;
+                });
+            }
+        };
+        
+        
         /** get the imprint **/
         if(window.location.href.indexOf("browser/imprint") >= 0 ){
             const imprintService = 'https://shared.acdh.oeaw.ac.at/acdh-common-assets/api/imprint.php?serviceID=7404';

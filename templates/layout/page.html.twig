@@ -1,9 +1,7 @@
 {% include directory ~ '/templates/layout/header.html.twig' %}
 
-
-
 {% set url = url('<current>') %}
-{% if '/detail/' in url|render|render  %}
+{% if '/detail1/' in url|render|render  %}
     <div class="container-fluid">
         <main role="main">
             <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
@@ -16,7 +14,6 @@
                             {{ page.breadcrumbs }}
                         {% endif %}
                         <!---End Breadcrumbs -->	  
-
 
                         <div id="block-mainpagecontent-full" class="col-block col-lg-12 col-md-12 col-sm-12">        
                             {{ page.content }}
