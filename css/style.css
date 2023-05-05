@@ -1277,11 +1277,9 @@ h3.latest-additions {
 .sks-form > form > .form-actions {
     width: 100%;
     left: 0px;
-    bottom: -65px;
-    border-bottom: 1px solid #DDDDDD;
+    bottom: 0px;
+    position: inherit;
     padding-bottom: 15px;
-    top: unset;
-    display: none;
 }
 .sks-form > form > .form-actions .complexsearch-btn {
     width: 100%;
