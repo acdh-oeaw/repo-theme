@@ -238,6 +238,14 @@ jQuery(function($) {
       
     }
     
+    $(document).delegate(".arche_right_menu li a", "click", function (e) {
+        $('.arche_right_menu li a').removeClass('active');
+        $(this).addClass('active');
+        let val = $(this).data('view');
+        $('.arche_tab_content .tab-pane').removeClass('active');
+        $('#tab_'+val).addClass('active');
+    });
+    
 
     /* You can safely use $ in this code block to reference jQuery */
 });

@@ -1,7 +1,8 @@
 {% include directory ~ '/templates/layout/header.html.twig' %}
 
+
 {% set url = url('<current>') %}
-{% if '/detail1/' in url|render|render  %}
+{% if '/detail/' in url|render|render  %}
     <div class="container-fluid">
         <main role="main">
             <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
@@ -24,7 +25,6 @@
 
         </main>
     </div>
-
 
 {% elseif '/dashboard/' in url|render|render or '/dashboard-' in url|render|render  %}            
     <div class="container">
@@ -73,7 +73,35 @@
                     <!---End Left Sidebar -->
 
                     <div class="vert-divider"></div>
-
+                    <div id="block-mainpagesearchtools" class="col-block col-lg-9 col-md-8 col-sm-12">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 arche-smartsearch-page-div" style="display: none;">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-outline">        
+                                                <label class="mx-2 font-weight-bold" for="pageSize">{{ "Page size"|trans }}:</label>
+                                                <input class="form-control  mr-sm-2 w-100" type="number" value="10" min="1" id="pageSize"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-outline">
+                                                <label class="mx-2 font-weight-bold" for="page">{{ "Page"|trans }}:</label>
+                                                <div class="input-group  mr-sm-2 w-100">
+                                                    <select class="form-control" id="page" onchange="search();">
+                                                        <option value="0" selected="selected">1</option>
+                                                    </select>
+                                                    <div class="input-group-append">
+                                                        <div class="input-group-text" id="pageCount">/ 1</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>     
                     <div id="block-mainpagecontent" class="col-block col-lg-9 col-md-8 col-sm-12">        
                         {{ page.content }}
                     </div>  

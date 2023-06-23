@@ -379,7 +379,7 @@ nav.breadcrumb > .breadcrumb > span:nth-last-of-type(1) {
 }
 
 #block-mainpagecontent {
-    border-left: 1px solid #DDDDDD;
+    /*border-left: 1px solid #DDDDDD;*/
     padding: 0px 10px 0 22px;
     min-height: 650px;
 }
@@ -1875,4 +1875,29 @@ footer .el-block.first {
 
 .navbar-nav > li > a::after  {
     display: none;
+}
+
+.tabmenu-row {
+    right: -130px;
+    background: white;
+    padding: 10px;
+}
+
+.arche_right_menu ul {
+    padding-left: 10px;
+}
+
+.arche_right_menu li {
+    padding-bottom: 10px;
+}
+.arche_search_toggle_div {
+    display: none; 
+    padding: 10px;
+    border: 1px solid #88DBDF;
+    min-width: 400px; 
+    width: 100%; 
+    height: auto; 
+    background-color: #F1F1F1;
+    z-index: 9999; 
+    position: absolute;
 }
