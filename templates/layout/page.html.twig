@@ -2,31 +2,8 @@
 
 
 {% set url = url('<current>') %}
-{% if '/detail/' in url|render|render  %}
-    <div class="container-fluid">
-        <main role="main">
-            <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-            <div class="row-fluid">
-                <div class="layout-content col-block col-lg-12">
-                    <div class="col-block-wrapper">
 
-                        <!--- Start Breadcrumbs -->
-                        {% if page.breadcrumbs %}
-                            {{ page.breadcrumbs }}
-                        {% endif %}
-                        <!---End Breadcrumbs -->	  
-
-                        <div id="block-mainpagecontent-full" class="col-block col-lg-12 col-md-12 col-sm-12">        
-                            {{ page.content }}
-                        </div>
-                    </div>
-                </div>{# /.layout-content #}
-            </div>
-
-        </main>
-    </div>
-
-{% elseif '/dashboard/' in url|render|render or '/dashboard-' in url|render|render  %}            
+{% if '/dashboard/' in url|render|render or '/dashboard-' in url|render|render  %}            
     <div class="container">
         <main role="main">
             <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
@@ -56,8 +33,6 @@
                         {{ page.breadcrumbs }}
                     {% endif %}
                     <!---End Breadcrumbs -->	  	  
-
-
 
                     <!--- Start Left Sidebar -->
                     {% if page.sidebar_first %}
