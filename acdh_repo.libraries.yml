@@ -8,6 +8,7 @@ global-styling:
     js:
         js/results.js: {}   
         js/main.js: {}
+        js/static-pages.js: {}
         js/jquery.dataTables.min.js: {}
         js/jstree.min.js: {}
         js/dataTables.bootstrap4.min.js: {}
