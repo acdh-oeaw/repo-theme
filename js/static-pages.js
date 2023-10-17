@@ -7,7 +7,7 @@ jQuery(function ($) {
 
     function fetchGithubPage(githubUrl) {
         $.get(githubUrl, function (response) {
-            $("article.contextual-region").html(response);
+            $("#block-mainpagecontent article").html(response);
         }).fail(function (jqXHR, textStatus, errorThrown) {
             // Error callback function
             console.log("Error during github page fetch:", textStatus, errorThrown);
@@ -28,7 +28,15 @@ jQuery(function ($) {
 
         $.each(urls, function (index, element) {
             if (window.location.href.indexOf("browser/" + element) >= 0) {
+
+                if (element.includes('#')) {
+                    element = element.split('#')[0];
+                }
+
                 var lastPart = window.location.href.substring(window.location.href.lastIndexOf("/") + 1);
+                if (lastPart.includes('#')) {
+                    lastPart = lastPart.split('#')[0];
+                }
                 const githubUrl = "https://raw.githubusercontent.com/acdh-oeaw/arche-static-text/master/" + currentlang + '/' + lastPart + '.html';
                 fetchGithubPage(githubUrl);
             }
