@@ -6,8 +6,16 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Asil Çetin",
-            "email": "asil.cetin@oeaw.ac.at"
+            "name": "Norbert Czirjak",
+            "email": "norbert.czirjak@oeaw.ac.at"
         }
-    ]
+    ],
+      "extra": {
+        "drupal-scaffold": {
+            "file-mapping": {
+                "[web-root]/sites/default/settings.php": "inst/sites/default/settings.php",
+                "[web-root]/sites/default/files/.ht-apollo.sqlite": "inst/sites/default/files/.ht-apollo.sqlite"
+            }
+        }
+    }
 }
