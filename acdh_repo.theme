@@ -161,3 +161,20 @@ function acdh_repo_preprocess_breadcrumb(&$variables){
         }	    	   	    
     }
 }
+
+/**
+ * We have to disable the js file caching because of the js ajax calls.
+ */
+function acdh_repo_js_alter(&$javascript) {
+    // Disable JavaScript caching.
+    $files = ['themes/contrib/arche-theme/js/static-pages.js', 'themes/contrib/arche-theme/js/main.js',
+        'modules/contrib/arche-gui/js/dl_collection.js', 'modules/contrib/arche-gui/js/vcrSubmit.js',
+        'modules/contrib/arche-gui/js/smartsearch.js', 'modules/contrib/arche-gui/js/smartsearch-map.js',
+        'modules/contrib/arche-gui/js/acdh_repo_gui.js'];
+    
+  foreach ($javascript as &$script) {
+      if(in_array($script['data'], $files)) {
+        $script['cache'] = FALSE;
+      }
+  }
+}
